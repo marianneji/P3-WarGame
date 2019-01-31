@@ -30,16 +30,18 @@ class Player {
     }
 
     
-    func createPlayerName() { // return a name for a player
+    static func createPlayerName() -> String { // return a name for a player
         print("What is the name of your player?")
-        name = input()
         
-        print("Your player name is \(name)")
+        let name = input()
         
-        if name != "" { // if name is not a string it will return to the function createplayername
+        
+        if name == "" { // if name is not a string it will return to the function createplayername
             print("Please enter a valid name")
             return createPlayerName()
         }
+        print("Your player name is \(name)")
+        return name
         
     }
     
@@ -84,7 +86,7 @@ class Player {
         
  
 }
-    func createCharacterName() {
+    static func createCharacterName() {
         
     }
     // MARK: INCOMPLETE

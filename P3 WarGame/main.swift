@@ -8,5 +8,9 @@
 
 import Foundation
 
-let player1 = Player(name: "")
-let player2 = Player(name: "")
+let name1 = Player.createPlayerName()
+let name2 = Player.createPlayerName()
+
+let player1 = Player(name: name1)
+let player2 = Player(name: name2)
+

@@ -11,24 +11,24 @@ import Foundation
 
 class Character {
 
-    var damage: Int
-    init(damage: Int) {
-        self.damage = damage
+    var lifePoints: Int
+    init(lifePoints: Int) {
+        self.lifePoints = lifePoints
     }
 }
 
 class Warrior: Character {
-    
+    let warrior = Warrior.init(lifePoints: 100)
 }
 
 class Giant: Character {
-    
+    let giant = Warrior.init(lifePoints: 120)
 }
 
 class Dwarf: Character {
-    
+    let dwarf = Warrior.init(lifePoints: 80)
 }
 
 class Mage: Character {
-    
+    let mage = Warrior.init(lifePoints: 0)
 }

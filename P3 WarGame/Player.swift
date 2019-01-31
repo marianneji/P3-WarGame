@@ -22,7 +22,7 @@ class Player {
     var name: String
   
     
-    var teamMembers = [Any]()
+    var teamMembers = [Character]() // array of character members
     
     init(name: String) {
         self.name = name
@@ -84,23 +84,19 @@ class Player {
         
  
 }
-     static func createCharacterName() -> String {
-      
-        print("Choose a name for your team members")
+    static func createCharacterName() -> String {
+        print("Choose a name for each of your team members")
         
-        for member in teamMembers {
+        for member in Character {
             
         let characterName = input()
         
         if characterName == "" {
-                
-        print("Please enter a valid name")
-        return createCharacterName()
+            print("Please enter a valid name")
+            return createCharacterName()
+            }
             
         }
-            
-        
-    }
     }
     // MARK: INCOMPLETE
     

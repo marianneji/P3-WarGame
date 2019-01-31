@@ -29,10 +29,12 @@ class Game {
             + "\n Strength : Increase the damage of 15 points on the opponent life, and reduce the damage received of 15 points"
         + "\n"
         + "\n Then you'll choose a fighter and an opponent,"
-        + "\n your opponent will choose an fighter and one of your team memeber to attack."
+        + "\n they will fight."
+        + "\n Your opponent will choose a fighter and one of your team member to attack,"
+        + "\n they will fight."
         + "\n It will be the end of a round."
         + "\n It will goes like this till all of the members of one team will be dead (except for the mage, he has no life, he's like a healing ghost)"
-        + "\n So let's FIGHT")
+        + "\n So let's FIGHT till DEATH")
     }
     
     func startGame() { // 

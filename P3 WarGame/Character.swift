@@ -12,23 +12,35 @@ import Foundation
 class Character {
 
     var lifePoints: Int
-    init(lifePoints: Int) {
+    var characterName: String
+    var weapon: Weapon
+    init(lifePoints: Int, characterName: String, weapon: Weapon) {
         self.lifePoints = lifePoints
+        self.characterName = characterName
+        self.weapon = weapon
     }
 }
 
 class Warrior: Character {
-    let warrior = Warrior.init(lifePoints: 100)
+    init() {
+        super.init(lifePoints: 100, characterName: "", weapon: Weapon(weaponName: "sword", damage: 10, heal: 0))
+    }
 }
 
 class Giant: Character {
-    let giant = Warrior.init(lifePoints: 120)
+    init() {
+    super.init(lifePoints: 120, characterName: "", weapon: Weapon(weaponName: "crossbow", damage: 15, heal: 0))
+    }
 }
 
 class Dwarf: Character {
-    let dwarf = Warrior.init(lifePoints: 80)
+    init() {
+        super.init(lifePoints: 80, characterName: "", weapon: Weapon(weaponName: "axe", damage: 15, heal: 0))
+    }
 }
 
 class Mage: Character {
-    let mage = Warrior.init(lifePoints: 0)
+    init() {
+        super.init(lifePoints: 0, characterName: "T##String", weapon: Weapon(weaponName: "scepter", damage: 0, heal: 50))
+    }
 }

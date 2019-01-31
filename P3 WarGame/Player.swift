@@ -22,7 +22,7 @@ class Player {
     var name: String
   
     
-    var team = [Character]()
+    var team = [Any]()
     
     init(name: String) {
         self.name = name
@@ -58,23 +58,21 @@ class Player {
             switch choice {
             case "1":
                 print("The warrior is now in your team, \(name)")
-                let warrior = Warrior()
-              team.append(warrior) // member is added to team
+                team.append(Warrior()) // member is added to team
                 
             case "2":
                 print("The Giant is now in your team, \(name)")
-                let giant = Giant()
-                team.append(giant) // member is added to team
+               
+                team.append(Giant()) // member is added to team
                 
             case "3":
                 print("The Dwarf is now in your team, \(name)")
-                let dwarf = Dwarf()
-                team.append(dwarf) // member is added to team
+                
+                team.append(Dwarf()) // member is added to team
                 
             case "4":
                 print("The Mage is now in your team, \(name)")
-                let mage = Mage()
-                team.append(mage) // member is added to team
+                team.append(Mage()) // member is added to team
                 
             default:
                 print("Please choose a character for your team, \(name)")

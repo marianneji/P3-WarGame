@@ -14,3 +14,4 @@ let name2 = Player.createPlayerName()
 let player1 = Player(name: name1)
 let player2 = Player(name: name2)
 
+let characterName1 = Player.createCharacterName()

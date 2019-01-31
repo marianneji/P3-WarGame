@@ -23,7 +23,7 @@ class Character {
 
 class Warrior: Character {
     init() {
-        super.init(lifePoints: 100, characterName: "", weapon: Weapon(weaponName: "sword", damage: 10, heal: 0))
+        super.init(lifePoints: 100, characterName: Player.createCharacterName(), weapon: Weapon(weaponName: "sword", damage: 10, heal: 0))
     }
 }
 

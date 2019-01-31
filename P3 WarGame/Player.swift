@@ -22,7 +22,7 @@ class Player {
     var name: String
   
     
-    var team = [Any]()
+    var teamMembers = [Any]()
     
     init(name: String) {
         self.name = name
@@ -58,21 +58,21 @@ class Player {
             switch choice {
             case "1":
                 print("The warrior is now in your team, \(name)")
-                team.append(Warrior()) // member is added to team
+                teamMembers.append(Warrior()) // member is added to team
                 
             case "2":
                 print("The Giant is now in your team, \(name)")
                
-                team.append(Giant()) // member is added to team
+                teamMembers.append(Giant()) // member is added to team
                 
             case "3":
                 print("The Dwarf is now in your team, \(name)")
                 
-                team.append(Dwarf()) // member is added to team
+                teamMembers.append(Dwarf()) // member is added to team
                 
             case "4":
                 print("The Mage is now in your team, \(name)")
-                team.append(Mage()) // member is added to team
+                teamMembers.append(Mage()) // member is added to team
                 
             default:
                 print("Please choose a character for your team, \(name)")
@@ -80,12 +80,27 @@ class Player {
                 
             }
             
-    } while team.count < 3
+    } while teamMembers.count < 3
         
  
 }
-    static func createCharacterName() {
+     static func createCharacterName() -> String {
+      
+        print("Choose a name for your team members")
         
+        for member in teamMembers {
+            
+        let characterName = input()
+        
+        if characterName == "" {
+                
+        print("Please enter a valid name")
+        return createCharacterName()
+            
+        }
+            
+        
+    }
     }
     // MARK: INCOMPLETE
     

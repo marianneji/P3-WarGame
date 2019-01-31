@@ -40,8 +40,9 @@ class Player {
             print("Please enter a valid name")
             return createPlayerName()
         }
-        print("Your player name is \(name)")
         return name
+        print("Your player name is \(name)")
+        
         
     }
     
@@ -84,19 +85,49 @@ class Player {
         
  
 }
-    static func createCharacterName() -> String {
+     func createCharacterName() -> String {
         print("Choose a name for each of your team members")
         
-        for member in Character {
-            
-        let characterName = input()
-        
-        if characterName == "" {
-            print("Please enter a valid name")
-            return createCharacterName()
+        for member in teamMembers {
+            if member is Warrior {
+                
+                let warriorName = input()
+                
+                if warriorName == "" {
+                    print("Please enter a valid name")
+                    return createCharacterName()
             }
+                return warriorName
             
         }
+            if member is Giant {
+                let giantName = input()
+                
+                if giantName == "" {
+                    print("Please enter a valid name")
+                    return createCharacterName()
+                }
+                return giantName
+            }
+            if member is Dwarf {
+                let dwarfName = input()
+                
+                if dwarfName == "" {
+                    print("Please enter a valid name")
+                    return createCharacterName()
+                }
+                return dwarfName
+            }
+            if member is Mage {
+                let mageName = input()
+                
+                if mageName == "" {
+                    print("Please enter a valid name")
+                    return createCharacterName()
+                }
+                return mageName
+            }
+           
     }
     // MARK: INCOMPLETE
     
@@ -129,5 +160,6 @@ class Player {
     }
 
 }
+
 
 }

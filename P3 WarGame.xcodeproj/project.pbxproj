@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7240F849220468EC00C2C08B /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7240F848220468EC00C2C08B /* Warrior.swift */; };
+		7240F84B2204694300C2C08B /* Giant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7240F84A2204694300C2C08B /* Giant.swift */; };
 		725462D1220075DD00B701F2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462D0220075DD00B701F2 /* main.swift */; };
 		725462D82200770E00B701F2 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462D72200770E00B701F2 /* Player.swift */; };
 		725462DA2200771D00B701F2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462D92200771D00B701F2 /* Game.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		7240F848220468EC00C2C08B /* Warrior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warrior.swift; sourceTree = "<group>"; };
+		7240F84A2204694300C2C08B /* Giant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Giant.swift; sourceTree = "<group>"; };
 		725462CD220075DD00B701F2 /* P3 WarGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "P3 WarGame"; sourceTree = BUILT_PRODUCTS_DIR; };
 		725462D0220075DD00B701F2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		725462D72200770E00B701F2 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			children = (
 				725462DD2200775600B701F2 /* Character.swift */,
 				7240F848220468EC00C2C08B /* Warrior.swift */,
+				7240F84A2204694300C2C08B /* Giant.swift */,
 			);
 			path = Character;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 				7240F849220468EC00C2C08B /* Warrior.swift in Sources */,
 				725462D1220075DD00B701F2 /* main.swift in Sources */,
 				725462DC2200772F00B701F2 /* Battles.swift in Sources */,
+				7240F84B2204694300C2C08B /* Giant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

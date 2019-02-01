@@ -7,11 +7,19 @@
 //
 
 import Foundation
+let newGame = Game()
+Game.gameInfos()
 
 let name1 = Player.createPlayerName()
+print("Your team name is \(name1) player1")
 let name2 = Player.createPlayerName()
+print("Your team name is \(name2) player2")
 
+
+    
 let player1 = Player(name: name1)
 let player2 = Player(name: name2)
 
-let characterName1 = Player.createCharacterName()
+player1.chooseCharacter()
+
+

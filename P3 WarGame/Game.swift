@@ -10,7 +10,7 @@ import Foundation
 class Game {
     
     
-    func gameInfos() { // Intro of the game, rules and welcome
+    static func gameInfos() { // Intro of the game, rules and welcome
         print("Welcome In the WarGame"
         + "\n First you'll have to name your team"
         + "\n Then, you'll have to choose 3 characters (in the list below) to your team"

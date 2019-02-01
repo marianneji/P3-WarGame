@@ -16,13 +16,14 @@ func input() -> String { // fonction permettant aux joueur de rentrer le nom cho
     return nameData!
 }
 
+var teamMembers = [Character]()
     
 class Player {
     
     var name: String
   
     
-    var teamMembers = [Character]() // array of character members
+ // array of character members
     
     init(name: String) {
         self.name = name
@@ -31,18 +32,18 @@ class Player {
 
     
     static func createPlayerName() -> String { // return a name for a player
-        print("What is the name of your player?")
+        print("What is the name of your team ?")
         
         let name = input()
         
         
         if name == "" { // if name is not a string it will return to the function createplayername
-            print("Please enter a valid name")
+            print("Please enter a valid name or the name you used is already taken")
             return createPlayerName()
         }
-        return name
-        print("Your player name is \(name)")
         
+        return name
+
         
     }
     
@@ -83,9 +84,11 @@ class Player {
             
     } while teamMembers.count < 3
         
+        print("\(teamMembers)")
+        
  
 }
-     func createCharacterName() -> String {
+    func createCharacterName() -> String {
         print("Choose a name for each of your team members")
         
         for member in teamMembers {
@@ -93,12 +96,15 @@ class Player {
                 
                 let warriorName = input()
                 
+                print("You called your warrior \(warriorName)")
+                
                 if warriorName == "" {
                     print("Please enter a valid name")
                     return createCharacterName()
+                    
             }
                 return warriorName
-            
+           
         }
             if member is Giant {
                 let giantName = input()
@@ -128,6 +134,8 @@ class Player {
                 return mageName
             }
            
+        }
+        return teamMembers.description
     }
     // MARK: INCOMPLETE
     
@@ -157,9 +165,11 @@ class Player {
         default:
             print("Please choose an ability, \(name)")
             return chooseAbility()
-    }
-
-}
+            
+            }
+        
+        
+        }
 
 
 }

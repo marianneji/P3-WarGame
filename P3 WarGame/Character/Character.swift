@@ -21,11 +21,7 @@ class Character {
     }
 }
 
-class Warrior: Character {
-    init() {
-        super.init(lifePoints: 100, characterName: "", weapon: Weapon(weaponName: "sword", damage: 10, heal: 0))
-    }
-}
+
 
 class Giant: Character {
     init() {

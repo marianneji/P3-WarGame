@@ -27,8 +27,4 @@ class Character {
 
 
 
-class Mage: Character {
-    init() {
-        super.init(lifePoints: 0, characterName: "T##String", weapon: Weapon(weaponName: "scepter", damage: 0, heal: 50))
-    }
-}
+

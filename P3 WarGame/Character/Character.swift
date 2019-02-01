@@ -23,17 +23,9 @@ class Character {
 
 
 
-class Giant: Character {
-    init() {
-    super.init(lifePoints: 120, characterName: "", weapon: Weapon(weaponName: "crossbow", damage: 15, heal: 0))
-    }
-}
 
-class Dwarf: Character {
-    init() {
-        super.init(lifePoints: 80, characterName: "", weapon: Weapon(weaponName: "axe", damage: 15, heal: 0))
-    }
-}
+
+
 
 class Mage: Character {
     init() {

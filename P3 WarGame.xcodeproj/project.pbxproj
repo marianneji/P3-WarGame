@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7240F849220468EC00C2C08B /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7240F848220468EC00C2C08B /* Warrior.swift */; };
 		7240F84B2204694300C2C08B /* Giant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7240F84A2204694300C2C08B /* Giant.swift */; };
+		7240F84D2204698800C2C08B /* Dwarf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7240F84C2204698800C2C08B /* Dwarf.swift */; };
 		725462D1220075DD00B701F2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462D0220075DD00B701F2 /* main.swift */; };
 		725462D82200770E00B701F2 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462D72200770E00B701F2 /* Player.swift */; };
 		725462DA2200771D00B701F2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462D92200771D00B701F2 /* Game.swift */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		7240F848220468EC00C2C08B /* Warrior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warrior.swift; sourceTree = "<group>"; };
 		7240F84A2204694300C2C08B /* Giant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Giant.swift; sourceTree = "<group>"; };
+		7240F84C2204698800C2C08B /* Dwarf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dwarf.swift; sourceTree = "<group>"; };
 		725462CD220075DD00B701F2 /* P3 WarGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "P3 WarGame"; sourceTree = BUILT_PRODUCTS_DIR; };
 		725462D0220075DD00B701F2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		725462D72200770E00B701F2 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				725462DD2200775600B701F2 /* Character.swift */,
 				7240F848220468EC00C2C08B /* Warrior.swift */,
 				7240F84A2204694300C2C08B /* Giant.swift */,
+				7240F84C2204698800C2C08B /* Dwarf.swift */,
 			);
 			path = Character;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 				725462E42200849300B701F2 /* BonusChest.swift in Sources */,
 				725462DA2200771D00B701F2 /* Game.swift in Sources */,
 				725462DE2200775600B701F2 /* Character.swift in Sources */,
+				7240F84D2204698800C2C08B /* Dwarf.swift in Sources */,
 				725462E22200848200B701F2 /* Ability.swift in Sources */,
 				725462E02200776A00B701F2 /* Weapons.swift in Sources */,
 				7240F849220468EC00C2C08B /* Warrior.swift in Sources */,

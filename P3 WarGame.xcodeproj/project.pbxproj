@@ -16,9 +16,16 @@
 		725462DA2200771D00B701F2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462D92200771D00B701F2 /* Game.swift */; };
 		725462DC2200772F00B701F2 /* Battles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462DB2200772F00B701F2 /* Battles.swift */; };
 		725462DE2200775600B701F2 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462DD2200775600B701F2 /* Character.swift */; };
-		725462E02200776A00B701F2 /* Weapons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462DF2200776A00B701F2 /* Weapons.swift */; };
+		725462E02200776A00B701F2 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462DF2200776A00B701F2 /* Weapon.swift */; };
 		725462E22200848200B701F2 /* Ability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462E12200848200B701F2 /* Ability.swift */; };
 		725462E42200849300B701F2 /* BonusChest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462E32200849300B701F2 /* BonusChest.swift */; };
+		72BD138A2209981000F3174A /* Agility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BD13892209981000F3174A /* Agility.swift */; };
+		72BD138C2209981E00F3174A /* Endurance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BD138B2209981E00F3174A /* Endurance.swift */; };
+		72BD138E2209983000F3174A /* Strength.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BD138D2209983000F3174A /* Strength.swift */; };
+		72BD1391220999CF00F3174A /* Sword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BD1390220999CF00F3174A /* Sword.swift */; };
+		72BD1393220999E000F3174A /* Crossbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BD1392220999E000F3174A /* Crossbow.swift */; };
+		72BD1395220999EE00F3174A /* Axe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BD1394220999EE00F3174A /* Axe.swift */; };
+		72BD1397220999FC00F3174A /* Scepter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BD1396220999FC00F3174A /* Scepter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,9 +51,16 @@
 		725462D92200771D00B701F2 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		725462DB2200772F00B701F2 /* Battles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battles.swift; sourceTree = "<group>"; };
 		725462DD2200775600B701F2 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
-		725462DF2200776A00B701F2 /* Weapons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapons.swift; sourceTree = "<group>"; };
+		725462DF2200776A00B701F2 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		725462E12200848200B701F2 /* Ability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ability.swift; sourceTree = "<group>"; };
 		725462E32200849300B701F2 /* BonusChest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusChest.swift; sourceTree = "<group>"; };
+		72BD13892209981000F3174A /* Agility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agility.swift; sourceTree = "<group>"; };
+		72BD138B2209981E00F3174A /* Endurance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endurance.swift; sourceTree = "<group>"; };
+		72BD138D2209983000F3174A /* Strength.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strength.swift; sourceTree = "<group>"; };
+		72BD1390220999CF00F3174A /* Sword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sword.swift; sourceTree = "<group>"; };
+		72BD1392220999E000F3174A /* Crossbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crossbow.swift; sourceTree = "<group>"; };
+		72BD1394220999EE00F3174A /* Axe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axe.swift; sourceTree = "<group>"; };
+		72BD1396220999FC00F3174A /* Scepter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scepter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,16 +105,39 @@
 		725462CF220075DD00B701F2 /* P3 WarGame */ = {
 			isa = PBXGroup;
 			children = (
+				72BD138F220999BB00F3174A /* Weapon */,
+				72BD1388220997F100F3174A /* Ability */,
 				7240F847220468B700C2C08B /* Character */,
 				725462D0220075DD00B701F2 /* main.swift */,
 				725462D72200770E00B701F2 /* Player.swift */,
 				725462D92200771D00B701F2 /* Game.swift */,
 				725462DB2200772F00B701F2 /* Battles.swift */,
-				725462DF2200776A00B701F2 /* Weapons.swift */,
-				725462E12200848200B701F2 /* Ability.swift */,
 				725462E32200849300B701F2 /* BonusChest.swift */,
 			);
 			path = "P3 WarGame";
+			sourceTree = "<group>";
+		};
+		72BD1388220997F100F3174A /* Ability */ = {
+			isa = PBXGroup;
+			children = (
+				725462E12200848200B701F2 /* Ability.swift */,
+				72BD13892209981000F3174A /* Agility.swift */,
+				72BD138B2209981E00F3174A /* Endurance.swift */,
+				72BD138D2209983000F3174A /* Strength.swift */,
+			);
+			path = Ability;
+			sourceTree = "<group>";
+		};
+		72BD138F220999BB00F3174A /* Weapon */ = {
+			isa = PBXGroup;
+			children = (
+				725462DF2200776A00B701F2 /* Weapon.swift */,
+				72BD1390220999CF00F3174A /* Sword.swift */,
+				72BD1392220999E000F3174A /* Crossbow.swift */,
+				72BD1394220999EE00F3174A /* Axe.swift */,
+				72BD1396220999FC00F3174A /* Scepter.swift */,
+			);
+			path = Weapon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,16 +198,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				725462D82200770E00B701F2 /* Player.swift in Sources */,
+				72BD138C2209981E00F3174A /* Endurance.swift in Sources */,
+				72BD1395220999EE00F3174A /* Axe.swift in Sources */,
 				725462E42200849300B701F2 /* BonusChest.swift in Sources */,
 				725462DA2200771D00B701F2 /* Game.swift in Sources */,
 				7240F84F220469CF00C2C08B /* Mage.swift in Sources */,
+				72BD1391220999CF00F3174A /* Sword.swift in Sources */,
 				725462DE2200775600B701F2 /* Character.swift in Sources */,
+				72BD1397220999FC00F3174A /* Scepter.swift in Sources */,
 				7240F84D2204698800C2C08B /* Dwarf.swift in Sources */,
 				725462E22200848200B701F2 /* Ability.swift in Sources */,
-				725462E02200776A00B701F2 /* Weapons.swift in Sources */,
+				72BD138A2209981000F3174A /* Agility.swift in Sources */,
+				725462E02200776A00B701F2 /* Weapon.swift in Sources */,
 				7240F849220468EC00C2C08B /* Warrior.swift in Sources */,
 				725462D1220075DD00B701F2 /* main.swift in Sources */,
+				72BD1393220999E000F3174A /* Crossbow.swift in Sources */,
 				725462DC2200772F00B701F2 /* Battles.swift in Sources */,
+				72BD138E2209983000F3174A /* Strength.swift in Sources */,
 				7240F84B2204694300C2C08B /* Giant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

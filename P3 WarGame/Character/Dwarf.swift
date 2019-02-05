@@ -10,6 +10,6 @@ import Foundation
 
 class Dwarf: Character {
     init() {
-        super.init(lifePoints: 80, characterName: "", weapon: Weapon(weaponName: "axe", damage: 15, heal: 0))
+        super.init(lifePoints: 80, characterName: "", weapon: Axe(), type: .dwarf)
     }
 }

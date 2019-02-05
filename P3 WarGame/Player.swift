@@ -16,11 +16,12 @@ func input() -> String { // fonction permettant aux joueur de rentrer le nom cho
     return nameData!
 }
 
-var teamMembers = [Character]()
+
     
 class Player {
     
     var name: String
+    var teamMembers = [Character]()
   
     
  // array of character members
@@ -38,7 +39,7 @@ class Player {
         
         
         if name == "" { // if name is not a string it will return to the function createplayername
-            print("Please enter a valid name or the name you used is already taken")
+            print("Please enter a valid name")
             return createPlayerName()
         }
         
@@ -48,8 +49,10 @@ class Player {
     }
     
     func chooseCharacter() { // player has to choose 3 characters in the list
+        
+        
             
-            repeat { // this menu will repeat while team members count is equal to 3
+            while teamMembers.count < 3 { // this menu will repeat while team members count is equal to 3
             print("Choose a character between those :"
             + "\n1. Warrior"
             + "\n2. Giant"
@@ -57,87 +60,65 @@ class Player {
             + "\n4. Mage")
             
             let choice = readLine()
+                var character: Character
+                
             switch choice {
             case "1":
                 print("The warrior is now in your team, \(name)")
-                teamMembers.append(Warrior()) // member is added to team
+                let _ = createCharacterName()
+                character = Warrior()
+                teamMembers.append(character) // member is added to team
+                
+               
                 
             case "2":
                 print("The Giant is now in your team, \(name)")
+                let _ = createCharacterName()
+                character = Giant()
                
-                teamMembers.append(Giant()) // member is added to team
+                teamMembers.append(character) // member is added to team
                 
             case "3":
                 print("The Dwarf is now in your team, \(name)")
+                let _ = createCharacterName()
+                character = Dwarf()
                 
-                teamMembers.append(Dwarf()) // member is added to team
+                teamMembers.append(character) // member is added to team
                 
             case "4":
                 print("The Mage is now in your team, \(name)")
-                teamMembers.append(Mage()) // member is added to team
+                let _ = createCharacterName()
+                character = Mage()
+                
+                teamMembers.append(character) // member is added to team
                 
             default:
                 print("Please choose a character for your team, \(name)")
                 return chooseCharacter()
                 
             }
+                
             
-    } while teamMembers.count < 3
-        
-        print("\(teamMembers)")
+        }
+        print("There is your team : \(teamMembers)")
         
  
 }
     func createCharacterName() -> String {
-        print("Choose a name for each of your team members")
+        print("Choose a name for your team member")
         
-        for member in teamMembers {
-            if member is Warrior {
-                
-                let warriorName = input()
-                
-                print("You called your warrior \(warriorName)")
-                
-                if warriorName == "" {
-                    print("Please enter a valid name")
-                    return createCharacterName()
-                    
-            }
-                return warriorName
-           
+        let characterName = readLine()
+        
+        if characterName == nil || characterName == "" {
+            return createCharacterName()
+        
         }
-            if member is Giant {
-                let giantName = input()
-                
-                if giantName == "" {
-                    print("Please enter a valid name")
-                    return createCharacterName()
-                }
-                return giantName
-            }
-            if member is Dwarf {
-                let dwarfName = input()
-                
-                if dwarfName == "" {
-                    print("Please enter a valid name")
-                    return createCharacterName()
-                }
-                return dwarfName
-            }
-            if member is Mage {
-                let mageName = input()
-                
-                if mageName == "" {
-                    print("Please enter a valid name")
-                    return createCharacterName()
-                }
-                return mageName
-            }
-           
-        }
-        return teamMembers.description
+       return characterName!
     }
-    // MARK: INCOMPLETE
+
+    
+
+ 
     
     func chooseAbility() {
         print("Choose an abilty, it will apply for all the members of your team"
@@ -146,27 +127,17 @@ class Player {
         + "\n3. Strength")
         
         let choice = readLine() // imcomplet, il faut rajouter les propriétés et valeurs des abilités
-        switch choice {
-        case "1":
-            print("The ability agility has been added to your members, \(name)")
-          
-    
+        
+        if choice == nil || (choice != "1" && choice != "2" && choice != "3") {
+            print("Please choose a valid ability.")
             
-            
-        case "2":
-            print("The ability Endurance has been added to your members, \(name)")
-          
-            
-            
-        case "3":
-            print("The ability Strength has been added to your members, \(name)")
-          
-            
-        default:
-            print("Please choose an ability, \(name)")
-            return chooseAbility()
-            
-            }
+            chooseAbility()
+            return
+        }
+        let ability = AbilityType(rawValue: choice!)!
+        print("The ability \(ability.type) has been added to your members, \(name)")
+
+      
         
         
         }

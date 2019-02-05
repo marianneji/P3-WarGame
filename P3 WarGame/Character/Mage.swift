@@ -10,6 +10,6 @@ import Foundation
 
 class Mage: Character {
     init() {
-        super.init(lifePoints: 0, characterName: "T##String", weapon: Weapon(weaponName: "scepter", damage: 0, heal: 50))
+        super.init(lifePoints: 0, characterName: "", weapon: Scepter(), type: .mage)
     }
 }

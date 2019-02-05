@@ -21,5 +21,8 @@ let player1 = Player(name: name1)
 let player2 = Player(name: name2)
 
 player1.chooseCharacter()
+player2.chooseCharacter()
 
 
+player1.chooseAbility()
+player2.chooseAbility()

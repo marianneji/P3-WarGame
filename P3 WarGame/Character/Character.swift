@@ -28,6 +28,10 @@ class Character: CustomStringConvertible { // variable description utilisée pou
         self.weapon = weapon
         self.type = type
     }
+    
+    func addAbility() {
+        
+    }
  
 }
 

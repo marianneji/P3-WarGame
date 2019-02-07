@@ -19,6 +19,7 @@ func input() -> String { // fonction permettant aux joueur de rentrer le nom cho
 class Player {
     var name: String
     var teamMembers = [Character]() // array of character members
+    static var uniqueName = [String]()
 
         init(name: String) {
         self.name = name
@@ -28,6 +29,7 @@ class Player {
         print("What is the name of your team ?" + "\n")
         
         let name = input()
+        
         
         if name == "" { // if name is not a string it will return to the function createplayername
             print("Please enter a valid name")
@@ -84,11 +86,25 @@ class Player {
         
         let characterName = readLine()
         
-        if characterName == nil || characterName == "" {
+        let aName = checkName(names: characterName!)
+        
+        if characterName == nil || characterName == "" || aName == false {
             return createCharacterName()
             
         }
         return characterName!
+    }
+    
+    func checkName(names: String) -> Bool {
+
+        for characterNameArray in Player.uniqueName {
+            if characterNameArray.lowercased() == names.lowercased() {
+                print("this name is already taken, please choose a diferent name")
+                return false
+            }
+        }
+        Player.uniqueName.append(names)
+        return true
     }
 
     func chooseAbility() {

@@ -25,7 +25,7 @@ class Player {
     }
     
     static func createPlayerName() -> String { // return a name for a player
-        print("What is the name of your team ?")
+        print("What is the name of your team ?" + "\n")
         
         let name = input()
         
@@ -41,7 +41,7 @@ class Player {
     func chooseCharacter() { // player has to choose 3 characters in the list
   
         while teamMembers.count < 3 { // this menu will repeat while team members count is equal to 3
-            print("Choose a character between those :"
+            print("\(name) Choose a character between those :"
                 + "\n1. Warrior"
                 + "\n2. Giant"
                 + "\n3. Dwarf"
@@ -52,35 +52,35 @@ class Player {
             
             switch choice {
             case "1":
-                print("The warrior is now in your team, \(name)")
+                print("The warrior is now in your team, \(name)" + "\n")
                 let _ = createCharacterName()
                 character = Warrior()
                 teamMembers.append(character) // member is added to team
             case "2":
-                print("The Giant is now in your team, \(name)")
+                print("The Giant is now in your team, \(name)" + "\n")
                 let _ = createCharacterName()
                 character = Giant()
                 teamMembers.append(character) // member is added to team
             case "3":
-                print("The Dwarf is now in your team, \(name)")
+                print("The Dwarf is now in your team, \(name)" + "\n")
                 let _ = createCharacterName()
                 character = Dwarf()
                 teamMembers.append(character) // member is added to team
             case "4":
-                print("The Mage is now in your team, \(name)")
+                print("The Mage is now in your team, \(name)" + "\n")
                 let _ = createCharacterName()
                 character = Mage()
                 teamMembers.append(character) // member is added to team
             default:
-                print("Please choose a character for your team, \(name)")
+                print("Please choose a character for your team, \(name)" + "\n")
                 return chooseCharacter()
             }
         }
-        print("There is your team : \(teamMembers)")
+        print("There is your team : \(teamMembers)" + "\n")
     }
     
     func createCharacterName() -> String {
-        print("Choose a name for your team member")
+        print("Choose a name for your team member \(name)" + "\n")
         
         let characterName = readLine()
         
@@ -90,18 +90,14 @@ class Player {
         }
         return characterName!
     }
-    
-    
-    
-    
-    
+
     func chooseAbility() {
-        print("Choose an abilty, it will apply for all the members of your team"
+        print("Choose an abilty \(name), it will apply for all the members of your team"  + "\n"
             + "\n1. Agility"
             + "\n2. Endurance"
             + "\n3. Strength")
         
-        let choice = readLine() // imcomplet, il faut rajouter les propriétés et valeurs des abilités
+        let choice = readLine()
         
         if choice == nil || (choice != "1" && choice != "2" && choice != "3") {
             print("Please choose a valid ability.")
@@ -111,11 +107,5 @@ class Player {
         }
         let ability = AbilityType(rawValue: choice!)!
         print("The ability \(ability.type) has been added to your members, \(name)")
-        
-        
-        
-        
-    }
-    
-    
+     }
 }

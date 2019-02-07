@@ -11,9 +11,9 @@ let newGame = Game()
 Game.gameInfos()
 
 let name1 = Player.createPlayerName()
-print("Your team name is \(name1) player1")
+print("Your team name is \(name1) player1" + "\n")
 let name2 = Player.createPlayerName()
-print("Your team name is \(name2) player2")
+print("Your team name is \(name2) player2" + "\n")
 
 
     

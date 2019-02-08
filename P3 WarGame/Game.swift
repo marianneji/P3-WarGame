@@ -73,6 +73,17 @@ class Game {
             }
             x = 0
             
+            let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
+            
+            if chooseCharacter is Mage {
+                print("\(attackingPlayer.name)Heal a member of your team:" + "\n")
+                let target = attackingPlayer.selectCharacter(player: attackingPlayer)
+                
+                let mage = chooseCharacter as! Mage
+            }
+            
+            
+            
 
         }
     }

@@ -130,11 +130,12 @@ class Player {
         let ability = AbilityType(rawValue: choice!)!
         print("The ability \(ability.type) has been added to your members, \(name)")
      }
+    
     func selectCharacter(player: Player) -> Character {
         
         var chooseCharacter = Character()
         
-        var choice = 0
+        var choice = 0 // initiate a variable int 
         
         repeat {
             choice = answer()
@@ -142,7 +143,7 @@ class Player {
             if player.teamMembers.indices.contains(choice) {
             chooseCharacter = player.teamMembers[choice]
         } else {
-            print("Invalid choice, please select a number in the list below :")
+            print("Invalid choice, please select a number in the list ABOVE.")
         }
         
     } while !player.teamMembers.indices.contains(choice)

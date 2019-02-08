@@ -8,7 +8,7 @@
 
 import Foundation
 let newGame = Game()
-Game.gameInfos()
+Game.gameInfos() // call the function to present the game
 
-newGame.startGame()
-newGame.fight()
+newGame.startGame() // call the function to start the game
+newGame.fight() // call the function to let players fight

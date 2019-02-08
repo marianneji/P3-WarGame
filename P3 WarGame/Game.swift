@@ -46,7 +46,7 @@ class Game {
             let player = Player(name: Player.createPlayerName())
             players.append(player)
             
-            player.chooseCharacter()
+            player.chooseTeamCharacter()
             player.chooseAbility()
         }
         

@@ -40,7 +40,7 @@ class Player {
 
     }
     
-    func chooseCharacter() { // player has to choose 3 characters in the list
+    func chooseTeamCharacter() { // player has to choose 3 characters in the list
   
         while teamMembers.count < 3 { // this menu will repeat while team members count is equal to 3
             print("\(name) Choose a character between those :"

@@ -16,6 +16,12 @@ func input() -> String { // fonction permettant aux joueur de rentrer le nom cho
     return nameData!
 }
 
+func answer() -> Int {
+    let answerInt = readLine()
+    
+    return Int(answerInt!)!
+}
+
 class Player {
     var name: String
     var teamMembers = [Character]() // array of character members
@@ -75,7 +81,7 @@ class Player {
                 teamMembers.append(character) // member is added to team
             default:
                 print("Please choose a character for your team, \(name)" + "\n")
-                return chooseCharacter()
+                return chooseTeamCharacter()
             }
         }
         print("There is your team : \(teamMembers)" + "\n")
@@ -124,4 +130,23 @@ class Player {
         let ability = AbilityType(rawValue: choice!)!
         print("The ability \(ability.type) has been added to your members, \(name)")
      }
+    func selectCharacter(player: Player) -> Character {
+        
+        var chooseCharacter = Character()
+        
+        var choice = 0
+        
+        repeat {
+            choice = answer()
+            
+            if player.teamMembers.indices.contains(choice) {
+            chooseCharacter = player.teamMembers[choice]
+        } else {
+            print("Invalid choice, please select a number in the list below :")
+        }
+        
+    } while !player.teamMembers.indices.contains(choice)
+        
+        return chooseCharacter
+    }
 }

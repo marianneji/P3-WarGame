@@ -22,6 +22,10 @@ class Character: CustomStringConvertible { // variable description utilisée pou
     var description: String {
         return type.rawValue
     }
+    convenience init() {
+        self.init(lifePoints: 0, characterName: "", weapon: Weapon(weaponName: "", damage: 0, heal: 0),type: .warrior)
+    }
+    
     init(lifePoints: Int, characterName: String, weapon: Weapon, type: CharacterType) {
         self.lifePoints = lifePoints
         self.characterName = characterName

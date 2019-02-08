@@ -10,6 +10,7 @@ import Foundation
 
 class Game {
     
+    var players = [Player]()
     
    static func gameInfos() { // Intro of the game, rules and welcome
         print("Welcome In the WarGame"
@@ -39,22 +40,40 @@ class Game {
     }
     
     func startGame() { // 
-        let name1 = Player.createPlayerName()
-        print("Your team name is \(name1) player1" + "\n")
-        let name2 = Player.createPlayerName()
-        print("Your team name is \(name2) player2" + "\n")
+        for i in 0...1 { // i is a constante to incremente one player to the array of players
+            print("Player \(i + 1)")
+            
+            let player = Player(name: Player.createPlayerName())
+            players.append(player)
+            
+            player.chooseCharacter()
+            player.chooseAbility()
+        }
         
         
+    }
+    
+    func fight() {
         
-        let player1 = Player(name: name1)
-        let player2 = Player(name: name2)
+        var turn = 0
+        var attackingPlayer = players[0]
+        var defendingPlayer = players[1]
         
-        player1.chooseCharacter()
-        player2.chooseCharacter()
-        
-        
-        player1.chooseAbility()
-        player2.chooseAbility()
+        while !players[0].teamMembers.isEmpty || !players[1].teamMembers.isEmpty {
+            print("Round : \(turn)")
+            
+            var x = 0
+            
+            print("\(attackingPlayer.name) choose your team member to fight :")
+            
+            for character in attackingPlayer.teamMembers {
+                
+                print("\(x) = \(character.characterName) as \(character.type)")
+                x += 1
+            }
+            x = 0
+            
 
+        }
     }
 }

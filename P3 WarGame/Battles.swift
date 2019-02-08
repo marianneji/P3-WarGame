@@ -10,15 +10,8 @@ import Foundation
 
 class Battles {
     
-    var report = ""
-    var infosTeam = ""
-    
-    func chooseFightingCharacter() {
-        
-    }
-    func chooseEnemyCharacter() {
-        
-    }
+
+
     func infosTeams() {
         
     }

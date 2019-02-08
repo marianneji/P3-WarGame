@@ -31,6 +31,7 @@ class Character: CustomStringConvertible { // variable description utilisée pou
     
     func addAbility() {
         
+        
     }
  
 }

@@ -11,3 +11,4 @@ let newGame = Game()
 Game.gameInfos()
 
 newGame.startGame()
+newGame.fight()

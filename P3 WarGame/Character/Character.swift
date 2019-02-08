@@ -14,6 +14,7 @@ enum CharacterType: String {
 
 class Character: CustomStringConvertible { // variable description utilisée pour transformer la classe en string
     var lifePoints: Int
+    let maxLife: Int
     var characterName: String
     var weapon: Weapon
     var type: CharacterType
@@ -23,11 +24,12 @@ class Character: CustomStringConvertible { // variable description utilisée pou
         return type.rawValue
     }
     convenience init() {
-        self.init(lifePoints: 0, characterName: "", weapon: Weapon(weaponName: "", damage: 0, heal: 0),type: .warrior)
+        self.init(lifePoints: 0, maxLife: 150, characterName: "", weapon: Weapon(weaponName: "", damage: 0, heal: 0),type: .warrior)
     }
     
-    init(lifePoints: Int, characterName: String, weapon: Weapon, type: CharacterType) {
+    init(lifePoints: Int,maxLife: Int, characterName: String, weapon: Weapon, type: CharacterType) {
         self.lifePoints = lifePoints
+        self.maxLife = maxLife
         self.characterName = characterName
         self.weapon = weapon
         self.type = type

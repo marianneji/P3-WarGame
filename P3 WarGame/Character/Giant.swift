@@ -10,6 +10,6 @@ import Foundation
 
 class Giant: Character {
     init() {
-        super.init(lifePoints: 120, characterName: "", weapon: Crossbow(),type: .giant)
+        super.init(lifePoints: 120,maxLife: 150, characterName: "", weapon: Crossbow(),type: .giant)
     }
 }

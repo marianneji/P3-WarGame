@@ -88,6 +88,8 @@ class Game {
             chooseCharacter.attack(opponentCharacter)
             round += 1
             
+            swap(&attackingPlayer, &defendingPlayer)
+            
 
         }
     }

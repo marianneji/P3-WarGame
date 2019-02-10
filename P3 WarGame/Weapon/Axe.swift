@@ -9,7 +9,7 @@
 import Foundation
 class Axe: Weapon {
     init() {
-        super.init(weaponName: "axe", damage: 5, heal: 0)
+        super.init(weaponName: "axe", damage: 5)
     }
     
 }

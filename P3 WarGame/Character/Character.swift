@@ -24,7 +24,7 @@ class Character: CustomStringConvertible { // variable description utilisée pou
         return type.rawValue
     }
     convenience init() {
-        self.init(lifePoints: 0, maxLife: 150, characterName: "", weapon: Weapon(weaponName: "", damage: 0, heal: 0),type: .warrior)
+        self.init(lifePoints: 0, maxLife: 150, characterName: "", weapon: Weapon(weaponName: "", damage: 0),type: .warrior)
     }
     
     init(lifePoints: Int,maxLife: Int, characterName: String, weapon: Weapon, type: CharacterType) {
@@ -34,8 +34,14 @@ class Character: CustomStringConvertible { // variable description utilisée pou
         self.weapon = weapon
         self.type = type
     }
+    func attack(_ target: Character) {
+        let damage = weapon.damage
+        target.lifePoints -= damage
+        print("\(target.characterName) has lost \(weapon.damage) points of life")
+    }
     
     func addAbility() {
+
         
         
     }

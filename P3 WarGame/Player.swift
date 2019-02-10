@@ -61,22 +61,23 @@ class Player {
             switch choice {
             case "1":
                 print("The warrior is now in your team, \(name)" + "\n")
-                let _ = createCharacterName()
+                
                 character = Warrior()
                 teamMembers.append(character) // member is added to team
+                
             case "2":
                 print("The Giant is now in your team, \(name)" + "\n")
-                let _ = createCharacterName()
+                
                 character = Giant()
                 teamMembers.append(character) // member is added to team
             case "3":
                 print("The Dwarf is now in your team, \(name)" + "\n")
-                let _ = createCharacterName()
+                
                 character = Dwarf()
                 teamMembers.append(character) // member is added to team
             case "4":
                 print("The Mage is now in your team, \(name)" + "\n")
-                let _ = createCharacterName()
+                
                 character = Mage()
                 teamMembers.append(character) // member is added to team
             default:
@@ -87,8 +88,8 @@ class Player {
         print("There is your team : \(teamMembers)" + "\n")
     }
     
-    func createCharacterName() -> String {
-        print("Choose a name for your team member \(name)" + "\n")
+    static func createCharacterName() -> String {
+        print("Choose a name for your team member ")
         
         let characterName = readLine()
         
@@ -99,12 +100,13 @@ class Player {
             
         }
         return characterName!
+    
     }
     
-    func checkName(names: String) -> Bool {
+    static func checkName(names: String) -> Bool {
 
         for characterNameArray in Player.uniqueName {
-            if characterNameArray.lowercased() == names.lowercased() {
+            if characterNameArray == names {
                 print("this name is already taken, please choose a diferent name")
                 return false
             }

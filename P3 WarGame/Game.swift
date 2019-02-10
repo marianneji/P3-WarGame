@@ -55,16 +55,16 @@ class Game {
     
     func fight() {
         
-        var turn = 0
+        var round = 1
         var attackingPlayer = players[0]
         var defendingPlayer = players[1]
         
         while !players[0].teamMembers.isEmpty || !players[1].teamMembers.isEmpty {
-            print("Round : \(turn)")
+            print("Round : \(round)")
             
             var x = 0
             
-            print("\(attackingPlayer.name) choose your team member to fight :")
+            print("\(attackingPlayer.name) choose your team member who will fight :")
             
             for character in attackingPlayer.teamMembers {
                 
@@ -75,16 +75,21 @@ class Game {
             
             let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
             
-            if chooseCharacter is Mage {
-                print("\(attackingPlayer.name)Heal a member of your team:" + "\n")
-                let target = attackingPlayer.selectCharacter(player: attackingPlayer)
+            print("\(attackingPlayer.name) choose a team member of the opponent team to attack :")
+            
+            for character in defendingPlayer.teamMembers {
                 
-                let mage = chooseCharacter as! Mage
+                print("\(x) = \(character.characterName) as \(character.type)")
+                x += 1
             }
+            x = 0
+            let opponentCharacter = defendingPlayer.selectCharacter(player: defendingPlayer)
             
-            
+            chooseCharacter.attack(opponentCharacter)
+            round += 1
             
 
         }
     }
+    
 }

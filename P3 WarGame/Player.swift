@@ -107,7 +107,7 @@ class Player {
 
         for characterNameArray in Player.uniqueName {
             if characterNameArray == names {
-                print("this name is already taken, please choose a diferent name")
+                print("this name is already taken, please choose a different name")
                 return false
             }
         }
@@ -116,7 +116,7 @@ class Player {
     }
 
     func chooseAbility() {
-        print("Choose an abilty \(name), it will apply for all the members of your team"  + "\n"
+        print("Choose an ability, it will apply for all the members of your team"  + "\n"
             + "\n1. Agility"
             + "\n2. Endurance"
             + "\n3. Strength")
@@ -128,9 +128,11 @@ class Player {
             
             chooseAbility()
             return
+
         }
         let ability = AbilityType(rawValue: choice!)!
-        print("The ability \(ability.type) has been added to your members, \(name)")
+        print("The ability \(ability.type) has been added to your members")
+
      }
     
     func selectCharacter(player: Player) -> Character {

@@ -14,7 +14,6 @@
 		725462D1220075DD00B701F2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462D0220075DD00B701F2 /* main.swift */; };
 		725462D82200770E00B701F2 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462D72200770E00B701F2 /* Player.swift */; };
 		725462DA2200771D00B701F2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462D92200771D00B701F2 /* Game.swift */; };
-		725462DC2200772F00B701F2 /* Battles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462DB2200772F00B701F2 /* Battles.swift */; };
 		725462DE2200775600B701F2 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462DD2200775600B701F2 /* Character.swift */; };
 		725462E02200776A00B701F2 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462DF2200776A00B701F2 /* Weapon.swift */; };
 		725462E22200848200B701F2 /* Ability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725462E12200848200B701F2 /* Ability.swift */; };
@@ -49,7 +48,6 @@
 		725462D0220075DD00B701F2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		725462D72200770E00B701F2 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		725462D92200771D00B701F2 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		725462DB2200772F00B701F2 /* Battles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battles.swift; sourceTree = "<group>"; };
 		725462DD2200775600B701F2 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		725462DF2200776A00B701F2 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		725462E12200848200B701F2 /* Ability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ability.swift; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				725462D0220075DD00B701F2 /* main.swift */,
 				725462D72200770E00B701F2 /* Player.swift */,
 				725462D92200771D00B701F2 /* Game.swift */,
-				725462DB2200772F00B701F2 /* Battles.swift */,
 				725462E32200849300B701F2 /* BonusChest.swift */,
 			);
 			path = "P3 WarGame";
@@ -213,7 +210,6 @@
 				7240F849220468EC00C2C08B /* Warrior.swift in Sources */,
 				725462D1220075DD00B701F2 /* main.swift in Sources */,
 				72BD1393220999E000F3174A /* Crossbow.swift in Sources */,
-				725462DC2200772F00B701F2 /* Battles.swift in Sources */,
 				72BD138E2209983000F3174A /* Strength.swift in Sources */,
 				7240F84B2204694300C2C08B /* Giant.swift in Sources */,
 			);

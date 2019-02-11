@@ -37,6 +37,9 @@ class Ability {
         self.damage = damage
         self.damageReceived = damageReceived
     }
-    
+    convenience init() {
+        self.init(abilityName: "", damage: 0, damageReceived: 0)
+    }
+
 }
 

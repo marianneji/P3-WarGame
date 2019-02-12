@@ -103,12 +103,12 @@
 		725462CF220075DD00B701F2 /* P3_WarGame */ = {
 			isa = PBXGroup;
 			children = (
+				725462D92200771D00B701F2 /* Game.swift */,
 				72BD138F220999BB00F3174A /* Weapon */,
 				72BD1388220997F100F3174A /* Ability */,
 				7240F847220468B700C2C08B /* Character */,
 				725462D0220075DD00B701F2 /* main.swift */,
 				725462D72200770E00B701F2 /* Player.swift */,
-				725462D92200771D00B701F2 /* Game.swift */,
 				725462E32200849300B701F2 /* BonusChest.swift */,
 			);
 			path = P3_WarGame;

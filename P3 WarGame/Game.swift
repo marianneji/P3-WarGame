@@ -10,7 +10,7 @@ import Foundation
 
 class Game {
     
-    var players = [Player]()
+    var players = [Player]() // array of players
     
    static func gameInfos() { // Intro of the game, rules and welcome
         print("Welcome In the WarGame"

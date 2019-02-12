@@ -41,16 +41,12 @@ class Character: CustomStringConvertible { // variable description utilisée pou
         target.lifePoints -= damage
         print("\(target.characterName) has lost \(weapon.damage) points of life")
     }
-    func deadCharacter(character: Character) {
-        if character.lifePoints < 0 {
-            character.lifePoints = 0
+    
+    func deadCharacter() {
+        if self.lifePoints < 0 {
+            self.lifePoints = 0
         }
-    }
-    func addAbility(_ damage: Character) {
-        _ = weapon.damage
-        let abilityDamage = ability?.damage
-        weapon.damage += abilityDamage!
-        print("\(weapon.weaponName) has increased of\(ability!.damage)")
+ 
     }
 }
 

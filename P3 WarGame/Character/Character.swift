@@ -13,7 +13,8 @@ enum CharacterType: String {
 }
 
 class Character: CustomStringConvertible { // variable description utilisée pour transformer la classe en string
-    var lifePoints: Int
+    // instance of character class
+    var lifePoints: Int 
     let maxLife: Int
     var characterName: String
     var weapon: Weapon

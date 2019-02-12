@@ -10,6 +10,6 @@ import Foundation
 
 class Dwarf: Character {
     init() {
-        super.init(lifePoints: 80, characterName: "", weapon: Axe(), type: .dwarf)
+        super.init(lifePoints: 80, maxLife: 150, characterName: Player.createCharacterName(), weapon: Axe(), type: .dwarf)
     }
 }

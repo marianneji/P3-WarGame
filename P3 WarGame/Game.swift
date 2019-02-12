@@ -10,6 +10,7 @@ import Foundation
 
 class Game {
     
+    var players = [Player]()
     
    static func gameInfos() { // Intro of the game, rules and welcome
         print("Welcome In the WarGame"
@@ -39,6 +40,58 @@ class Game {
     }
     
     func startGame() { // 
+        for i in 0...1 { // i is a constante to incremente one player to the array of players
+            print("Player \(i + 1)")
+            
+            let player = Player(name: Player.createPlayerName())
+            players.append(player)
+            
+            player.chooseTeamCharacter()
+            player.chooseAbility()
+        }
+        
         
     }
+    
+    func fight() {
+        
+        var round = 1
+        var attackingPlayer = players[0]
+        var defendingPlayer = players[1]
+        
+        while !players[0].teamMembers.isEmpty || !players[1].teamMembers.isEmpty {
+            print("Round : \(round)")
+            
+            var x = 0
+            
+            print("\(attackingPlayer.name) choose your team member who will fight :")
+            
+            for character in attackingPlayer.teamMembers {
+                
+                print("\(x) = \(character.characterName) as \(character.type)")
+                x += 1
+            }
+            x = 0
+            
+            let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
+            
+            print("\(attackingPlayer.name) choose a team member of the opponent team to attack :")
+            
+            for character in defendingPlayer.teamMembers {
+                
+                print("\(x) = \(character.characterName) as \(character.type)")
+                x += 1
+            }
+            x = 0
+            let opponentCharacter = defendingPlayer.selectCharacter(player: defendingPlayer)
+            
+            chooseCharacter.attack(opponentCharacter)
+            round += 1
+            
+            swap(&attackingPlayer, &defendingPlayer)
+            
+
+        }
+    }
+    
 }

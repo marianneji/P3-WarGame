@@ -10,6 +10,6 @@ import Foundation
 
 class Mage: Character {
     init() {
-        super.init(lifePoints: 0, characterName: "", weapon: Scepter(), type: .mage)
+        super.init(lifePoints: 0, maxLife: 150, characterName: Player.createCharacterName(), weapon: Scepter(), type: .mage)
     }
 }

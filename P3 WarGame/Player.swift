@@ -137,20 +137,20 @@ class Player {
     
     func selectCharacter(player: Player) -> Character {
         
-        var chooseCharacter = Character()
+        var chooseCharacter = Character() // var choosecharacter of type character
         
         var choice = 0 // initiate a variable int 
         
         repeat {
             choice = answer()
             
-            if player.teamMembers.indices.contains(choice) {
+            if player.teamMembers.indices.contains(choice) { // check if choice is in the index of team
             chooseCharacter = player.teamMembers[choice]
         } else {
-            print("Invalid choice, please select a number in the list ABOVE.")
+            print("Invalid choice, please select a number in the list ABOVE.") //if number out of range, invalid choice
         }
         
-    } while !player.teamMembers.indices.contains(choice)
+    } while !player.teamMembers.indices.contains(choice) // while player take an indice out of range, it loop
         
         return chooseCharacter
     }

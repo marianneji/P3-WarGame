@@ -10,7 +10,7 @@ import Foundation
 
 class Game {
     
-    var players = [Player]()
+    var players = [Player]() // array of players
     
    static func gameInfos() { // Intro of the game, rules and welcome
         print("Welcome In the WarGame"
@@ -59,36 +59,35 @@ class Game {
         var attackingPlayer = players[0]
         var defendingPlayer = players[1]
         
-        while !players[0].teamMembers.isEmpty || !players[1].teamMembers.isEmpty {
+        // 
+        while players[0].totalLifePoints != 0 && players[1].totalLifePoints != 0 {
             print("Round : \(round)")
-            
-            var x = 0
-            
             print("\(attackingPlayer.name) choose your team member who will fight :")
             
-            for character in attackingPlayer.teamMembers {
+            for (i, character) in attackingPlayer.teamMembers.enumerated() {
+                print("\(i) = \(character.characterName) as \(character.type) with \(character.lifePoints)")
                 
-                print("\(x) = \(character.characterName) as \(character.type)")
-                x += 1
             }
-            x = 0
-            
             let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
-            
             print("\(attackingPlayer.name) choose a team member of the opponent team to attack :")
             
-            for character in defendingPlayer.teamMembers {
+            for (i, character) in defendingPlayer.teamMembers.enumerated() {
+                print("\(i) = \(character.characterName) as \(character.type) with \(character.lifePoints)")
                 
-                print("\(x) = \(character.characterName) as \(character.type)")
-                x += 1
             }
-            x = 0
+            
             let opponentCharacter = defendingPlayer.selectCharacter(player: defendingPlayer)
             
             chooseCharacter.attack(opponentCharacter)
             round += 1
-            
+
             swap(&attackingPlayer, &defendingPlayer)
+            
+            if players[1].totalLifePoints == 0 {
+                print("\(players[0].name) has won the game")
+            } else if players[0].totalLifePoints == 0 {
+                print("\(players[1].name) has won the game")
+            }
             
 
         }

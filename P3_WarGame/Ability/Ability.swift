@@ -31,14 +31,16 @@ class Ability {
     var abilityName: String
     var damage: Int
     var damageReceived: Int
+    var type: AbilityType
     
-    init(abilityName: String, damage: Int, damageReceived: Int) {
+    init(abilityName: String, damage: Int, damageReceived: Int, type: AbilityType) {
         self.abilityName = abilityName
         self.damage = damage
         self.damageReceived = damageReceived
+        self.type = type
     }
     convenience init() {
-        self.init(abilityName: "", damage: 0, damageReceived: 0)
+        self.init(abilityName: "", damage: 0, damageReceived: 0, type: .agility)
     }
 
 }

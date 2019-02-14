@@ -1,5 +1,5 @@
 //
-//  Strength.swift
+//  Agility.swift
 //  P3 WarGame
 //
 //  Created by Graphic Influence on 05/02/2019.
@@ -7,8 +7,9 @@
 //
 
 import Foundation
-class Strength: Ability {
+class Agility: Ability {
     init() {
-        super.init(abilityName: "strength", damage: 15, damageReceived: -15)
+    
+        super.init(abilityName: "agility", damage: 0, damageReceived: -30, type: .agility)
     }
 }

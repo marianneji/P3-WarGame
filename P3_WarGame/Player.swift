@@ -130,14 +130,15 @@ class Player {
             + "\n3. Strength")
         
         let choice = readLine()
-        let ab = Ability()
+        let character = Character()
+
         switch choice {
         case "1":
-            ab.addAbilityDamageToWeapon(type: .agility)
+            character.ability = Agility()
         case "2":
-            ab.addAbilityDamageToWeapon(type: .endurance)
+            character.ability = Endurance()
         case "3":
-            ab.addAbilityDamageToWeapon(type: .strength)
+            character.ability = Strength()
         default:
             break
         }

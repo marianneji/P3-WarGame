@@ -72,7 +72,7 @@ class Game {
             print("\(attackingPlayer.name) choose a team member of the opponent team to attack :")
             
             for (i, character) in defendingPlayer.teamMembers.enumerated() {
-                print("\(i) = \(character.characterName) as \(character.type) with \(character.lifePoints)")
+                print("\(i) = \(character.characterName) as \(character.type) with \(character.lifePoints) points of life.")
                 
             }
             

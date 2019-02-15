@@ -40,7 +40,7 @@ class Game {
     }
     
     func startGame() { // 
-        for i in 0...1 { // i is a constante to incremente one player to the array of players
+        for i in 0...1 { // i is a constante to increment one player to the array of players
             print("Player \(i + 1)")
             
             let player = Player(name: Player.createPlayerName())
@@ -88,9 +88,6 @@ class Game {
             } else if players[0].totalLifePoints == 0 {
                 print("\(players[1].name) has won the game")
             }
-            
-
         }
     }
-    
 }

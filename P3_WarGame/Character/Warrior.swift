@@ -10,6 +10,6 @@
 
 class Warrior: Character {
     init() {
-        super.init(lifePoints: 100, maxLife: 150, characterName: Player.createCharacterName() , weapon: Sword(), type: .warrior)
+        super.init(lifePoints: 100, maxLife: 150, characterName: Player.createCharacterName() , weapon: Sword(), type: .warrior, ability: Ability())
     }
 }

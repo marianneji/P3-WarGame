@@ -130,17 +130,29 @@ class Player {
             + "\n3. Strength")
         
         let choice = readLine()
+        let ab = Ability()
+        switch choice {
+        case "1":
+            ab.addAbilityDamageToWeapon(type: .agility)
+        case "2":
+            ab.addAbilityDamageToWeapon(type: .endurance)
+        case "3":
+            ab.addAbilityDamageToWeapon(type: .strength)
+        default:
+            break
+        }
         
         if choice == nil || (choice != "1" && choice != "2" && choice != "3") {
             print("Please choose a valid ability.")
             
             chooseAbility()
             return
+
             
         }
         let ability = AbilityType(rawValue: choice!)!
         print("The ability \(ability.type) has been added to your members")
-        
+
     }
     
     func selectCharacter(player: Player) -> Character {
@@ -155,7 +167,7 @@ class Player {
             if player.teamMembers.indices.contains(choice) && player.teamMembers[choice].lifePoints > 0 {
                 chooseCharacter = player.teamMembers[choice]
             } else {
-                print("Invalid choice, please select a number in the list ABOVE.") //if number out of range, invalid choice
+                print("Invalid choice or the character you choose is dead, please select a number in the list ABOVE.") //if number out of range, invalid choice
             }
             
         } while !player.teamMembers.indices.contains(choice) || chooseCharacter == nil // while player take an indice out of range, it loop

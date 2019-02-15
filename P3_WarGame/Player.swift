@@ -74,21 +74,25 @@ class Player {
                 // member is added to team
                 character = Warrior()
                 teamMembers.append(character)
+                chooseAbility()
             case "2":
                 print("The Giant is now in your team, \(name)" + "\n")
                 // member is added to team
                 character = Giant()
                 teamMembers.append(character)
+                chooseAbility()
             case "3":
                 print("The Dwarf is now in your team, \(name)" + "\n")
                 // member is added to team
                 character = Dwarf()
                 teamMembers.append(character)
+                chooseAbility()
             case "4":
                 print("The Mage is now in your team, \(name)" + "\n")
                 // member is added to team
                 character = Mage()
                 teamMembers.append(character)
+                chooseAbility()
             default:
                 print("Please choose a character for your team, \(name)" + "\n")
                 return chooseTeamCharacter()

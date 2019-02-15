@@ -19,7 +19,7 @@ class Character: CustomStringConvertible { // variable description utilisée pou
     var characterName: String
     var weapon: Weapon
     var type: CharacterType
-    var ability: Ability?
+    
     
     var description: String {
         return type.rawValue
@@ -37,9 +37,8 @@ class Character: CustomStringConvertible { // variable description utilisée pou
     }
     
     func attack(_ target: Character) {
-        let damage = weapon.damage
-        target.lifePoints -= damage
-        print("\(target.characterName) has lost \(weapon.damage) points of life")
+        target.lifePoints -= weapon.damage
+        print("\(target.characterName) has lost \(weapon.damage) points of life" + "\n")
         if target.lifePoints < 0 {
             target.lifePoints = 0
         }

@@ -47,10 +47,7 @@ class Game {
             players.append(player)
             
             player.chooseTeamCharacter()
-            player.chooseAbility()
         }
-        
-        
     }
     
     func fight() {

@@ -50,16 +50,19 @@ class Character: CustomStringConvertible { // variable description utilisée pou
                 target.lifePoints = newValue
             }
         }
-        print("\(targetProtectionAbility) target protection ability")
+        /*print("\(targetProtectionAbility) target protection ability")
         print("\(target.lifePoints) target life points")
-        print("\(target.ability.damageReceived) target damage received")
+        print("\(target.ability.damageReceived) target damage received")*/
         
             targetProtectionAbility -= damage
-        
 
-        print("\(target.characterName) has lost \(damage) points of life from:"
-            + "\n\(weapon.damage) weapon damages and \(ability.damage) \(ability.type) damages"
-            + "\n\(target.lifePoints) life  \(target.ability.damageReceived) damage received")
+        print("\n"
+            + "\n\(target.characterName) has lost \(damage) points of life from:"
+            + "\n\(weapon.damage) of the weapon damages and \(ability.damage) of the \(ability.type) damages."
+            + "\nBut with his ability \(target.ability.abilityName), he has been protected of \(target.ability.damageReceived) points of damage received"
+            + "\n\(target.characterName) the \(target.type) has now \(target.lifePoints) points of life !"
+            + "\n")
+        
         if target.lifePoints < 0 {
             target.lifePoints = 0
         }

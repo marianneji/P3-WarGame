@@ -81,9 +81,9 @@ class Game {
             swap(&attackingPlayer, &defendingPlayer)
             
             if players[1].totalLifePoints == 0 {
-                print("\(players[0].name) has won the game")
+                print("\(players[0].name) has won the game in \(round) rounds")
             } else if players[0].totalLifePoints == 0 {
-                print("\(players[1].name) has won the game")
+                print("\(players[1].name) has won the game in \(round) rounds")
             }
         }
     }

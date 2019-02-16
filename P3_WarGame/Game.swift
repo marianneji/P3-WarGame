@@ -40,7 +40,7 @@ class Game {
     }
     
     func startGame() { // 
-        for i in 0...1 { // i is a constante to increment one player to the array of players
+        for i in 0...1 { // i is a constant to increment one player to the array of players
             print("Player \(i + 1)")
             
             let player = Player(name: Player.createPlayerName())
@@ -62,14 +62,14 @@ class Game {
             print("\(attackingPlayer.name) choose your team member who will fight :")
             
             for (i, character) in attackingPlayer.teamMembers.enumerated() {
-                print("\(i) = \(character.characterName) as \(character.type) with \(character.lifePoints)")
+                print("\(i) = \(character.characterName) as \(character.type) with \(character.lifePoints) pts of life and the ability \(character.ability.abilityName)")
                 
             }
             let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
             print("\(attackingPlayer.name) choose a team member of the opponent team to attack :")
             
             for (i, character) in defendingPlayer.teamMembers.enumerated() {
-                print("\(i) = \(character.characterName) as \(character.type) with \(character.lifePoints) points of life.")
+                print("\(i) = \(character.characterName) as \(character.type) with \(character.lifePoints) pts of life and the ability \(character.ability.abilityName).")
                 
             }
             

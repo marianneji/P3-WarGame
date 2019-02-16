@@ -20,18 +20,18 @@ func answer() -> Int {
     return Int(answerInt!)!
 }
 
-/* this class initiate the team of player1 and player2
- and the character members.
+/* this class initiate the team of player1 and player2,
+  the character members and their abilities.
  */
 
 class Player {
-    // propertie of player name
+    // property of player name
     var name: String
     // array of character members
     var teamMembers = [Character]()
-    // static propertie of a collection of unique names
+    // static property of a collection of unique names
     static var uniqueName = [String]()
-    // computed propertie for total life points of the team members
+    // computed property for total life points of the team members
     var totalLifePoints: Int {
         var sum = 0
         for character in teamMembers {
@@ -128,7 +128,7 @@ class Player {
     }
     
     func chooseAbility(character: Character) {
-        print("Choose an ability, it will apply for all the members of your team"  + "\n"
+        print("Choose an ability, it will apply on your member \(character.characterName) \(character.type)"  + "\n"
             + "\n1. Agility"
             + "\n2. Endurance"
             + "\n3. Strength")
@@ -152,7 +152,7 @@ class Player {
             return
         }
         let ability = AbilityType(rawValue: choice!)!
-        print("The ability \(ability.type) has been added to your members")
+        print("The ability \(ability.type) has been added to your member")
     }
     
     func selectCharacter(player: Player) -> Character {

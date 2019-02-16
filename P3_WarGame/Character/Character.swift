@@ -42,9 +42,9 @@ class Character: CustomStringConvertible { // variable description utilisée pou
     }
     
     func attack(_ target: Character) {
-        target.lifePoints  -= damage
+        target.lifePoints -= damage
         print("\(target.characterName) has lost \(damage) points of life from:"
-            + "\n \(weapon.damage) weapon damage and \(ability.damage) \(ability.type) damage"
+            + "\n \(weapon.damage) weapon damages and \(ability.damage) \(ability.type) damages"
             + "\n")
         if target.lifePoints < 0 {
             target.lifePoints = 0

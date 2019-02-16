@@ -74,25 +74,25 @@ class Player {
                 // member is added to team
                 character = Warrior()
                 teamMembers.append(character)
-                chooseAbility()
+                chooseAbility(character: character)
             case "2":
                 print("The Giant is now in your team, \(name)" + "\n")
                 // member is added to team
                 character = Giant()
                 teamMembers.append(character)
-                chooseAbility()
+                chooseAbility(character: character)
             case "3":
                 print("The Dwarf is now in your team, \(name)" + "\n")
                 // member is added to team
                 character = Dwarf()
                 teamMembers.append(character)
-                chooseAbility()
+                chooseAbility(character: character)
             case "4":
                 print("The Mage is now in your team, \(name)" + "\n")
                 // member is added to team
                 character = Mage()
                 teamMembers.append(character)
-                chooseAbility()
+                chooseAbility(character: character)
             default:
                 print("Please choose a character for your team, \(name)" + "\n")
                 return chooseTeamCharacter()
@@ -127,15 +127,13 @@ class Player {
         return true
     }
     
-    func chooseAbility() {
+    func chooseAbility(character: Character) {
         print("Choose an ability, it will apply for all the members of your team"  + "\n"
             + "\n1. Agility"
             + "\n2. Endurance"
             + "\n3. Strength")
         
         let choice = readLine()
-        let character = Character()
-
         switch choice {
         case "1":
             character.ability = Agility()
@@ -150,14 +148,11 @@ class Player {
         if choice == nil || (choice != "1" && choice != "2" && choice != "3") {
             print("Please choose a valid ability.")
             
-            chooseAbility()
+            chooseAbility(character: Character())
             return
-
-            
         }
         let ability = AbilityType(rawValue: choice!)!
         print("The ability \(ability.type) has been added to your members")
-
     }
     
     func selectCharacter(player: Player) -> Character {

@@ -94,7 +94,7 @@ class Player {
                 teamMembers.append(character)
                 chooseAbility(character: character)
             default:
-                print("Please choose a character for your team, \(name)" + "\n")
+                print("Invalid choice, please choose a character for your team, \(name)" + "\n")
                 return chooseTeamCharacter()
             }
         }
@@ -137,22 +137,25 @@ class Player {
         switch choice {
         case "1":
             character.ability = Agility()
+            print("The ability Agility has been added to your member \(character.characterName) the \(character.type)")
         case "2":
             character.ability = Endurance()
+            print("The ability Endurance has been added to your member \(character.characterName) the \(character.type)")
         case "3":
             character.ability = Strength()
+            print("The ability Strength has been added to your member \(character.characterName) the \(character.type)")
         default:
-            break
+            print("This not a valid choice, please enter 1, 2 or 3")
+            return chooseAbility(character: Character())
         }
         
-        if choice == nil || (choice != "1" && choice != "2" && choice != "3") {
+        /*if choice == nil || (choice != "1" && choice != "2" && choice != "3") {
             print("Please choose a valid ability.")
             
-            chooseAbility(character: Character())
-            return
+            return chooseAbility(character: Character())
         }
         let ability = AbilityType(rawValue: choice!)!
-        print("The ability \(ability.type) has been added to your member")
+        print("The ability \(ability.type) has been added to your member")*/
     }
     
     func selectCharacter(player: Player) -> Character {
@@ -170,7 +173,7 @@ class Player {
                 print("Invalid choice or the character you choose is dead, please select a number in the list ABOVE.") //if number out of range, invalid choice
             }
             
-        } while !player.teamMembers.indices.contains(choice) || chooseCharacter == nil // while player take an indice out of range, it loop
+        } while !player.teamMembers.indices.contains(choice) || chooseCharacter == nil || (choice != 0 && choice != 1 && choice != 2)// while player take an indice out of range, it loop
         
         return chooseCharacter!
     }

@@ -145,8 +145,9 @@ class Player {
             character.ability = Strength()
             print("The ability Strength has been added to your member \(character.characterName) the \(character.type)")
         default:
-            print("This not a valid choice, please enter 1, 2 or 3")
-            return chooseAbility(character: Character())
+            print("This not a valid choice, please enter 1, 2 or 3"
+            + "\n")
+            chooseAbility(character: character)
         }
         
         /*if choice == nil || (choice != "1" && choice != "2" && choice != "3") {

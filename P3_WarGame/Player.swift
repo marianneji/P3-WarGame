@@ -11,13 +11,23 @@ import Foundation
 // function to let player enter a string (name)
 func input() -> String {
     let nameData = readLine()
+    if let unwrappedNameData = nameData {
+        
+    }
     return nameData!
 }
 
 // function to let player enter an Int (number)
-func answer() -> Int {
+func answerNumber() -> Int {
     let answerInt = readLine()
-    return Int(answerInt!)!
+    if let unwrappedAnswer = answerInt {
+        if let answerNumber = Int(unwrappedAnswer) {
+            return answerNumber
+        } else {
+            print("Please enter a number in the list")
+        }
+    }
+    return answerNumber()
 }
 
 /* this class initiate the team of player1 and player2,
@@ -166,7 +176,7 @@ class Player {
         var choice = 0 // initiate a variable int 
         
         repeat {
-            choice = answer()
+            choice = answerNumber()
             // check if choice is in the index of team and if the life is > 0
             if player.teamMembers.indices.contains(choice) && player.teamMembers[choice].lifePoints > 0 {
                 chooseCharacter = player.teamMembers[choice]

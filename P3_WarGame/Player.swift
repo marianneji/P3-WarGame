@@ -118,7 +118,7 @@ class Player {
     // static function to check unique names return a bool
     static func checkName(names: String) -> Bool {
         for characterNameArray in Player.uniqueName {
-            if characterNameArray == names {
+            if characterNameArray.lowercased() == names.lowercased() {
                 print("this name is already taken, please choose a different name")
                 return false
             }

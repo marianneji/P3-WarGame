@@ -57,21 +57,20 @@ class Game {
         var attackingPlayer = players[0]
         var defendingPlayer = players[1]
         
-        // 
         while players[0].totalLifePoints != 0 && players[1].totalLifePoints != 0 {
             print("Round : \(round)")
-            print("\(attackingPlayer.name) choose your team member who will fight :")
+            print("\(attackingPlayer.name) choose your team member who will fight :"
+            + "\n")
             
             for (i, character) in attackingPlayer.teamMembers.enumerated() {
-                print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) pts of life and the ability \(character.ability.abilityName)")
-                
+                print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) pts of life and the ability \(character.ability.abilityName).")
             }
             let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
-            print("\(attackingPlayer.name) choose a team member of the opponent team to attack :")
+            print("\(attackingPlayer.name) choose a team member of the opponent team to attack :"
+            + "\n")
             
             for (i, character) in defendingPlayer.teamMembers.enumerated() {
                 print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) pts of life and the ability \(character.ability.abilityName).")
-                
             }
             
             let opponentCharacter = defendingPlayer.selectCharacter(player: defendingPlayer)

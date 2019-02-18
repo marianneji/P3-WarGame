@@ -46,8 +46,9 @@ class Character: CustomStringConvertible { // variable description utilisée pou
         if target.ability.damageReceived >= damage  {
             target.ability.damageReceived = damage
             print("\nSince \(target.characterName) the \(target.type) has the ability \(target.ability.abilityName), he absorbs the damages caused :"
-                + "\nThe attack has no effect, but you will not gain more points of life. "
-                + "\n \(target.characterName) still have \(target.lifePoints)")
+                + "\nThe attack has no effect, but he will not gain more points of life. "
+                + "\n\(target.characterName) still have \(target.lifePoints) points of life."
+                + "\n")
         } else {
         var targetProtectionAbility: Int {
             get {
@@ -57,10 +58,6 @@ class Character: CustomStringConvertible { // variable description utilisée pou
                 target.lifePoints = newValue
             }
         }
-        /*print("\(targetProtectionAbility) target protection ability")
-        print("\(target.lifePoints) target life points")
-        print("\(target.ability.damageReceived) target damage received")*/
-        
             targetProtectionAbility -= damage
 
         print("\n"

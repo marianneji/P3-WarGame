@@ -17,7 +17,7 @@ class Game {
         + "\n First you'll have to name your team"
         + "\n Then, you'll have to choose 3 characters (in the list below) to your team"
         + "\n You will name each characters with a unique name"
-        + "\n And pick one ability that will increase the power of all your team members"
+        + "\n And pick one ability that will increase the power of your character"
         + "\n"
             + "\n The characters are :"
             + "\n The warrior : He Has 100 points of life, a sword with a damage of 10 points on the opponent life"
@@ -36,7 +36,8 @@ class Game {
         + "\n they will fight."
         + "\n It will be the end of a round."
         + "\n It will goes like this till all of the members of one team will be dead (except for the mage, he has no life, he's like a healing ghost)"
-        + "\n So let's FIGHT till DEATH")
+        + "\n So let's FIGHT till DEATH"
+        + "\n")
     }
     
     func startGame() {

@@ -128,10 +128,10 @@ class Player {
     }
     
     func chooseAbility(character: Character) {
-        print("Choose an ability, it will apply on your member \(character.characterName) \(character.type)"  + "\n"
-            + "\n1. Agility"
-            + "\n2. Endurance"
-            + "\n3. Strength")
+        print("Choose an ability, it will apply on your member \(character.characterName) the \(character.type)"  + "\n"
+            + "\n1. Agility, increase the damage by 5 points of life and reduce the damage received by 25 points of life "
+            + "\n2. Endurance, increase the damage by 20 points of life and reduce the damage received by 10 points of life"
+            + "\n3. Strength, increase the damage by 15 points of life and reduce the damage received by 15 points of life")
         
         let choice = readLine()
         switch choice {

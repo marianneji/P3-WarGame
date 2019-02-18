@@ -11,10 +11,15 @@ import Foundation
 // function to let player enter a string (name)
 func input() -> String {
     let nameData = readLine()
-    if let unwrappedNameData = nameData {
-        
+    var nameIsInt : Bool {
+        return Int(nameData!) != nil
     }
-    return nameData!
+    let unique = Player.checkName(names: nameData!)
+    
+    if !unique || nameIsInt {
+        return input()
+    }
+    return nameData!.capitalized
 }
 
 // function to let player enter an Int (number)
@@ -128,7 +133,7 @@ class Player {
     // static function to check unique names return a bool
     static func checkName(names: String) -> Bool {
         for characterNameArray in Player.uniqueName {
-            if characterNameArray.lowercased() == names.lowercased() {
+            if characterNameArray.capitalized == names.capitalized {
                 print("this name is already taken, please choose a different name")
                 return false
             }

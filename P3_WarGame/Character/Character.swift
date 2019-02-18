@@ -42,6 +42,13 @@ class Character: CustomStringConvertible { // variable description utilisée pou
     }
     
     func attack(_ target: Character) {
+        // devrai je mettre 2 conditions (> || ==) ou 1 avec >= ?
+        if target.ability.damageReceived >= damage  {
+            target.ability.damageReceived = damage
+            print("\nSince \(target.characterName) the \(target.type) has the ability \(target.ability.abilityName), he absorbs the damages caused :"
+                + "\nThe attack has no effect, but you will not gain more points of life. "
+                + "\n \(target.characterName) still have \(target.lifePoints)")
+        } else {
         var targetProtectionAbility: Int {
             get {
                 return target.lifePoints + target.ability.damageReceived
@@ -62,7 +69,7 @@ class Character: CustomStringConvertible { // variable description utilisée pou
             + "\nBut with his ability \(target.ability.abilityName), he has been protected of \(target.ability.damageReceived) points of damage received"
             + "\n\(target.characterName) the \(target.type) has now \(target.lifePoints) points of life !"
             + "\n")
-        
+        }
         if target.lifePoints < 0 {
             target.lifePoints = 0
         }

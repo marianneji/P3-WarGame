@@ -20,22 +20,22 @@ class Game {
         + "\n And pick one ability that will increase the power of your character"
         + "\n"
             + "\n The characters are :"
-            + "\n The warrior : He Has 100 points of life, a sword with a damage of 10 points on the opponent life"
-            + "\n The giant : He Has 120 points of life, a crossbow with a damage of 5 points on the opponent life"
-            + "\n The dwarf : He Has 80 points of life, an axe with a damage of 20 points on the opponent life"
-            + "\n The mage : Doesn't have points of life, but he has a scepter to heal one of your team member, and gives back 20 points of life"
+            + "\n The warrior : He Has 100 ❤️, a sword with a damage of 10 points on the opponent ❤️"
+            + "\n The giant : He Has 120 ❤️, a crossbow with a damage of 5 points on the opponent ❤️"
+            + "\n The dwarf : He Has 80 ❤️, an axe with a damage of 20 points on the opponent ❤️"
+            + "\n The mage : Doesn't have ❤️, but he has a scepter to heal one of your team member, and gives back 20 ❤️"
         + "\n"
             + "\n The abilities are :"
-            + "\n Agility : Doesn't increase the damage but reduce the damage received of 30 points of life"
-            + "\n Endurance : Increase the damage of 10 points on the opponent life, and reduce the damage received of 20 points"
-            + "\n Strength : Increase the damage of 15 points on the opponent life, and reduce the damage received of 15 points"
+            + "\n Agility : Doesn't increase the damage but reduce the damage received of 30 ❤️"
+            + "\n Endurance : Increase the damage of 10 points on the opponent ❤️, and reduce the damage received of 20 points"
+            + "\n Strength : Increase the damage of 15 points on the opponent ❤️, and reduce the damage received of 15 points"
         + "\n"
         + "\n Then you'll choose a fighter and an opponent,"
         + "\n they will fight."
         + "\n Your opponent will choose a fighter and one of your team member to attack,"
         + "\n they will fight."
         + "\n It will be the end of a round."
-        + "\n It will goes like this till all of the members of one team will be dead (except for the mage, he has no life, he's like a healing ghost)"
+        + "\n It will goes like this till all of the members of one team will be dead (except for the mage, he has no ❤️, he's like a healing ghost)"
         + "\n So let's FIGHT till DEATH"
         + "\n")
     }
@@ -64,14 +64,20 @@ class Game {
             + "\n")
             
             for (i, character) in attackingPlayer.teamMembers.enumerated() {
-                print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) pts of life and the ability \(character.ability.abilityName).")
+                print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
             }
             let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
+            if chooseCharacter is Mage {
+                print("Choose a team member to heal in your team")
+                for (i, character) in attackingPlayer.teamMembers.enumerated() {
+                  print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
+                }
+            }
             print("\(attackingPlayer.name) choose a team member of the opponent team to attack :"
             + "\n")
             
             for (i, character) in defendingPlayer.teamMembers.enumerated() {
-                print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) pts of life and the ability \(character.ability.abilityName).")
+                print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
             }
             
             let opponentCharacter = defendingPlayer.selectCharacter(player: defendingPlayer)

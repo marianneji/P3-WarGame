@@ -67,22 +67,26 @@ class Game {
                 print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
             }
             let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
+            
             if chooseCharacter is Mage {
                 print("Choose a team member to heal in your team")
                 for (i, character) in attackingPlayer.teamMembers.enumerated() {
                   print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
                 }
+                let healedCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
+                chooseCharacter.heal(healedCharacter)
+            } else {
+                print("\(attackingPlayer.name) choose a team member of the opponent team to attack :"
+                    + "\n")
+                
+                for (i, character) in defendingPlayer.teamMembers.enumerated() {
+                    print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
+                }
+                
+                let opponentCharacter = defendingPlayer.selectCharacter(player: defendingPlayer)
+                
+                chooseCharacter.attack(opponentCharacter)
             }
-            print("\(attackingPlayer.name) choose a team member of the opponent team to attack :"
-            + "\n")
-            
-            for (i, character) in defendingPlayer.teamMembers.enumerated() {
-                print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
-            }
-            
-            let opponentCharacter = defendingPlayer.selectCharacter(player: defendingPlayer)
-            
-            chooseCharacter.attack(opponentCharacter)
             round += 1
 
             swap(&attackingPlayer, &defendingPlayer)

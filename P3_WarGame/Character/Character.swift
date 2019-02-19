@@ -20,18 +20,18 @@ class Character: CustomStringConvertible { // variable description utilisée pou
     var weapon: Weapon
     var type: CharacterType
     var ability: Ability
+    // get-only computed property to obtain the ability damage with the weapon damage
     var damage: Int {
         let totalDamage = weapon.damage + ability.damage
         return totalDamage
     }
-    
     var description: String {
         return type.rawValue
     }
     convenience init() {
         self.init(lifePoints: 0, maxLife: 150, characterName: "", weapon: Weapon(weaponName: "", damage: 0), type: .warrior, ability: Endurance())
     }
-    
+    //
     init(lifePoints: Int,maxLife: Int, characterName: String, weapon: Weapon, type: CharacterType, ability: Ability) {
         self.lifePoints = lifePoints
         self.maxLife = maxLife
@@ -42,14 +42,16 @@ class Character: CustomStringConvertible { // variable description utilisée pou
     }
     
     func attack(_ target: Character) {
-        // devrai je mettre 2 conditions (> || ==) ou 1 avec >= ?
+        // cond to check that the ability does not give more life points
         if target.ability.damageReceived >= damage  {
             target.ability.damageReceived = damage
-            print("\nSince \(target.characterName) the \(target.type) has the ability \(target.ability.abilityName), he absorbs the damages caused :"
-                + "\nThe attack has no effect, but he will not gain more points of life. "
-                + "\n\(target.characterName) still have \(target.lifePoints) points of life."
+            // Infos of the attack if the cond above is true
+            print("\n\(target.characterName) the \(target.type) has the ability \(target.ability.abilityName), he absorbs the damages caused :"
+                + "\nThe attack has no effect, but he will not gain more ❤️. "
+                + "\n\(target.characterName) have \(target.lifePoints) ❤️."
                 + "\n")
         } else {
+            // computed property to add the property, of the ability, damage received to the target
         var targetProtectionAbility: Int {
             get {
                 return target.lifePoints + target.ability.damageReceived
@@ -58,25 +60,19 @@ class Character: CustomStringConvertible { // variable description utilisée pou
                 target.lifePoints = newValue
             }
         }
+            // substraction of the computed properties to obtain the new value of target life
             targetProtectionAbility -= damage
-
-        print("\n"
-            + "\n\(target.characterName) has lost \(damage) points of life from:"
+            if target.lifePoints <= 0 {
+                print("\n💀💀💀\(target.characterName) the \(target.type) is dead !💀💀💀")
+                target.lifePoints = 0
+            }
+            // Infos of the attack
+        print("\n\(target.characterName) the \(target.type) has lost \(damage) ❤️ from:"
             + "\n\(weapon.damage) of the weapon damages and \(ability.damage) of the \(ability.type) damages."
-            + "\nBut with his ability \(target.ability.abilityName), he has been protected of \(target.ability.damageReceived) points of damage received"
-            + "\n\(target.characterName) the \(target.type) has now \(target.lifePoints) points of life !"
+            + "\n                          BUT.... Hahaha"
+            + "\nwith his ability \(target.ability.abilityName), he has been protected of \(target.ability.damageReceived) points of damage received"
+            + "\n\(target.characterName) the \(target.type) has \(target.lifePoints) ❤️🛡⚔️🧙🏻‍♂️ !"
             + "\n")
-        }
-        if target.lifePoints < 0 {
-            target.lifePoints = 0
         }
     }
 }
-
-
-
-
-
-
-
-

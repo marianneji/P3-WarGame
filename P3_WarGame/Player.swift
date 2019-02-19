@@ -65,36 +65,39 @@ class Player {
     func chooseTeamCharacter() {
         // this menu will repeat while team members count is equal to 3
         while teamMembers.count < 3 {
-            print("\n\(name) Choose a character between :"
-                + "\n1. Warrior"
-                + "\n2. Giant"
-                + "\n3. Dwarf"
-                + "\n4. Mage")
+            print("""
+                
+                \(name) Choose a character between :
+                1. Warrior
+                2. Giant
+                3. Dwarf
+                4. Mage
+                """)
             
             let choice = Player.answerNumber()
             var character: Character
             
             switch choice {
             case 1:
-                print("The warrior is now in your team, \(name)" + "\n")
+                print("The warrior is now in your team, \(name)\n")
                 // member is added to team
                 character = Warrior()
                 teamMembers.append(character)
                 chooseAbility(character: character)
             case 2:
-                print("The Giant is now in your team, \(name)" + "\n")
+                print("The Giant is now in your team, \(name)\n")
                 // member is added to team
                 character = Giant()
                 teamMembers.append(character)
                 chooseAbility(character: character)
             case 3:
-                print("The Dwarf is now in your team, \(name)" + "\n")
+                print("The Dwarf is now in your team, \(name)\n")
                 // member is added to team
                 character = Dwarf()
                 teamMembers.append(character)
                 chooseAbility(character: character)
             case 4:
-                print("The Mage is now in your team, \(name)" + "\n")
+                print("The Mage is now in your team, \(name)\n")
                 // member is added to team
                 character = Mage()
                 teamMembers.append(character)
@@ -105,7 +108,7 @@ class Player {
             }
         }
         // showing to the player his team members
-        print("\nThere is your team : \(teamMembers)" + "\n")
+        print("\nThere is your team : \(teamMembers)\n")
     }
     // static function to create a name for his team members...it will be called in the Characters subclass
     static func createCharacterName() -> String {

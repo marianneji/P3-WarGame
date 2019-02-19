@@ -75,4 +75,16 @@ class Character: CustomStringConvertible { // variable description utilisée pou
             + "\n")
         }
     }
+    func heal(_ member: Character) {
+        if member.lifePoints == 0 {
+            print("You can't heal a dead character")
+        } else if member.lifePoints == member.maxLife {
+            print("The character cannot be healed, because he has reached the maximum ❤️")
+        } else {
+            member.lifePoints += damage
+            print("\(member.characterName) the \(member.type) has been restore his ❤️ with \(damage) points from :"
+            + "\n\(weapon.damage) of the mage scepter and \(ability.damage) of the \(ability.type)"
+            + "\n\(member.characterName) the \(member.type) has now \(member.lifePoints) ❤️")
+        }
+    }
 }

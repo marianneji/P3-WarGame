@@ -43,8 +43,5 @@ class Ability {
     convenience init() {
         self.init(abilityName: "", damage: 0, damageReceived: 0, type: .agility)
     }
-    func addAbilityDamageToWeapon(type: AbilityType) {
-        self.damage += weapon.damage
-    }
 }
 

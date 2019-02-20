@@ -12,32 +12,32 @@ class Game {
     
     var players = [Player]() // array of players
     
-   static func gameInfos() { // Intro of the game, rules and welcome
+    static func gameInfos() { // Intro of the game, rules and welcome
         print("Welcome In the WarGame"
-        + "\n First you'll have to name your team"
-        + "\n Then, you'll have to choose 3 characters (in the list below) to your team"
-        + "\n You will name each characters with a unique name"
-        + "\n And pick one ability that will increase the power of your character"
-        + "\n"
+            + "\n First you'll have to name your team"
+            + "\n Then, you'll have to choose 3 characters (in the list below) to your team"
+            + "\n You will name each characters with a unique name"
+            + "\n And pick one ability that will increase the power of your character"
+            + "\n"
             + "\n The characters are :"
             + "\n The warrior : He Has 100 ❤️, a sword with a damage of 10 points on the opponent ❤️"
             + "\n The giant : He Has 120 ❤️, a crossbow with a damage of 5 points on the opponent ❤️"
             + "\n The dwarf : He Has 80 ❤️, an axe with a damage of 20 points on the opponent ❤️"
             + "\n The mage : Doesn't have ❤️, but he has a scepter to heal one of your team member, and gives back 20 ❤️"
-        + "\n"
+            + "\n"
             + "\n The abilities are :"
             + "\n Agility : Doesn't increase the damage but reduce the damage received of 30 ❤️"
             + "\n Endurance : Increase the damage of 10 points on the opponent ❤️, and reduce the damage received of 20 points"
             + "\n Strength : Increase the damage of 15 points on the opponent ❤️, and reduce the damage received of 15 points"
-        + "\n"
-        + "\n Then you'll choose a fighter and an opponent,"
-        + "\n they will fight."
-        + "\n Your opponent will choose a fighter and one of your team member to attack,"
-        + "\n they will fight."
-        + "\n It will be the end of a round."
-        + "\n It will goes like this till all of the members of one team will be dead (except for the mage, he has no ❤️, he's like a healing ghost)"
-        + "\n So let's FIGHT till DEATH"
-        + "\n")
+            + "\n"
+            + "\n Then you'll choose a fighter and an opponent,"
+            + "\n they will fight."
+            + "\n Your opponent will choose a fighter and one of your team member to attack,"
+            + "\n they will fight."
+            + "\n It will be the end of a round."
+            + "\n It will goes like this till all of the members of one team will be dead (except for the mage, he has no ❤️, he's like a healing ghost)"
+            + "\n So let's FIGHT till DEATH"
+            + "\n")
     }
     
     func startGame() {
@@ -61,7 +61,7 @@ class Game {
         while players[0].totalLifePoints != 0 && players[1].totalLifePoints != 0 {
             print("Round : \(round)")
             print("\(attackingPlayer.name) choose your team member who will fight :"
-            + "\n")
+                + "\n")
             
             for (i, character) in attackingPlayer.teamMembers.enumerated() {
                 print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
@@ -71,7 +71,7 @@ class Game {
             if chooseCharacter is Mage {
                 print("Choose a team member to heal in your team")
                 for (i, character) in attackingPlayer.teamMembers.enumerated() {
-                  print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
+                    print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
                 }
                 let healedCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
                 chooseCharacter.heal(healedCharacter)
@@ -88,7 +88,7 @@ class Game {
                 chooseCharacter.attack(opponentCharacter)
             }
             round += 1
-
+            
             swap(&attackingPlayer, &defendingPlayer)
             
             if players[1].totalLifePoints == 0 {

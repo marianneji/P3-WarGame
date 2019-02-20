@@ -11,5 +11,4 @@ class Scepter: Weapon {
     init() {
         super.init(weaponName: "scepter", damage: 20)
     }
-    
 }

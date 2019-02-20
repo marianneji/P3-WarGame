@@ -52,14 +52,14 @@ class Character: CustomStringConvertible { // variable description utilisée pou
                 + "\n")
         } else {
             // computed property to add the property, of the ability, damage received to the target
-        var targetProtectionAbility: Int {
-            get {
-                return target.lifePoints + target.ability.damageReceived
+            var targetProtectionAbility: Int {
+                get {
+                    return target.lifePoints + target.ability.damageReceived
+                }
+                set {
+                    target.lifePoints = newValue
+                }
             }
-            set {
-                target.lifePoints = newValue
-            }
-        }
             // substraction of the computed properties to obtain the new value of target life
             targetProtectionAbility -= damage
             if target.lifePoints <= 0 {
@@ -67,12 +67,12 @@ class Character: CustomStringConvertible { // variable description utilisée pou
                 target.lifePoints = 0
             }
             // Infos of the attack
-        print("\n\(target.characterName) the \(target.type) has lost \(damage) ❤️ from:"
-            + "\n\(weapon.damage) of the weapon damages and \(ability.damage) of the \(ability.type) damages."
-            + "\n                          BUT.... Hahaha"
-            + "\nwith his ability \(target.ability.abilityName), he has been protected of \(target.ability.damageReceived) points of damage received"
-            + "\n\(target.characterName) the \(target.type) has \(target.lifePoints) ❤️🛡⚔️🧙🏻‍♂️ !"
-            + "\n")
+            print("\n\(target.characterName) the \(target.type) has lost \(damage) ❤️ from:"
+                + "\n\(weapon.damage) of the weapon damages and \(ability.damage) of the \(ability.type) damages."
+                + "\n                          BUT.... Hahaha"
+                + "\nwith his ability \(target.ability.abilityName), he has been protected of \(target.ability.damageReceived) points of damage received"
+                + "\n\(target.characterName) the \(target.type) has \(target.lifePoints) ❤️🛡⚔️🧙🏻‍♂️ !"
+                + "\n")
         }
     }
     func heal(_ member: Character) {
@@ -83,8 +83,8 @@ class Character: CustomStringConvertible { // variable description utilisée pou
         } else {
             member.lifePoints += damage
             print("\(member.characterName) the \(member.type) has been restore his ❤️ with \(damage) points from :"
-            + "\n\(weapon.damage) of the mage scepter and \(ability.damage) of the \(ability.type)"
-            + "\n\(member.characterName) the \(member.type) has now \(member.lifePoints) ❤️")
+                + "\n\(weapon.damage) of the mage scepter and \(ability.damage) of the \(ability.type)"
+                + "\n\(member.characterName) the \(member.type) has now \(member.lifePoints) ❤️")
         }
     }
 }

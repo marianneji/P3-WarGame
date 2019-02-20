@@ -8,7 +8,7 @@
 
 import Foundation
 /* this class initiate the team of player1 and player2,
-  the character members and their abilities.
+ the character members and their abilities.
  */
 class Player {
     // property of player name
@@ -21,7 +21,7 @@ class Player {
     var totalLifePoints: Int {
         var sum = 0
         for character in teamMembers {
-           sum += character.lifePoints
+            sum += character.lifePoints
         }
         return sum
     }
@@ -148,7 +148,7 @@ class Player {
             print("The ability Strength has been added to your member \(character.characterName) the \(character.type)")
         default:
             print("This not a valid choice, please enter 1, 2 or 3"
-            + "\n")
+                + "\n")
             chooseAbility(character: character)
         }
     }
@@ -168,8 +168,8 @@ class Player {
                 //if number out of range, invalid choice
                 print("Invalid choice or the character you choose is dead, please select a number in the list ABOVE.")
             }
-           // while player take an indice out of range, it loop
+            // while player take an indice out of range, it loop
         } while !player.teamMembers.indices.contains(choice) || chooseCharacter == nil
-                return chooseCharacter!
+        return chooseCharacter!
     }
 }

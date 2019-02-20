@@ -6,7 +6,7 @@
 //  Copyright © 2019 marianne massé. All rights reserved.
 //
 
-
+import Foundation
 
 class Warrior: Character {
     init() {

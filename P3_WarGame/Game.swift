@@ -74,8 +74,8 @@ class Game {
                 for (i, character) in attackingPlayer.teamMembers.enumerated() {
                     print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
                 }
-                let healedCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
-                chooseCharacter.heal(healedCharacter)
+                let healCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
+                chooseCharacter.heal(healCharacter)
             } else {
                 print("\(attackingPlayer.name) choose a team member of the opponent team to attack :"
                     + "\n")

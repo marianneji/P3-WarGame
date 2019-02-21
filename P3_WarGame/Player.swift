@@ -8,7 +8,7 @@
 
 import Foundation
 /* this class initiate the team of player1 and player2,
- the character members and their abilities.
+  the character members and their abilities.
  */
 class Player {
     // property of player name
@@ -21,7 +21,7 @@ class Player {
     var totalLifePoints: Int {
         var sum = 0
         for character in teamMembers {
-            sum += character.lifePoints
+           sum += character.lifePoints
         }
         return sum
     }
@@ -148,7 +148,7 @@ class Player {
             print("The ability Strength has been added to your member \(character.characterName) the \(character.type)")
         default:
             print("This not a valid choice, please enter 1, 2 or 3"
-                + "\n")
+            + "\n")
             chooseAbility(character: character)
         }
     }
@@ -158,7 +158,7 @@ class Player {
         var chooseCharacter: Character? = nil
         // initiate a variable int
         var choice = 0
-        // Loop 
+        // Loop
         repeat {
             choice = Player.answerNumber()
             // check if choice is in the index of team and if the life is > 0

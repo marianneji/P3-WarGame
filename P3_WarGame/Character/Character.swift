@@ -29,7 +29,7 @@ class Character: CustomStringConvertible { // variable description utilisée pou
         return type.rawValue
     }
     convenience init() {
-        self.init(lifePoints: 0, maxLife: 150, characterName: "", weapon: Weapon(weaponName: "", damage: 0), type: .warrior, ability: Endurance())
+        self.init(lifePoints: 0, maxLife: 0, characterName: "", weapon: Weapon(weaponName: "", damage: 0), type: .warrior, ability: Endurance())
     }
     //
     init(lifePoints: Int,maxLife: Int, characterName: String, weapon: Weapon, type: CharacterType, ability: Ability) {
@@ -78,10 +78,15 @@ class Character: CustomStringConvertible { // variable description utilisée pou
     func heal(_ member: Character) {
         if member.lifePoints == 0 {
             print("You can't heal a dead character")
+            
         } else if member.lifePoints == member.maxLife {
-            print("The character cannot be healed, because he has reached the maximum ❤️")
+            print("The character cannot be healed, because he has the maximum ❤️")
+            
+        } else if member.lifePoints + damage > member.maxLife {
+                member.lifePoints = member.maxLife
+                print("\(member.characterName) the \(member.type) has reached the maximum ❤️\n")
         } else {
-            member.lifePoints += damage
+            member.lifePoints += member.damage
             print("\(member.characterName) the \(member.type) has been restore his ❤️ with \(damage) points from :"
                 + "\n\(weapon.damage) of the mage scepter and \(ability.damage) of the \(ability.type)"
                 + "\n\(member.characterName) the \(member.type) has now \(member.lifePoints) ❤️")

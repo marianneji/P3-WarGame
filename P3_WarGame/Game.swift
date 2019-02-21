@@ -60,16 +60,17 @@ class Game {
         
         while players[0].totalLifePoints != 0 && players[1].totalLifePoints != 0 {
             print("Round : \(round)")
-            print("\(attackingPlayer.name) choose your team member who will fight :"
+            print("\(attackingPlayer.name) choose your team member who will fight or heal (if you choose the Mage):"
                 + "\n")
-            
+            // enumerates the characters of the team members and prints each character along with its place in the team members
             for (i, character) in attackingPlayer.teamMembers.enumerated() {
                 print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
             }
             let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
             
             if chooseCharacter is Mage {
-                print("Choose a team member to heal in your team")
+                print("Choose a team member to heal in your team\n")
+                // enumerates the characters of the team members and prints each character along with its place in the team members
                 for (i, character) in attackingPlayer.teamMembers.enumerated() {
                     print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
                 }
@@ -78,7 +79,7 @@ class Game {
             } else {
                 print("\(attackingPlayer.name) choose a team member of the opponent team to attack :"
                     + "\n")
-                
+                // enumerates the characters of the team members and prints each character along with its place in the team members
                 for (i, character) in defendingPlayer.teamMembers.enumerated() {
                     print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
                 }

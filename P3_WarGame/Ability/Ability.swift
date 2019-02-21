@@ -10,10 +10,8 @@ import Foundation
 
 
 enum AbilityType: String {
-    case agility = "1"
-    case endurance = "2"
-    case strength = "3"
-    
+    case agility, endurance, strength
+
     var type: String {// variable calculée 
         switch self {
         case .agility:
@@ -25,7 +23,6 @@ enum AbilityType: String {
         }
     }
 }
-let weapon = Weapon()
 
 class Ability {
     

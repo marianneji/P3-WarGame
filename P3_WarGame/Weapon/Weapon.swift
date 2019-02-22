@@ -7,16 +7,21 @@
 //
 
 import Foundation
+enum WeaponType {
+    case Sword, Crossbow, Axe, Scepter
+}
 
 class Weapon {
     var weaponName: String
     var damage: Int
+    var type: WeaponType
     
-    init(weaponName: String, damage: Int) {
+    init(weaponName: String, damage: Int, type: WeaponType) {
         self.weaponName = weaponName
         self.damage = damage
+        self.type = type
     }
     convenience init() {
-        self.init(weaponName: "", damage: 0)
+        self.init(weaponName: "", damage: 0, type: .Axe)
     }
 }

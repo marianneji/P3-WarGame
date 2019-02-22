@@ -63,9 +63,12 @@ class Character: CustomStringConvertible { // variable description utilisée pou
             // substraction of the computed properties to obtain the new value of target life
             targetProtectionAbility -= damage
             if target.lifePoints <= 0 {
-                print("\n💀💀💀\(target.characterName) the \(target.type) is dead !💀💀💀")
+                print("""
+                    💀💀💀\(target.characterName) the \(target.type) is dead !💀💀💀
+                    His ability \(target.ability.abilityName) was not strong enough to protect him from the \(damage) damages caused !
+                    """)
                 target.lifePoints = 0
-            }
+            } else {
             // Infos of the attack
             print("\n\(target.characterName) the \(target.type) has lost \(damage) ❤️ from:"
                 + "\n\(weapon.damage) of the weapon damages and \(ability.damage) of the \(ability.type) damages."
@@ -73,25 +76,27 @@ class Character: CustomStringConvertible { // variable description utilisée pou
                 + "\nwith his ability \(target.ability.abilityName), he has been protected of \(target.ability.damageReceived) points of damage received"
                 + "\n\(target.characterName) the \(target.type) has \(target.lifePoints) ❤️🛡⚔️🧙🏻‍♂️ !"
                 + "\n")
+            }
         }
     }
-    func heal(_ member: Character) -> Bool {
+    func heal(_ member: Character) {
         if member.lifePoints == 0 {
             print("You can't heal a dead character")
-            return false
+            
         } else if member.lifePoints == member.maxLife {
-            print("The character cannot be healed, because he has the maximum ❤️")
-            return false
+            print("The character cannot be healed, because he has the maximum ❤️"
+            + "\nThis action counts for a round, next time be careful to who you want to heal😛")
+            
         } else if member.lifePoints + damage > member.maxLife {
                 member.lifePoints = member.maxLife
-                print("\(member.characterName) the \(member.type) has reached the maximum ❤️\n")
-            return true
+                print("\(member.characterName) the \(member.type) has reached the maximum ❤️ \(member.lifePoints) points\n")
+            
         } else {
             member.lifePoints += member.damage
             print("\(member.characterName) the \(member.type) has been restore his ❤️ with \(damage) points from :"
                 + "\n\(weapon.damage) of the mage scepter and \(ability.damage) of the \(ability.type)"
                 + "\n\(member.characterName) the \(member.type) has now \(member.lifePoints) ❤️")
-            return true
+            
         }
     }
 }

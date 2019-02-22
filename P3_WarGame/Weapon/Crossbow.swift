@@ -9,6 +9,6 @@
 import Foundation
 class Crossbow: Weapon {
     init() {
-        super.init(weaponName: "crossbow", damage: 5)
+        super.init(weaponName: "crossbow", damage: 5, type: .Crossbow)
     }
 }

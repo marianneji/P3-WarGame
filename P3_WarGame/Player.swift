@@ -156,19 +156,18 @@ class Player {
     func selectCharacter(player: Player) -> Character {
         // var choosecharacter of type character
         var chooseCharacter = Character()
-        // initiate a variable int
         let choice = Player.answerNumber()
         if player.teamMembers[choice].lifePoints != 0 {
             switch choice {
             case 0:
                 chooseCharacter = teamMembers[0]
-                print("You have chosen \(teamMembers[0].characterName)-\(teamMembers[0].type) - [\(teamMembers[0].lifePoints)❤️/\(teamMembers[0].maxLife) max ❤️] - \(teamMembers[0].ability.type) ability!")
+                print("You have chosen \(teamMembers[0].characterName) the \(teamMembers[0].type) - [\(teamMembers[0].lifePoints)❤️/\(teamMembers[0].maxLife) max ❤️] - \(teamMembers[0].ability.abilityName) ability!")
             case 1:
                 chooseCharacter = teamMembers[1]
-                print("You have chosen \(teamMembers[1].characterName)-\(teamMembers[1].type) - [\(teamMembers[1].lifePoints)❤️/\(teamMembers[1].maxLife) max ❤️] - \(teamMembers[1].ability.type) ability!")
+                print("You have chosen \(teamMembers[1].characterName) the \(teamMembers[1].type) - [\(teamMembers[1].lifePoints)❤️/\(teamMembers[1].maxLife) max ❤️] - \(teamMembers[1].ability.abilityName) ability!")
             case 2:
                 chooseCharacter = teamMembers[2]
-                print("You have chosen \(teamMembers[2].characterName)-\(teamMembers[2].type) - [\(teamMembers[2].lifePoints)❤️/\(teamMembers[2].maxLife) max ❤️] - \(teamMembers[2].ability.type) ability!")
+                print("You have chosen \(teamMembers[2].characterName) the \(teamMembers[2].type) - [\(teamMembers[2].lifePoints)❤️/\(teamMembers[2].maxLife) max ❤️] - \(teamMembers[2].ability.abilityName) ability!")
                 
             default:
                 print("Choose a character between the list above (0, 1 or 2).")

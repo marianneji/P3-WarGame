@@ -8,7 +8,7 @@
 
 import Foundation
 /* this class initiate the team of player1 and player2,
-  the character members and their abilities.
+ the character members and their abilities.
  */
 class Player {
     // property of player name
@@ -21,7 +21,7 @@ class Player {
     var totalLifePoints: Int {
         var sum = 0
         for character in teamMembers {
-           sum += character.lifePoints
+            sum += character.lifePoints
         }
         return sum
     }
@@ -148,28 +148,31 @@ class Player {
             print("The ability Strength has been added to your member \(character.characterName) the \(character.type)")
         default:
             print("This not a valid choice, please enter 1, 2 or 3"
-            + "\n")
+                + "\n")
             chooseAbility(character: character)
         }
     }
     
-    func selectCharacter(player: Player) -> Character {
+    func selectCharacter() -> Character {
         // var choosecharacter of type character
-        var chooseCharacter: Character? = nil
+        var chooseCharacter = Character()
         // initiate a variable int
-        var choice = 0
-        // Loop
-        repeat {
-            choice = Player.answerNumber()
-            // check if choice is in the index of team and if the life is > 0
-            if player.teamMembers.indices.contains(choice) && player.teamMembers[choice].lifePoints > 0 {
-                chooseCharacter = player.teamMembers[choice]
-            } else {
-                //if number out of range, invalid choice
-                print("Invalid choice or the character you choose is dead, please select a number in the list ABOVE.")
+        let choice = Player.answerNumber()
+            switch choice {
+            case 0:
+                chooseCharacter = teamMembers[0]
+                print("You have chosen \(teamMembers[0].characterName)-\(teamMembers[0].type) - [\(teamMembers[0].lifePoints)❤️/\(teamMembers[0].maxLife) max ❤️] - \(teamMembers[0].ability.type) ability!")
+            case 1:
+                chooseCharacter = teamMembers[1]
+                print("You have chosen \(teamMembers[1].characterName)-\(teamMembers[1].type) - [\(teamMembers[1].lifePoints)❤️/\(teamMembers[1].maxLife) max ❤️] - \(teamMembers[1].ability.type) ability!")
+            case 2:
+                chooseCharacter = teamMembers[2]
+                print("You have chosen \(teamMembers[2].characterName)-\(teamMembers[2].type) - [\(teamMembers[2].lifePoints)❤️/\(teamMembers[2].maxLife) max ❤️] - \(teamMembers[2].ability.type) ability!")
+                
+            default:
+                print("Choose a character between the list above (0, 1 or 2).")
+                return selectCharacter()
             }
-            // while player take an indice out of range, it loop
-        } while !player.teamMembers.indices.contains(choice) || chooseCharacter == nil
-        return chooseCharacter!
+        return chooseCharacter
     }
 }

@@ -68,7 +68,7 @@ class Game {
                 print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
             }
             
-            let chooseCharacter = attackingPlayer.selectCharacter()
+            let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
             
             
             if chooseCharacter is Mage {
@@ -79,7 +79,7 @@ class Game {
                         print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
                     }
                 
-                let healCharacter = attackingPlayer.selectCharacter()
+                let healCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
                 chooseCharacter.heal(healCharacter)
 
             } else {
@@ -90,7 +90,7 @@ class Game {
                     print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
                 }
                 
-                let opponentCharacter = defendingPlayer.selectCharacter()
+                let opponentCharacter = defendingPlayer.selectCharacter(player: defendingPlayer)
                 
                 chooseCharacter.attack(opponentCharacter)
                 

@@ -66,6 +66,7 @@ class Character: CustomStringConvertible { // variable description utilisée pou
                 print("""
                     💀💀💀\(target.characterName) the \(target.type) is dead !💀💀💀
                     His ability \(target.ability.abilityName) was not strong enough to protect him from the \(damage) damages caused !
+                    
                     """)
                 target.lifePoints = 0
             } else {
@@ -81,11 +82,11 @@ class Character: CustomStringConvertible { // variable description utilisée pou
     }
     func heal(_ member: Character) {
         if member.lifePoints == 0 {
-            print("You can't heal a dead character")
+            print("You can't heal a dead character\n")
             
         } else if member.lifePoints == member.maxLife {
             print("The character cannot be healed, because he has the maximum ❤️"
-            + "\nThis action counts for a round, next time be careful to who you want to heal😛")
+            + "\nThis action counts for a round, next time be careful to who you want to heal😛\n")
             
         } else if member.lifePoints + damage > member.maxLife {
                 member.lifePoints = member.maxLife

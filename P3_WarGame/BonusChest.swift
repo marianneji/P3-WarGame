@@ -10,12 +10,4 @@ import Foundation
 class BonusChest {
     
 }
-class Dagger: BonusChest {
-    
-}
-class Bow: BonusChest {
-    
-}
-class Longsword: BonusChest {
-    
-}
+

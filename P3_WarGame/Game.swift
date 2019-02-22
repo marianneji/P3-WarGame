@@ -102,6 +102,7 @@ class Game {
         }
     }
     func bonusChest(character: Character) {
+        round = Int.random(in: 5...10)
         print("A chest with new weapons has appeared in front of you with a new weapon much stronger inside")
         let newWeapon = character.changeWeapon(character: character)
         character.weapon = newWeapon

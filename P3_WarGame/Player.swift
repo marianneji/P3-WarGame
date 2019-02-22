@@ -153,11 +153,12 @@ class Player {
         }
     }
     
-    func selectCharacter() -> Character {
+    func selectCharacter(player: Player) -> Character {
         // var choosecharacter of type character
         var chooseCharacter = Character()
         // initiate a variable int
         let choice = Player.answerNumber()
+        if player.teamMembers[choice].lifePoints != 0 {
             switch choice {
             case 0:
                 chooseCharacter = teamMembers[0]
@@ -171,8 +172,13 @@ class Player {
                 
             default:
                 print("Choose a character between the list above (0, 1 or 2).")
-                return selectCharacter()
+                return selectCharacter(player: player)
             }
+        
+        } else {
+            print("You can't choose a dead character, please select a character alive.")
+            return selectCharacter(player: player)
+        }
         return chooseCharacter
     }
 }

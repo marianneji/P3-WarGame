@@ -59,6 +59,7 @@ class Game {
         var defendingPlayer = players[1]
         
         while players[0].totalLifePoints != 0 && players[1].totalLifePoints != 0 {
+            
             print("Round : \(round)")
             print("\(attackingPlayer.name) choose your team member who will fight or heal (if you choose the Mage):"
                 + "\n")
@@ -66,18 +67,21 @@ class Game {
             for (i, character) in attackingPlayer.teamMembers.enumerated() {
                 print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
             }
-            let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
+            
+            let chooseCharacter = attackingPlayer.selectCharacter()
+            
             
             if chooseCharacter is Mage {
-                print("Choose a team member to heal in your team\n")
-                // enumerates the characters of the team members and prints each character along with its place in the team members
-                for (i, character) in attackingPlayer.teamMembers.enumerated() {
-                    print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
-                }
-                var healCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
-                while chooseCharacter.heal(healCharacter) != true {
-                healCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
-                }
+                
+                    print("Choose a team member to heal in your team\n")
+                    // enumerates the characters of the team members and prints each character along with its place in the team members
+                    for (i, character) in attackingPlayer.teamMembers.enumerated() {
+                        print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
+                    }
+                
+                let healCharacter = attackingPlayer.selectCharacter()
+                chooseCharacter.heal(healCharacter)
+
             } else {
                 print("\(attackingPlayer.name) choose a team member of the opponent team to attack :"
                     + "\n")
@@ -86,9 +90,10 @@ class Game {
                     print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
                 }
                 
-                let opponentCharacter = defendingPlayer.selectCharacter(player: defendingPlayer)
+                let opponentCharacter = defendingPlayer.selectCharacter()
                 
                 chooseCharacter.attack(opponentCharacter)
+                
             }
             round += 1
             
@@ -100,5 +105,8 @@ class Game {
                 print("\(players[1].name) has won the game in \(round) rounds")
             }
         }
+    }
+    func fighter(attackingPlayer: Player) {
+
     }
 }

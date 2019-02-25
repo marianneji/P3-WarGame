@@ -19,11 +19,14 @@ class Player {
     static var uniqueName = [String]()
     // computed property for total life points of the team members
     var totalLifePoints: Int {
+        get {
         var sum = 0
         for character in teamMembers {
             sum += character.lifePoints
         }
         return sum
+        }
+        set {}
     }
     // init of the player name
     init(name: String) {

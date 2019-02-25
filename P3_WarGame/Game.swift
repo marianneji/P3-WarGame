@@ -26,44 +26,16 @@ class Game {
         }
     }
     
+    
+    
     func fight() {
-        
-        
-        var attackingPlayer = players[0]
-        var defendingPlayer = players[1]
-        
         while players[0].totalLifePoints != 0 && players[1].totalLifePoints != 0 {
+            fighter()
+            fighterSwap()
             
-            print("Round : \(round)")
-            print("\(attackingPlayer.name) choose your team member who will fight or heal (if you choose the Mage):\n")
-            
-            displayTeamMembers(for: attackingPlayer)
-            
-            let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
-            
-            
-            
-            if chooseCharacter is Mage {
-                if teamsLifeIsFull(in: attackingPlayer) {
-                    fight()
-                }
-                print("Choose a team member to heal in your team\n")
-                displayTeamMembers(for: attackingPlayer)
-                let healCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
-                chooseCharacter.heal(healCharacter)
-                
-            } else {
-                print("\(attackingPlayer.name) choose a team member of the opponent team to attack :\n")
-                displayTeamMembers(for: defendingPlayer)
-                
-                let opponentCharacter = defendingPlayer.selectCharacter(player: defendingPlayer)
-                
-                chooseCharacter.attack(opponentCharacter)
-                
-            }
             round += 1
             
-            swap(&attackingPlayer, &defendingPlayer)
+            
             
             if players[1].totalLifePoints == 0 {
                 print("\(players[0].name) has won the game in \(round) rounds")
@@ -72,6 +44,7 @@ class Game {
             }
         }
     }
+    
     func teamsLifeIsFull(in player: Player) -> Bool {
         if getMaxLifePoints(in: player.teamMembers) == player.totalLifePoints {
             fullLifeError()
@@ -107,7 +80,86 @@ class Game {
         let newWeapon = character.changeWeapon(character: character)
         character.weapon = newWeapon
         print("Now \(character.characterName) the \(character.type) is equiped with the new weapon \(newWeapon.weaponName)")
+        
+    }
     
+    func fighter() {
+        let attackingPlayer = players[0]
+        let defendingPlayer = players[1]
+        print("Round : \(round)")
+        print("\(attackingPlayer.name) choose your team member who will fight or heal (if you choose the Mage):\n")
+        displayTeamMembers(for: attackingPlayer)
+        
+        let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
+        if chooseCharacter is Mage {
+            if teamsLifeIsFull(in: attackingPlayer) {
+                fighter()
+            } else {
+                print("Choose a team member to heal in your team\n")
+                displayTeamMembers(for: attackingPlayer)
+                let healCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
+                
+                if healCharacter.lifePoints == healCharacter.maxLife {
+                    print("The character cannot be healed, because he has the maximum ❤️\n")
+                    fighter()
+                } else if healCharacter.lifePoints == 0 {
+                    print("You can't heal a dead character")
+                    fighter()
+                    
+                } else if healCharacter.lifePoints + chooseCharacter.damage > healCharacter.maxLife {
+                    healCharacter.lifePoints = healCharacter.maxLife
+                    print("\(healCharacter.characterName) has reached the max life: \(healCharacter.lifePoints) pts\n")
+                }
+                chooseCharacter.heal(healCharacter)
+            }
+        } else {
+            print("\(attackingPlayer.name) choose a team member of the opponent team to attack :\n")
+            displayTeamMembers(for: defendingPlayer)
+            
+            let opponentCharacter = defendingPlayer.selectCharacter(player: defendingPlayer)
+            
+            chooseCharacter.attack(opponentCharacter)
+        }
+    }
+
+    func fighterSwap() {
+        let attackingPlayer = players[1]
+        let defendingPlayer = players[0]
+        print("Round : \(round)")
+        print("\(attackingPlayer.name) choose your team member who will fight or heal (if you choose the Mage):\n")
+        
+        displayTeamMembers(for: attackingPlayer)
+        
+        let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
+        if chooseCharacter is Mage {
+            if teamsLifeIsFull(in: attackingPlayer) {
+                fighterSwap()
+            } else {
+                print("Choose a team member to heal in your team\n")
+                displayTeamMembers(for: attackingPlayer)
+                let healCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
+                
+                if healCharacter.lifePoints == healCharacter.maxLife {
+                    print("The character cannot be healed, because he has the maximum ❤️\n")
+                    fighterSwap()
+                } else if healCharacter.lifePoints == 0 {
+                    print("You can't heal a dead character")
+                    fighterSwap()
+                    
+                } else if healCharacter.lifePoints + chooseCharacter.damage > healCharacter.maxLife {
+                    healCharacter.lifePoints = healCharacter.maxLife
+                    print("\(healCharacter.characterName) has reached the max life: \(healCharacter.lifePoints) pts\n")
+                }
+                chooseCharacter.heal(healCharacter)
+            }
+        } else {
+            print("\(attackingPlayer.name) choose a team member of the opponent team to attack :\n")
+            displayTeamMembers(for: defendingPlayer)
+            
+            let opponentCharacter = defendingPlayer.selectCharacter(player: defendingPlayer)
+            
+            chooseCharacter.attack(opponentCharacter)
+        }
     }
     static func gameInfos() { // Intro of the game, rules and welcome
         print("""

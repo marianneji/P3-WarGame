@@ -13,35 +13,13 @@ class Game {
     var players = [Player]() // array of players
     var round = 1
     
-    
-    func startGame() {
-        //  range loop to create only 2 players
-        for x in 0...1 {
-            print("Player \(x + 1)")
-            
-            let player = Player(name: Player.createPlayerName())
-            players.append(player)
-            
-            player.chooseTeamCharacter()
-        }
-    }
-    
-    
-    
     func fight() {
         while players[0].totalLifePoints != 0 && players[1].totalLifePoints != 0 {
             fighter()
             fighterSwap()
             
             round += 1
-            
-            
-            
-            if players[1].totalLifePoints == 0 {
-                print("\(players[0].name) has won the game in \(round) rounds")
-            } else if players[0].totalLifePoints == 0 {
-                print("\(players[1].name) has won the game in \(round) rounds")
-            }
+            checkWinner()
         }
     }
     
@@ -65,7 +43,7 @@ class Game {
     }
     
     private func fullLifeError() {
-        print("All characters are full life.")
+        print("All characters are full life, you can't choose the Mage.")
     }
     
     private func displayTeamMembers(for player: Player) {
@@ -75,7 +53,7 @@ class Game {
         }
     }
     func bonusChest(character: Character) {
-        round = Int.random(in: 5...10)
+        
         print("A chest with new weapons has appeared in front of you with a new weapon much stronger inside")
         let newWeapon = character.changeWeapon(character: character)
         character.weapon = newWeapon
@@ -159,6 +137,45 @@ class Game {
             let opponentCharacter = defendingPlayer.selectCharacter(player: defendingPlayer)
             
             chooseCharacter.attack(opponentCharacter)
+        }
+        
+    }
+    private func checkWinner() {
+        checkIfMageIsOnly(for: 1)
+        checkIfMageIsOnly(for: 2)
+        if players[1].totalLifePoints == 0 {
+            displayRounds(for: 0)
+        } else if players[0].totalLifePoints == 0 {
+            displayRounds(for: 1)
+        }
+    }
+    
+    private func displayRounds(for playerIndex: Int) {
+        print("\(players[playerIndex].name) has won the game in \(round) rounds")
+    }
+
+    
+    private func checkIfMageIsOnly(for playerIndex: Int) {
+        for character in players[1].teamMembers {
+            if ((character is Warrior && character.lifePoints == 0) && (character is Giant && character.lifePoints == 0) && (character is Dwarf && character.lifePoints == 0)) && (character is Mage && character.lifePoints != 0) {
+                players[1].totalLifePoints = 0
+            }
+        }
+        for character in players[0].teamMembers {
+            if ((character is Warrior && character.lifePoints == 0) && (character is Giant && character.lifePoints == 0) && (character is Dwarf && character.lifePoints == 0)) && (character is Mage && character.lifePoints != 0) {
+                players[0].totalLifePoints = 0
+            }
+        }
+    }
+    func startGame() {
+        //  range loop to create only 2 players
+        for x in 0...1 {
+            print("Player \(x + 1)")
+            
+            let player = Player(name: Player.createPlayerName())
+            players.append(player)
+            
+            player.chooseTeamCharacter()
         }
     }
     static func gameInfos() { // Intro of the game, rules and welcome

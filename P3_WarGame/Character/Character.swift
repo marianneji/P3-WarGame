@@ -82,6 +82,7 @@ class Character: CustomStringConvertible { // variable description utilisée pou
             }
         }
     }
+    
     func heal(_ member: Character) {
         if (member.lifePoints + damage) > member.maxLife {
             member.lifePoints = member.maxLife
@@ -92,9 +93,9 @@ class Character: CustomStringConvertible { // variable description utilisée pou
             print("\(member.characterName) the \(member.type) has been restore his ❤️ with \(damage) points from :"
                 + "\n\(weapon.damage) of the mage scepter and \(ability.damage) of the \(ability.type)"
                 + "\n\(member.characterName) the \(member.type) has now \(member.lifePoints) ❤️\n")
-            
         }
     }
+    
     func changeWeapon(character: Character) -> Weapon {
         let newWeapons = [
             Weapon(weaponName: "Bow", damage: Int.random(in: 20...35), type: .Crossbow),
@@ -104,7 +105,7 @@ class Character: CustomStringConvertible { // variable description utilisée pou
             Weapon(weaponName: "King Sword", damage: Int.random(in: 20...35), type: .Sword),
             Weapon(weaponName: "Sword of Fortune", damage: Int.random(in: 20...35), type: .Sword),
             Weapon(weaponName: "Battle Axe", damage: Int.random(in: 20...35), type: .Axe),
-            Weapon(weaponName: "Battle Axe", damage: Int.random(in: 20...35), type: .Axe),
+            Weapon(weaponName: "Red Axe", damage: Int.random(in: 20...35), type: .Axe),
             Weapon(weaponName: "Axe of Fury", damage: Int.random(in: 20...35), type: .Axe),
             Weapon(weaponName: "Magic Wand", damage: Int.random(in: 20...35), type: .Scepter),
             Weapon(weaponName: "Black Wand", damage: Int.random(in: 20...35), type: .Scepter),
@@ -119,6 +120,4 @@ class Character: CustomStringConvertible { // variable description utilisée pou
         }
         return randomWeapon!
     }
-    
-    
 }

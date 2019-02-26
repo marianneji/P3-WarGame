@@ -27,6 +27,7 @@ class Player {
         return sum
         }
         set {}
+        
     }
     // init of the player name
     init(name: String) {

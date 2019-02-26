@@ -14,12 +14,91 @@ class Game {
     var round = 1
     
     func fight() {
-        while players[0].totalLifePoints != 0 && players[1].totalLifePoints != 0 {
-            fighter()
-            fighterSwap()
-            
+        //while players[0].totalLifePoints != 0 && players[1].totalLifePoints != 0 {
+        while !players[0].teamMembers.isEmpty && !players[1].teamMembers.isEmpty {
+            fighter(attackingPlayer: players[0], defendingPlayer: players[1], round: round)
+            if checkWinner() {
+                break
+            }
+            fighter(attackingPlayer: players[1], defendingPlayer: players[0], round: round)
+            if checkWinner() {
+                break
+            }
             round += 1
-            checkWinner()
+        }
+    }
+    func checkWinner() -> Bool {
+        checkIfMageIsOnly(for: 0)
+        checkIfMageIsOnly(for: 1)
+        if players[0].totalLifePoints == 0 {
+            print("\(players[1].name) has won the game in \(round) rounds")
+            return true
+        } else if players[1].totalLifePoints == 0 {
+            print("\(players[0].name) has won the game in \(round) rounds")
+            return true
+        }
+        return false
+    }
+    
+    func fighter(attackingPlayer: Player, defendingPlayer: Player, round: Int) {
+        
+        print("Round : \(round)")
+        print("\(attackingPlayer.name) choose your team member who will fight or heal (if you choose the Mage):\n")
+        displayTeamMembers(for: attackingPlayer)
+        
+        let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
+        if chooseCharacter is Mage {
+            if teamsLifeIsFull(in: attackingPlayer) {
+                fighter(attackingPlayer: attackingPlayer, defendingPlayer: defendingPlayer, round: round)
+            } else {
+                print("Choose a team member to heal in your team\n")
+                displayTeamMembers(for: attackingPlayer)
+                let healCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
+                
+                if healCharacter.lifePoints == healCharacter.maxLife {
+                    print("The character cannot be healed, because he has the maximum ❤️\n")
+                    fighter(attackingPlayer: attackingPlayer, defendingPlayer: defendingPlayer, round: round)
+                } else if healCharacter.lifePoints == 0 {
+                    print("You can't heal a dead character")
+                    fighter(attackingPlayer: attackingPlayer, defendingPlayer: defendingPlayer, round: round)
+                    
+                } else if healCharacter.lifePoints + chooseCharacter.damage > healCharacter.maxLife {
+                    healCharacter.lifePoints = healCharacter.maxLife
+                    print("\(healCharacter.characterName) has reached the max life: \(healCharacter.lifePoints) pts\n")
+                }
+                chooseCharacter.heal(healCharacter)
+            }
+        } else {
+            print("\(attackingPlayer.name) choose a team member of the opponent team to attack :\n")
+            displayTeamMembers(for: defendingPlayer)
+            
+            let opponentCharacter = defendingPlayer.selectCharacter(player: defendingPlayer)
+            
+            chooseCharacter.attack(opponentCharacter)
+            
+            removeMember(character: opponentCharacter, player: defendingPlayer)
+        }
+        bonusChest(character: chooseCharacter, round: round)
+    }
+    
+    private func removeMember(character: Character, player: Player) {
+        var index = 0
+        if character.lifePoints == 0 {
+            for characterInTeam in player.teamMembers {
+                if characterInTeam.characterName == character.characterName {
+                    player.teamMembers.remove(at: index)
+                    print("\(character.characterName) has been remove from \(player.name) team!!")
+                }
+                index += 1
+            }
+        }
+    }
+    
+    private func checkIfMageIsOnly(for index: Int) {
+        if players[index].teamMembers.count == 1 {
+            if players[index].teamMembers[0] is Mage {
+                players[index].teamMembers.remove(at: 0)
+            }
         }
     }
     
@@ -52,121 +131,18 @@ class Game {
             print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
         }
     }
-    func bonusChest(character: Character) {
-        
+    
+    func bonusChest(character: Character, round: Int) {
+        guard round == Int.random(in: 5...15) else {
+            
+            return
+        }
         print("A chest with new weapons has appeared in front of you with a new weapon much stronger inside")
         let newWeapon = character.changeWeapon(character: character)
         character.weapon = newWeapon
         print("Now \(character.characterName) the \(character.type) is equiped with the new weapon \(newWeapon.weaponName)")
-        
     }
-    
-    func fighter() {
-        let attackingPlayer = players[0]
-        let defendingPlayer = players[1]
-        print("Round : \(round)")
-        print("\(attackingPlayer.name) choose your team member who will fight or heal (if you choose the Mage):\n")
-        displayTeamMembers(for: attackingPlayer)
-        
-        let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
-        if chooseCharacter is Mage {
-            if teamsLifeIsFull(in: attackingPlayer) {
-                fighter()
-            } else {
-                print("Choose a team member to heal in your team\n")
-                displayTeamMembers(for: attackingPlayer)
-                let healCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
-                
-                if healCharacter.lifePoints == healCharacter.maxLife {
-                    print("The character cannot be healed, because he has the maximum ❤️\n")
-                    fighter()
-                } else if healCharacter.lifePoints == 0 {
-                    print("You can't heal a dead character")
-                    fighter()
-                    
-                } else if healCharacter.lifePoints + chooseCharacter.damage > healCharacter.maxLife {
-                    healCharacter.lifePoints = healCharacter.maxLife
-                    print("\(healCharacter.characterName) has reached the max life: \(healCharacter.lifePoints) pts\n")
-                }
-                chooseCharacter.heal(healCharacter)
-            }
-        } else {
-            print("\(attackingPlayer.name) choose a team member of the opponent team to attack :\n")
-            displayTeamMembers(for: defendingPlayer)
-            
-            let opponentCharacter = defendingPlayer.selectCharacter(player: defendingPlayer)
-            
-            chooseCharacter.attack(opponentCharacter)
-        }
-    }
-
-    func fighterSwap() {
-        let attackingPlayer = players[1]
-        let defendingPlayer = players[0]
-        print("Round : \(round)")
-        print("\(attackingPlayer.name) choose your team member who will fight or heal (if you choose the Mage):\n")
-        
-        displayTeamMembers(for: attackingPlayer)
-        
-        let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
-        if chooseCharacter is Mage {
-            if teamsLifeIsFull(in: attackingPlayer) {
-                fighterSwap()
-            } else {
-                print("Choose a team member to heal in your team\n")
-                displayTeamMembers(for: attackingPlayer)
-                let healCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
-                
-                if healCharacter.lifePoints == healCharacter.maxLife {
-                    print("The character cannot be healed, because he has the maximum ❤️\n")
-                    fighterSwap()
-                } else if healCharacter.lifePoints == 0 {
-                    print("You can't heal a dead character")
-                    fighterSwap()
-                    
-                } else if healCharacter.lifePoints + chooseCharacter.damage > healCharacter.maxLife {
-                    healCharacter.lifePoints = healCharacter.maxLife
-                    print("\(healCharacter.characterName) has reached the max life: \(healCharacter.lifePoints) pts\n")
-                }
-                chooseCharacter.heal(healCharacter)
-            }
-        } else {
-            print("\(attackingPlayer.name) choose a team member of the opponent team to attack :\n")
-            displayTeamMembers(for: defendingPlayer)
-            
-            let opponentCharacter = defendingPlayer.selectCharacter(player: defendingPlayer)
-            
-            chooseCharacter.attack(opponentCharacter)
-        }
-        
-    }
-    private func checkWinner() {
-        checkIfMageIsOnly(for: 1)
-        checkIfMageIsOnly(for: 2)
-        if players[1].totalLifePoints == 0 {
-            displayRounds(for: 0)
-        } else if players[0].totalLifePoints == 0 {
-            displayRounds(for: 1)
-        }
-    }
-    
-    private func displayRounds(for playerIndex: Int) {
-        print("\(players[playerIndex].name) has won the game in \(round) rounds")
-    }
-
-    
-    private func checkIfMageIsOnly(for playerIndex: Int) {
-        for character in players[1].teamMembers {
-            if ((character is Warrior && character.lifePoints == 0) && (character is Giant && character.lifePoints == 0) && (character is Dwarf && character.lifePoints == 0)) && (character is Mage && character.lifePoints != 0) {
-                players[1].totalLifePoints = 0
-            }
-        }
-        for character in players[0].teamMembers {
-            if ((character is Warrior && character.lifePoints == 0) && (character is Giant && character.lifePoints == 0) && (character is Dwarf && character.lifePoints == 0)) && (character is Mage && character.lifePoints != 0) {
-                players[0].totalLifePoints = 0
-            }
-        }
-    }
+    ///
     func startGame() {
         //  range loop to create only 2 players
         for x in 0...1 {
@@ -178,6 +154,7 @@ class Game {
             player.chooseTeamCharacter()
         }
     }
+    
     static func gameInfos() { // Intro of the game, rules and welcome
         print("""
                                ⚔️⚔️⚔️     Welcome In the WarGame    ⚔️⚔️⚔️

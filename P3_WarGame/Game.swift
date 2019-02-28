@@ -13,7 +13,7 @@ class Game {
     var players = [Player]() // array of players
     var round = 1
     
-    func fight() {
+    public func fight() {
         //while players[0].totalLifePoints != 0 && players[1].totalLifePoints != 0 {
         while !players[0].teamMembers.isEmpty && !players[1].teamMembers.isEmpty {
             fighter(attackingPlayer: players[0], defendingPlayer: players[1], round: round)
@@ -27,26 +27,29 @@ class Game {
             round += 1
         }
     }
-    func checkWinner() -> Bool {
+    
+    private func checkWinner() -> Bool {
         checkIfMageIsOnly(for: 0)
         checkIfMageIsOnly(for: 1)
         if players[0].totalLifePoints == 0 {
-            print("\(players[1].name) has won the game in \(round) rounds")
+            print("\(players[1].name) has won the game in \(round) rounds\n")
             return true
         } else if players[1].totalLifePoints == 0 {
-            print("\(players[0].name) has won the game in \(round) rounds")
+            print("\(players[0].name) has won the game in \(round) rounds\n")
             return true
         }
         return false
     }
     
-    func fighter(attackingPlayer: Player, defendingPlayer: Player, round: Int) {
+    private func fighter(attackingPlayer: Player, defendingPlayer: Player, round: Int) {
+        let chest = BonusChest()
         
         print("Round : \(round)")
         print("\(attackingPlayer.name) choose your team member who will fight or heal (if you choose the Mage):\n")
         displayTeamMembers(for: attackingPlayer)
         
         let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
+        chest.bonusChest(character: chooseCharacter, round: 1)
         if chooseCharacter is Mage {
             if teamsLifeIsFull(in: attackingPlayer) {
                 fighter(attackingPlayer: attackingPlayer, defendingPlayer: defendingPlayer, round: round)
@@ -56,7 +59,7 @@ class Game {
                 let healCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
                 
                 if healCharacter.lifePoints == healCharacter.maxLife {
-                    print("The character cannot be healed, because he has the maximum ❤️\n")
+                    print("The character cannot be healed, because he has the maximum ♡\n")
                     fighter(attackingPlayer: attackingPlayer, defendingPlayer: defendingPlayer, round: round)
                 } else if healCharacter.lifePoints == 0 {
                     print("You can't heal a dead character")
@@ -78,7 +81,7 @@ class Game {
             
             removeMember(character: opponentCharacter, player: defendingPlayer)
         }
-        bonusChest(character: chooseCharacter, round: round)
+        
     }
     
     private func removeMember(character: Character, player: Player) {
@@ -102,7 +105,7 @@ class Game {
         }
     }
     
-    func teamsLifeIsFull(in player: Player) -> Bool {
+    private func teamsLifeIsFull(in player: Player) -> Bool {
         if getMaxLifePoints(in: player.teamMembers) == player.totalLifePoints {
             fullLifeError()
             
@@ -122,28 +125,18 @@ class Game {
     }
     
     private func fullLifeError() {
-        print("All characters are full life, you can't choose the Mage.")
+        print("All characters are full life, you can't choose the Mage.\n")
     }
     
     private func displayTeamMembers(for player: Player) {
         // enumerates the characters of the team members and prints each character along with its place in the team members
         for (i, character) in player.teamMembers.enumerated() {
-            print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ❤️ and the ability \(character.ability.abilityName).")
+            print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ♡ and the ability \(character.ability.abilityName).")
         }
     }
     
-    func bonusChest(character: Character, round: Int) {
-        guard round == Int.random(in: 5...15) else {
-            
-            return
-        }
-        print("A chest with new weapons has appeared in front of you with a new weapon much stronger inside")
-        let newWeapon = character.changeWeapon(character: character)
-        character.weapon = newWeapon
-        print("Now \(character.characterName) the \(character.type) is equiped with the new weapon \(newWeapon.weaponName)")
-    }
     ///
-    func startGame() {
+    public func startGame() {
         //  range loop to create only 2 players
         for x in 0...1 {
             print("Player \(x + 1)")
@@ -157,30 +150,38 @@ class Game {
     
     static func gameInfos() { // Intro of the game, rules and welcome
         print("""
-                               ⚔️⚔️⚔️     Welcome In the WarGame    ⚔️⚔️⚔️
-            First you'll have to name your team
-            Then, you'll have to choose 3 characters (in the list below) to your team
-            You will name each characters with a unique name"
-            And pick one ability that will increase the power of your character
-            
-            The characters are :
-            The warrior : He Has 100 ❤️, a sword with a damage of 10 points on the opponent ❤️
-            The giant : He Has 120 ❤️, a crossbow with a damage of 5 points on the opponent ❤️
-            The dwarf : He Has 80 ❤️, an axe with a damage of 20 points on the opponent ❤️
-            The mage : Doesn't have ❤️, but he has a scepter to heal one of your team member, and gives back 20 ❤️
-            
-            The abilities are :
-            Agility : Doesn't increase the damage but reduce the damage received of 30 ❤️
-            Endurance : Increase the damage of 10 points on the opponent ❤️, and reduce the damage received of 20 points
-            Strength : Increase the damage of 15 points on the opponent ❤️, and reduce the damage received of 15 points
-            
-            Then you'll choose a fighter and an opponent,
-            they will fight.
-            Your opponent will choose a fighter and one of your team member to attack,
-            they will fight.
-            It will be the end of a round.
-            It will goes like this till all of the members of one team will be dead
-                                  ⚔️⚔️⚔️      So let's FIGHT till DEATH"    ⚔️⚔️⚔️
+                                        ⚔️⚔️⚔️     Welcome In the WarGame    ⚔️⚔️⚔️
+                            1. Name your team
+                            2. Choose 3 characters (in the list below) to your team
+                            3. Name each characters with a unique name
+                            4. Pick one ability that will increase the power of your character
+                            
+                            The characters are :
+                            The warrior : 100 ♡ life points, a sword with a ⚔️ damage of 10 points on the opponent ♡
+                            The giant : 120 ♡ life points, a crossbow with a ⚔️ damage of 5 points on the opponent ♡
+                            The dwarf : 80 ♡ life points, an axe with a ⚔️ damage of 20 points on the opponent ♡
+                            The mage : 100 ♡ life points, he has a scepter to heal one of your team member, and gives back 20 ♡
+
+                            You can attack the Mage, but he can't attack... he can only heal one of your member
+                            If the Mage is the only member in your team, you will loose the game.
+                            
+                            The abilities are :
+                            Agility : Increase ⚔️ the damage of 10 points on the opponent ♡, and reduce 🛡 the damage received of 20 points
+                            Endurance : Increase ⚔️ the damage of 20 points on the opponent ♡, and reduce 🛡 the damage received of 10 points
+                            Strength : Increase ⚔️ the damage of 15 points on the opponent ♡, and reduce 🛡 the damage received of 15 points
+
+                            The damage of the ability for the Mage will increase his capacity to heal
+
+                            5. Choose a fighter and an opponent character, they will fight.
+                            6. Your opponent will choose a fighter and one of your team member to attack, they will fight.
+
+                            It will be the end of a round.
+
+                            A chest will appear with new weapons on a random round, one of your character will be equipped with this new weapon
+                            
+                            It will goes like this till all of the members of one team will be dead
+
+                                        ⚔️⚔️⚔️      So let's FIGHT till DEATH"    ⚔️⚔️⚔️
 
             """)
     }

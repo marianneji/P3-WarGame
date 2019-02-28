@@ -72,11 +72,11 @@ class Character: CustomStringConvertible { // variable description utilisée pou
             } else {
             // Infos of the attack
             print("""
-                \(target.characterName) the \(target.type) has lost \(damage) ❤️ from:
+                \(target.characterName) the \(target.type) has lost \(damage) ♡ from:
                 \(weapon.damage) of the \(weapon.weaponName) damages and \(ability.damage) of the \(ability.type) damages.
                                           BUT.... Hahaha
                 With his ability \(target.ability.abilityName), he has been protected of \(target.ability.damageReceived) pts
-                \(target.characterName) the \(target.type) has \(target.lifePoints) ❤️🛡⚔️🧙🏻‍♂️ !
+                \(target.characterName) the \(target.type) has \(target.lifePoints) ♡ !
                 
                 """)
             }
@@ -87,13 +87,14 @@ class Character: CustomStringConvertible { // variable description utilisée pou
         if (member.lifePoints + damage) > member.maxLife {
             member.lifePoints = member.maxLife
             //print("\(member.characterName) the \(member.type) has the maximum ❤️: \(member.lifePoints) pts\n")
-            
+
         } else {
             member.lifePoints += damage
             print("\(member.characterName) the \(member.type) has been restore his ❤️ with \(damage) points from :"
                 + "\n\(weapon.damage) of the mage scepter and \(ability.damage) of the \(ability.type)"
                 + "\n\(member.characterName) the \(member.type) has now \(member.lifePoints) ❤️\n")
         }
+        
     }
     
     func changeWeapon(character: Character) -> Weapon {
@@ -112,12 +113,11 @@ class Character: CustomStringConvertible { // variable description utilisée pou
             Weapon(weaponName: "Demon Scepter", damage: Int.random(in: 20...35), type: .Scepter),
         ]
         var randomWeapon = newWeapons.randomElement()
-        while character.weapon.type != character.weapon.type || character.weapon.weaponName == randomWeapon?.weaponName {
+        if character.weapon.type != randomWeapon?.type {
             randomWeapon = newWeapons.randomElement()
-            if character.weapon.type == randomWeapon?.type && character.weapon.weaponName != randomWeapon?.weaponName {
+        } else if character.weapon.type == randomWeapon?.type {
                 character.weapon = randomWeapon!
             }
-        }
         return randomWeapon!
-    }
+        }
 }

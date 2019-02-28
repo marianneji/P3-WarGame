@@ -53,9 +53,10 @@ class Player {
         let name = Player.input()
         return name
     }
-    // function to let player enter an Int (number)
+    // function to let player enter an Integer
     static func answerNumber() -> Int {
         let answerInt = readLine()
+        // if let to unwrapped safely
         if let unwrappedAnswer = answerInt {
             if let answerNumber = Int(unwrappedAnswer) {
                 return answerNumber

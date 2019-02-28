@@ -9,25 +9,29 @@
 import Foundation
 
 class Game {
-    
-    var players = [Player]() // array of players
+    // array of players create by the func starGame()
+    var players = [Player]()
     var round = 1
     
+    /// function fight called in the main.swift
     public func fight() {
-        //while players[0].totalLifePoints != 0 && players[1].totalLifePoints != 0 {
+        // while there is still memeber in the team
         while !players[0].teamMembers.isEmpty && !players[1].teamMembers.isEmpty {
             fighter(attackingPlayer: players[0], defendingPlayer: players[1], round: round)
             if checkWinner() {
+                // the game stop if there's a winner
                 break
             }
+            // swap of the function with the parameters
             fighter(attackingPlayer: players[1], defendingPlayer: players[0], round: round)
             if checkWinner() {
                 break
             }
+            //increment a round for every loop
             round += 1
         }
     }
-    
+    /// func to check winners
     private func checkWinner() -> Bool {
         checkIfMageIsOnly(for: 0)
         checkIfMageIsOnly(for: 1)
@@ -40,8 +44,9 @@ class Game {
         }
         return false
     }
-    
+    /// func to choose character betweew the 2 teams to fight
     private func fighter(attackingPlayer: Player, defendingPlayer: Player, round: Int) {
+        // constante to call the func bonusChest
         let chest = BonusChest()
         
         print("Round : \(round)")
@@ -63,10 +68,7 @@ class Game {
                 if healCharacter.lifePoints == healCharacter.maxLife {
                     print("The character cannot be healed, because he has the maximum ♡\n")
                     fighter(attackingPlayer: attackingPlayer, defendingPlayer: defendingPlayer, round: round)
-//                } else if healCharacter.lifePoints == 0 {
-//                    print("You can't heal a dead character")
-//                    fighter(attackingPlayer: attackingPlayer, defendingPlayer: defendingPlayer, round: round)
-                    
+
                 } else if healCharacter.lifePoints + chooseCharacter.damage > healCharacter.maxLife {
                     healCharacter.lifePoints = healCharacter.maxLife
                     print("\(healCharacter.characterName) has reached the max life: \(healCharacter.lifePoints) pts\n")
@@ -83,7 +85,6 @@ class Game {
             
             removeMember(character: opponentCharacter, player: defendingPlayer)
         }
-        
     }
     
     private func removeMember(character: Character, player: Player) {
@@ -92,7 +93,7 @@ class Game {
             for characterInTeam in player.teamMembers {
                 if characterInTeam.characterName == character.characterName {
                     player.teamMembers.remove(at: index)
-                    print("\(character.characterName) has been remove from \(player.name) team!!")
+                    print("💀💀💀\(character.characterName) has been remove from \(player.name) team!💀💀💀")
                 }
                 index += 1
             }

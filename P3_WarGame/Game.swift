@@ -93,7 +93,10 @@ class Game {
             for characterInTeam in player.teamMembers {
                 if characterInTeam.characterName == character.characterName {
                     player.teamMembers.remove(at: index)
-                    print("💀💀💀\(character.characterName) has been remove from \(player.name) team!💀💀💀")
+                    print("""
+                                        💀💀💀\(character.characterName) the \(character.type)  has been buried !💀💀💀
+                        
+                        """)
                 }
                 index += 1
             }

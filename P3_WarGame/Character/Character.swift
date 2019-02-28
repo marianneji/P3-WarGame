@@ -41,15 +41,16 @@ class Character: CustomStringConvertible { // variable description utilisée pou
     }
     /// function for the character to attack the opponent team
     func attack(_ target: Character) {
-        // cond to check that the ability does not give more life points
+        /* cond to check that the ability does not give more life points
+         if the damages are not strong enough */
         if target.ability.damageReceived >= damage  {
             target.ability.damageReceived = damage
             // Infos of the attack if the cond above is true
             print("""
                 
-                \(target.characterName) the \(target.type) has the ability \(target.ability.abilityName), he absorbs the damages caused :"
-                The attack has no effect, but he will not gain more ❤️.
-                \(target.characterName) have \(target.lifePoints) ❤️.
+                \(target.characterName) the \(target.type) has the ability \(target.ability.abilityName), he absorbs the \(damage) damages caused :"
+                The attack has no effect, but he will not gain more life.
+                \(target.characterName) still has \(target.lifePoints) ❤️.
                 
                 """)
         } else {

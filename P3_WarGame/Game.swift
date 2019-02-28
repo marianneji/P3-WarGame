@@ -49,7 +49,9 @@ class Game {
         displayTeamMembers(for: attackingPlayer)
         
         let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
-        chest.bonusChest(character: chooseCharacter, round: 1)
+        
+        chest.bonusChest(character: chooseCharacter, round: round)
+        
         if chooseCharacter is Mage {
             if teamsLifeIsFull(in: attackingPlayer) {
                 fighter(attackingPlayer: attackingPlayer, defendingPlayer: defendingPlayer, round: round)
@@ -61,9 +63,9 @@ class Game {
                 if healCharacter.lifePoints == healCharacter.maxLife {
                     print("The character cannot be healed, because he has the maximum ♡\n")
                     fighter(attackingPlayer: attackingPlayer, defendingPlayer: defendingPlayer, round: round)
-                } else if healCharacter.lifePoints == 0 {
-                    print("You can't heal a dead character")
-                    fighter(attackingPlayer: attackingPlayer, defendingPlayer: defendingPlayer, round: round)
+//                } else if healCharacter.lifePoints == 0 {
+//                    print("You can't heal a dead character")
+//                    fighter(attackingPlayer: attackingPlayer, defendingPlayer: defendingPlayer, round: round)
                     
                 } else if healCharacter.lifePoints + chooseCharacter.damage > healCharacter.maxLife {
                     healCharacter.lifePoints = healCharacter.maxLife
@@ -177,7 +179,7 @@ class Game {
 
                             It will be the end of a round.
 
-                            A chest will appear with new weapons on a random round, one of your character will be equipped with this new weapon
+                            A chest might appear with new weapons on a random round, one of your character will be equipped with this new weapon
                             
                             It will goes like this till all of the members of one team will be dead
 

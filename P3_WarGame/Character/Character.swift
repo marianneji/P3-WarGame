@@ -110,6 +110,7 @@ class Character: CustomStringConvertible { // variable description utilisée pou
     }
     /// func to change weapon of the chosen character
     func changeWeapon(character: Character) -> Weapon {
+        // array of new weapons
         let newWeapons = [
             Weapon(weaponName: "Bow", damage: Int.random(in: 20...35), type: .Crossbow),
             Weapon(weaponName: "Red Crossbow", damage: Int.random(in: 20...35), type: .Crossbow),

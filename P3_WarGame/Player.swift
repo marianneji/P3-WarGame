@@ -20,11 +20,11 @@ class Player {
     // computed property for total life points of the team members
     var totalLifePoints: Int {
         get {
-        var sum = 0
-        for character in teamMembers {
-            sum += character.lifePoints
-        }
-        return sum
+            var sum = 0
+            for character in teamMembers {
+                sum += character.lifePoints
+            }
+            return sum
         }
         set {}
         
@@ -66,16 +66,16 @@ class Player {
         return answerNumber()
     }
     // player has to choose 3 characters in the list
-    func chooseTeamCharacter() {
+    public func chooseTeamCharacter() {
         // this menu will repeat while team members count is equal to 3
         while teamMembers.count < 3 {
             print("""
                 
                 \(name) Choose a character between :
-                1. Warrior
-                2. Giant
-                3. Dwarf
-                4. Mage
+                1. Warrior: 100 ♡/ sword: 10 ⚔️
+                2. Giant: 120 ♡/ Crossbow: 5 ⚔️
+                3. Dwarf: 80 ♡/ Axe: 20 ⚔️
+                4. Mage: 100 ♡/ Scepter: 20 ⚔️
                 """)
             
             let choice = Player.answerNumber()
@@ -133,23 +133,26 @@ class Player {
         return true
     }
     
-    func chooseAbility(character: Character) {
-        print("Choose an ability, it will apply on your member \(character.characterName) the \(character.type)"  + "\n"
-            + "\n1. Agility, increase the damage by 5 ❤️ and reduce the damage received by 25 ❤️ "
-            + "\n2. Endurance, increase the damage by 20 ❤️ and reduce the damage received by 10 ❤️"
-            + "\n3. Strength, increase the damage by 15 ❤️ and reduce the damage received by 15 ❤️")
+    private func chooseAbility(character: Character) {
+        print("""
+            
+            \(name) choose an ability, it will apply on your member \(character.characterName) the \(character.type)
+            1. Agility, ⚔️: 10 ♡ / 🛡: 20 ♡
+            2. Endurance, ⚔️: 20 ♡ / 🛡: 10 ♡
+            3. Strength, ⚔️: 15 ♡ / 🛡: 15 ♡
+            """)
         
         let choice = Player.answerNumber()
         switch choice {
         case 1:
             character.ability = Agility()
-            print("The ability Agility has been added to your member \(character.characterName) the \(character.type)")
+            print("\(name) The ability Agility has been added to your member \(character.characterName) the \(character.type)")
         case 2:
             character.ability = Endurance()
-            print("The ability Endurance has been added to your member \(character.characterName) the \(character.type)")
+            print("\(name) The ability Endurance has been added to your member \(character.characterName) the \(character.type)")
         case 3:
             character.ability = Strength()
-            print("The ability Strength has been added to your member \(character.characterName) the \(character.type)")
+            print("\(name) The ability Strength has been added to your member \(character.characterName) the \(character.type)")
         default:
             print("This not a valid choice, please enter 1, 2 or 3"
                 + "\n")
@@ -157,27 +160,34 @@ class Player {
         }
     }
     
-    func selectCharacter(player: Player) -> Character {
+    public func selectCharacter(player: Player) -> Character {
         // var choosecharacter of type character
         var chooseCharacter = Character()
         let choice = Player.answerNumber()
         
-            switch choice {
-            case 0:
-                chooseCharacter = teamMembers[0]
-                print("You have chosen \(teamMembers[0].characterName) the \(teamMembers[0].type) - [\(teamMembers[0].lifePoints)❤️/\(teamMembers[0].maxLife) max ❤️] - \(teamMembers[0].ability.abilityName) ability!\n")
-            case 1:
-                chooseCharacter = teamMembers[1]
-                print("You have chosen \(teamMembers[1].characterName) the \(teamMembers[1].type) - [\(teamMembers[1].lifePoints)❤️/\(teamMembers[1].maxLife) max ❤️] - \(teamMembers[1].ability.abilityName) ability!\n")
-            case 2:
-                chooseCharacter = teamMembers[2]
-                print("You have chosen \(teamMembers[2].characterName) the \(teamMembers[2].type) - [\(teamMembers[2].lifePoints)❤️/\(teamMembers[2].maxLife) max ❤️] - \(teamMembers[2].ability.abilityName) ability!\n")
-                
-            default:
-                print("Choose a character between the list above (0, 1 or 2).")
-                return selectCharacter(player: player)
-            }
-        
+        switch choice {
+        case 0:
+            chooseCharacter = teamMembers[0]
+            print("""
+                You have chosen \(teamMembers[0].characterName) the \(teamMembers[0].type) - [\(teamMembers[0].lifePoints)♡/\(teamMembers[0].maxLife) max ♡] -
+                \(teamMembers[0].ability.abilityName) ability: ⚔️ \(teamMembers[0].ability.damage)/ 🛡 \(teamMembers[0].ability.damageReceived)!\n
+                """)
+        case 1:
+            chooseCharacter = teamMembers[1]
+            print("""
+                You have chosen \(teamMembers[1].characterName) the \(teamMembers[1].type) - [\(teamMembers[1].lifePoints)♡/\(teamMembers[1].maxLife) max ♡] -
+                \(teamMembers[1].ability.abilityName) ability: ⚔️ \(teamMembers[1].ability.damage)/ 🛡 \(teamMembers[1].ability.damageReceived)!\n
+                """)
+        case 2:
+            chooseCharacter = teamMembers[2]
+            print("""
+                You have chosen \(teamMembers[2].characterName) the \(teamMembers[2].type) - [\(teamMembers[2].lifePoints)♡/\(teamMembers[2].maxLife) max ♡] -
+                \(teamMembers[2].ability.abilityName) ability: ⚔️ \(teamMembers[2].ability.damage)/ 🛡 \(teamMembers[2].ability.damageReceived)!\n
+                """)
+        default:
+            print("Choose a character between the list above.")
+            return selectCharacter(player: player)
+        }
         if player.teamMembers[choice].lifePoints == 0 {
             print("You can't choose or heal a dead character, please select a character alive.")
             return selectCharacter(player: player)

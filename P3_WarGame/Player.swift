@@ -133,7 +133,7 @@ class Player {
         Player.uniqueName.append(names)
         return true
     }
-    
+    /// add ability to character
     private func chooseAbility(character: Character) {
         print("""
             

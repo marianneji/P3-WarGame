@@ -22,6 +22,6 @@ class Weapon {
         self.type = type
     }
     convenience init() {
-        self.init(weaponName: "", damage: 0, type: .Axe)
+        self.init(weaponName: "", damage: 0, type: .Sword)
     }
 }

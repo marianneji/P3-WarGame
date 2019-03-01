@@ -184,7 +184,7 @@ class Player {
             chooseCharacter = teamMembers[1]
             infosSelectCharacter(for: 1)
         case 2:
-            if player.teamMembers.count == 2 {
+            if player.teamMembers.count == 2 || player.teamMembers.count == 1 {
                 switch choice {
                 case 0:
                     chooseCharacter = teamMembers[0]
@@ -203,12 +203,12 @@ class Player {
             print("Choose a character in the list above.")
             return selectCharacter(player: player)
         }
-        
         return chooseCharacter
     }
+    
     func infosSelectCharacter(for index: Int) {
         print("""
-            You have chosen \(teamMembers[index].characterName) the \(teamMembers[index].type) - \(teamMembers[index].lifePoints) ♡/\(teamMembers[index].maxLife) max ♡ - \(teamMembers[index].weapon.weaponName): ⚔️ \(teamMembers[index].weapon.damage)
+            You have selected \(teamMembers[index].characterName) the \(teamMembers[index].type) - \(teamMembers[index].lifePoints) ♡/\(teamMembers[index].maxLife) max ♡ - \(teamMembers[index].weapon.weaponName): ⚔️ \(teamMembers[index].weapon.damage)
             \(teamMembers[index].ability.abilityName) ability: ⚔️ \(teamMembers[index].ability.damage)/ 🛡 \(teamMembers[index].ability.damageReceived)!\n
             """)
     }

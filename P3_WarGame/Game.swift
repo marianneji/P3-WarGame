@@ -66,12 +66,12 @@ class Game {
                 let healCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
                 
                 if healCharacter.lifePoints == healCharacter.maxLife {
-                    print("The character cannot be healed, because he has the maximum ♡\n")
+                    print("The character cannot be healed, because he has the maximum ❤️\n")
                     fighter(attackingPlayer: attackingPlayer, defendingPlayer: defendingPlayer, round: round)
 
                 } else if healCharacter.lifePoints + chooseCharacter.damage > healCharacter.maxLife {
                     healCharacter.lifePoints = healCharacter.maxLife
-                    print("\(healCharacter.characterName) has reached the max life: \(healCharacter.lifePoints) pts\n")
+                    print("\(healCharacter.characterName) the \(healCharacter.type) has reached the max life: \(healCharacter.lifePoints) ❤️\n")
                 }
                 chooseCharacter.heal(healCharacter)
             }
@@ -94,7 +94,7 @@ class Game {
                 if characterInTeam.characterName == character.characterName {
                     player.teamMembers.remove(at: index)
                     print("""
-                                        💀💀💀\(character.characterName) the \(character.type)  has been buried !💀💀💀
+                                        💀💀💀 \(character.characterName) the \(character.type) has been buried ! 💀💀💀
                         
                         """)
                 }
@@ -137,7 +137,7 @@ class Game {
     private func displayTeamMembers(for player: Player) {
         // enumerates the characters of the team members and prints each character along with its place in the team members
         for (i, character) in player.teamMembers.enumerated() {
-            print("\(i) = \(character.characterName) the \(character.type) with \(character.lifePoints) ♡ and the ability \(character.ability.abilityName).")
+            print("\(i). \(character.characterName) the \(character.type): \(character.lifePoints) ♡ / \(character.weapon.weaponName): ⚔️ \(character.weapon.damage) / \(character.ability.abilityName): ⚔️ \(character.ability.damage), 🛡 \(character.ability.damageReceived).")
         }
     }
     

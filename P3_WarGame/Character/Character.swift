@@ -29,7 +29,7 @@ class Character: CustomStringConvertible { // variable description utilisée pou
         return type.rawValue
     }
     convenience init() {
-        self.init(lifePoints: 0, maxLife: 0, characterName: "", weapon: Weapon(weaponName: "", damage: 0, type: .Axe), type: .warrior, ability: Endurance())
+        self.init(lifePoints: 0, maxLife: 0, characterName: "", weapon: Weapon(weaponName: "", damage: 0, type: .Sword), type: .warrior, ability: Endurance())
     }
     init(lifePoints: Int,maxLife: Int, characterName: String, weapon: Weapon, type: CharacterType, ability: Ability) {
         self.lifePoints = lifePoints
@@ -65,30 +65,30 @@ class Character: CustomStringConvertible { // variable description utilisée pou
             }
             // get only computed property to get the result of the attack for the print of the attack
             var resultOfTheAttack: Int {
-                    return damage - target.ability.damageReceived
+                return damage - target.ability.damageReceived
             }
             // substraction of the computed properties to obtain the new value of target life
             targetProtectionAbility -= damage
             // condition if the character has more damage to his life
             if target.lifePoints <= 0 {
                 print("""
-                                    💀💀💀\(target.characterName) the \(target.type) is dead !💀💀💀
+                                        💀💀💀 \(target.characterName) the \(target.type) is dead ! 💀💀💀
                     His ability \(target.ability.abilityName) was not strong enough to protect him from the \(resultOfTheAttack) damages caused !
                     
                     """)
                 target.lifePoints = 0
                 
             } else {
-            // Infos of the attack
-            print("""
-                
-                \(target.characterName) the \(target.type) has lost \(resultOfTheAttack) ❤️ from:
-                \(weapon.damage) of the \(weapon.weaponName) damages and \(ability.damage) of the \(ability.type) damages.
-                                          BUT....
-                With his ability \(target.ability.abilityName), he has been protected of \(target.ability.damageReceived) pts
-                \(target.characterName) the \(target.type) have \(target.lifePoints) ❤️ !
-                
-                """)
+                // Infos of the attack
+                print("""
+                    
+                    \(target.characterName) the \(target.type) has lost \(resultOfTheAttack) ❤️ from:
+                    \(weapon.damage) of the \(weapon.weaponName) damages and \(ability.damage) of the \(ability.type) damages.
+                                                    BUT....
+                    With his ability \(target.ability.abilityName), he has been protected of \(target.ability.damageReceived) pts
+                    \(target.characterName) the \(target.type) have \(target.lifePoints) ❤️ !
+                    
+                    """)
             }
         }
     }
@@ -108,29 +108,5 @@ class Character: CustomStringConvertible { // variable description utilisée pou
                 """)
         }
     }
-    /// func to change weapon of the chosen character
-    func changeWeapon(character: Character) -> Weapon {
-        // array of new weapons
-        let newWeapons = [
-            Weapon(weaponName: "Bow", damage: Int.random(in: 20...35), type: .Crossbow),
-            Weapon(weaponName: "Red Crossbow", damage: Int.random(in: 20...35), type: .Crossbow),
-            Weapon(weaponName: "Magic Crossbow", damage: Int.random(in: 20...35), type: .Crossbow),
-            Weapon(weaponName: "Longsword", damage: Int.random(in: 20...35), type: .Sword),
-            Weapon(weaponName: "King Sword", damage: Int.random(in: 20...35), type: .Sword),
-            Weapon(weaponName: "Sword of Fortune", damage: Int.random(in: 20...35), type: .Sword),
-            Weapon(weaponName: "Battle Axe", damage: Int.random(in: 20...35), type: .Axe),
-            Weapon(weaponName: "Red Axe", damage: Int.random(in: 20...35), type: .Axe),
-            Weapon(weaponName: "Axe of Fury", damage: Int.random(in: 20...35), type: .Axe),
-            Weapon(weaponName: "Magic Wand", damage: Int.random(in: 20...35), type: .Scepter),
-            Weapon(weaponName: "Black Wand", damage: Int.random(in: 20...35), type: .Scepter),
-            Weapon(weaponName: "Demon Scepter", damage: Int.random(in: 20...35), type: .Scepter),
-        ]
-        var randomWeapon = newWeapons.randomElement()
-        if character.weapon.type != randomWeapon?.type {
-            randomWeapon = newWeapons.randomElement()
-        } else if character.weapon.type == randomWeapon?.type {
-                character.weapon = randomWeapon!
-            }
-        return randomWeapon!
-        }
+    
 }

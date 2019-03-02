@@ -10,20 +10,20 @@ import Foundation
 
 class Game {
     // array of players create by the func starGame()
-    var players = [Player]()
+    var player = [Player]()
     var round = 1
     
     /// function fight called in the main.swift
     public func fight() {
         // while there is still memeber in the team
-        while !players[0].teamMembers.isEmpty && !players[1].teamMembers.isEmpty {
-            fighter(attackingPlayer: players[0], defendingPlayer: players[1], round: round)
+        while !player[0].teamMembers.isEmpty && !player[1].teamMembers.isEmpty {
+            fighter(attackingPlayer: player[0], defendingPlayer: player[1], round: round)
             if checkWinner() {
                 // the game stop if there's a winner
                 break
             }
             // swap of the function with the parameters
-            fighter(attackingPlayer: players[1], defendingPlayer: players[0], round: round)
+            fighter(attackingPlayer: player[1], defendingPlayer: player[0], round: round)
             if checkWinner() {
                 break
             }
@@ -35,14 +35,39 @@ class Game {
     private func checkWinner() -> Bool {
         checkIfMageIsOnly(for: 0)
         checkIfMageIsOnly(for: 1)
-        if players[0].totalLifePoints == 0 {
-            print("\(players[1].name) has won the game in \(round) rounds\n")
+        if player[0].totalLifePoints == 0 {
+            congratsWinner(for: 1)
             return true
-        } else if players[1].totalLifePoints == 0 {
-            print("\(players[0].name) has won the game in \(round) rounds\n")
+        } else if player[1].totalLifePoints == 0 {
+           congratsWinner(for: 0)
             return true
         }
         return false
+    }
+    private func congratsWinner(for index: Int) {
+        print("""
+                        ⭐️⭐️⭐️⭐️ \(player[index].name) has won the game in \(round) rounds ⭐️⭐️⭐️⭐️
+            
+                                    These are his members alive:
+            """)
+        displayTeamMembersAlive(for: index)
+        print("""
+                                ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
+                
+                                    THANKS FOR PLAYING, PLEASE RATE THIS APP 🤣
+                """)
+    }
+    
+    private func displayTeamMembersAlive(for index: Int) {
+        // enumerates the characters of the team members and prints each character along with its place in the team members
+        for (_, character) in player[index].teamMembers.enumerated() {
+            print("""
+                
+                                        \(character.characterName) the \(character.type): \(character.lifePoints) ♡ / \(character.weapon.weaponName): ⚔️ \(character.weapon.damage) / \(character.ability.abilityName)
+                
+                
+                """)
+        }
     }
     /// func to choose character betweew the 2 teams to fight
     private func fighter(attackingPlayer: Player, defendingPlayer: Player, round: Int) {
@@ -94,6 +119,7 @@ class Game {
                 if characterInTeam.characterName == character.characterName {
                     player.teamMembers.remove(at: index)
                     print("""
+                                                            \(player.name)
                                         💀💀💀 \(character.characterName) the \(character.type) has been buried ! 💀💀💀
                         
                         """)
@@ -104,9 +130,9 @@ class Game {
     }
     
     private func checkIfMageIsOnly(for index: Int) {
-        if players[index].teamMembers.count == 1 {
-            if players[index].teamMembers[0] is Mage {
-                players[index].teamMembers.remove(at: 0)
+        if player[index].teamMembers.count == 1 {
+            if player[index].teamMembers[0] is Mage {
+                player[index].teamMembers.remove(at: 0)
             }
         }
     }
@@ -141,26 +167,25 @@ class Game {
         }
     }
     
-    ///
+    /// initiate players
     public func startGame() {
-        //  range loop to create only 2 players
+        //  range loop to create 2 players only
         for x in 0...1 {
             print("Player \(x + 1)")
             
-            let player = Player(name: Player.createPlayerName())
-            players.append(player)
-            
-            player.chooseTeamCharacter()
+            let players = Player(name: Player.createPlayerName())
+            player.append(players)
+            players.chooseTeamCharacter()
         }
     }
-    
-    static func gameInfos() { // Intro of the game, rules and welcome
+    /// Intro of the game, rules and welcome
+    static func gameInfos() {
         print("""
                                         ⚔️⚔️⚔️     Welcome In the WarGame    ⚔️⚔️⚔️
                             1. Name your team
                             2. Choose 3 characters (in the list below) to your team
                             3. Name each characters with a unique name
-                            4. Pick one ability that will increase the power of your character
+                            4. Pick one ability for each character that will increase his power
                             
                             The characters are :
                             The warrior : 100 ♡ life points, a sword with a ⚔️ damage of 10 points on the opponent ♡

@@ -9,6 +9,6 @@
 import Foundation
 class Endurance: Ability {
     init() {
-        super.init(abilityName: "\"Endurance\"", damage: 20, damageReceived: 10, type: .endurance)
+        super.init(abilityName: "\"Endurance\"", damage: 20, damageReceived: 10)
     }
 }

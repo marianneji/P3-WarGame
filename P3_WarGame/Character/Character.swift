@@ -9,10 +9,10 @@
 import Foundation
 
 enum CharacterType: String { 
-    case warrior, giant, dwarf, mage
+    case Warrior, Giant, Dwarf, Mage
 }
 
-class Character: CustomStringConvertible { // variable description utilisée pour transformer la classe en string
+class Character {
     // instance of character class
     var lifePoints: Int 
     let maxLife: Int
@@ -25,11 +25,9 @@ class Character: CustomStringConvertible { // variable description utilisée pou
         let totalDamage = weapon.damage + ability.damage
         return totalDamage
     }
-    var description: String {
-        return type.rawValue
-    }
+   
     convenience init() {
-        self.init(lifePoints: 0, maxLife: 0, characterName: "", weapon: Weapon(weaponName: "", damage: 0, type: .Sword), type: .warrior, ability: Endurance())
+        self.init(lifePoints: 0, maxLife: 0, characterName: "", weapon: Weapon(weaponName: "", damage: 0, type: .Sword), type: .Warrior, ability: Endurance())
     }
     init(lifePoints: Int,maxLife: Int, characterName: String, weapon: Weapon, type: CharacterType, ability: Ability) {
         self.lifePoints = lifePoints
@@ -83,7 +81,7 @@ class Character: CustomStringConvertible { // variable description utilisée pou
                 print("""
                     
                     \(target.characterName) the \(target.type) has lost \(resultOfTheAttack) ❤️ from:
-                    \(weapon.damage) of the \(weapon.weaponName) damages and \(ability.damage) of the \(ability.type) damages.
+                    \(weapon.damage) of the \(weapon.weaponName) damages and \(ability.damage) of the \(ability.abilityName) damages.
                                                     BUT....
                     With his ability \(target.ability.abilityName), he has been protected of \(target.ability.damageReceived) pts
                     \(target.characterName) the \(target.type) have \(target.lifePoints) ❤️ !
@@ -102,7 +100,7 @@ class Character: CustomStringConvertible { // variable description utilisée pou
             print("""
                 
                 \(member.characterName) the \(member.type) has been restore his ❤️ with \(damage) points from :
-                \(weapon.damage) of the mage \(weapon.weaponName) and \(ability.damage) of the \(ability.type)
+                \(weapon.damage) of the mage \(weapon.weaponName) and \(ability.damage) of the \(ability.abilityName)
                 \(member.characterName) the \(member.type) has now \(member.lifePoints) ❤️
                 
                 """)

@@ -113,7 +113,20 @@ class Player {
             }
         }
         // showing to the player his team members
-        print("\nThere is your team : \(teamMembers)\n")
+        showTeamMembers()
+    }
+    
+    private func showTeamMembers() {
+        print("""
+            
+                                    ⭐️⭐️⭐️⭐️ There is your team, \(name) ⭐️⭐️⭐️⭐️
+            
+                                    \(teamMembers[0].characterName) the \(teamMembers[0].type), \(teamMembers[1].characterName) the \(teamMembers[1].type), \(teamMembers[2].characterName) the \(teamMembers[2].type)
+            
+                                            ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
+            
+            """)
+        
     }
     // static function to create a name for his team members...it will be called in the Characters subclass
     static func createCharacterName() -> String {
@@ -159,10 +172,11 @@ class Player {
             chooseAbility(character: character)
         }
     }
-    
+    ///
     public func selectCharacter(player: Player) -> Character {
         // var choosecharacter of type character
         var chooseCharacter = Character()
+        // call the static func answerNumber() to let player enter a choice
         let choice = Player.answerNumber()
         
         switch choice {
@@ -170,6 +184,7 @@ class Player {
             chooseCharacter = teamMembers[0]
             infosSelectCharacter(for: 0)
         case 1:
+            // condition if there is only 1 member in the team
             if player.teamMembers.count == 1 {
                 switch choice {
                 case 0:
@@ -184,6 +199,7 @@ class Player {
             chooseCharacter = teamMembers[1]
             infosSelectCharacter(for: 1)
         case 2:
+            // condition if there is 1 or 2 members in the team
             if player.teamMembers.count == 2 || player.teamMembers.count == 1 {
                 switch choice {
                 case 0:
@@ -205,7 +221,7 @@ class Player {
         }
         return chooseCharacter
     }
-    
+    /// display the selected character and his quality
     func infosSelectCharacter(for index: Int) {
         print("""
             You have selected \(teamMembers[index].characterName) the \(teamMembers[index].type) - \(teamMembers[index].lifePoints) ♡/\(teamMembers[index].maxLife) max ♡ - \(teamMembers[index].weapon.weaponName): ⚔️ \(teamMembers[index].weapon.damage)

@@ -10,6 +10,6 @@ import Foundation
 
 class Warrior: Character {
     init() {
-        super.init(lifePoints: 100, maxLife: 100, characterName: Player.createCharacterName() , weapon: Sword(), type: .warrior, ability: Ability())
+        super.init(lifePoints: 100, maxLife: 100, characterName: Player.createCharacterName() , weapon: Sword(), type: .Warrior, ability: Ability())
     }
 }

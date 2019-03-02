@@ -95,6 +95,7 @@ class Character {
         // condition not to exceed the character maxLife
         if (member.lifePoints + damage) > member.maxLife {
             member.lifePoints = member.maxLife
+            print("\(member.characterName) the \(member.type) has reached the max ❤️ : \(member.maxLife)\n")
         } else {
             member.lifePoints += damage
             print("""
@@ -106,5 +107,4 @@ class Character {
                 """)
         }
     }
-    
 }

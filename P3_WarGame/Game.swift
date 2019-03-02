@@ -7,7 +7,9 @@
 //
 
 import Foundation
-
+/* The class game contains all the methods to introduce, initiate the players,
+ and the fight. It is called in the main
+ */
 class Game {
     // array of players create by the func starGame()
     var player = [Player]()
@@ -15,9 +17,11 @@ class Game {
     
     /// function fight called in the main.swift
     public func fight() {
-        // while there is still memeber in the team
+        // while there is still at least one member in the team
         while !player[0].teamMembers.isEmpty && !player[1].teamMembers.isEmpty {
+            // method to let the player select the characters and attack or heal
             fighter(attackingPlayer: player[0], defendingPlayer: player[1], round: round)
+            // method to check if there's still a member in the teams and stop the game
             if checkWinner() {
                 // the game stop if there's a winner
                 break
@@ -31,10 +35,12 @@ class Game {
             round += 1
         }
     }
-    /// func to check winners
+    /// func to check winners returns a bool: true the game stop/ false the game continue
     private func checkWinner() -> Bool {
+        // check in each team if the mage is only
         checkIfMageIsOnly(for: 0)
         checkIfMageIsOnly(for: 1)
+        // condition to stop the game if the total life points of the team is egual to 0
         if player[0].totalLifePoints == 0 {
             congratsWinner(for: 1)
             return true
@@ -44,6 +50,7 @@ class Game {
         }
         return false
     }
+    /// Method to show the winner with his team member alive
     private func congratsWinner(for index: Int) {
         print("""
                         ⭐️⭐️⭐️⭐️ \(player[index].name) has won the game in \(round) rounds ⭐️⭐️⭐️⭐️
@@ -57,13 +64,13 @@ class Game {
                                     THANKS FOR PLAYING, PLEASE RATE THIS APP 🤣
                 """)
     }
-    
+    /// show the members alive of the winner player
     private func displayTeamMembersAlive(for index: Int) {
         // enumerates the characters of the team members and prints each character along with its place in the team members
         for (_, character) in player[index].teamMembers.enumerated() {
             print("""
                 
-                                        \(character.characterName) the \(character.type): \(character.lifePoints) ♡ / \(character.weapon.weaponName): ⚔️ \(character.weapon.damage) / \(character.ability.abilityName)
+                                \(character.characterName) the \(character.type): \(character.lifePoints) ♡ / \(character.weapon.weaponName) / \(character.ability.abilityName)
                 
                 
                 """)
@@ -86,13 +93,20 @@ class Game {
             if teamsLifeIsFull(in: attackingPlayer) {
                 fighter(attackingPlayer: attackingPlayer, defendingPlayer: defendingPlayer, round: round)
             } else {
-                print("Choose a team member to heal in your team\n")
+                print("\(attackingPlayer.name) choose a team member to heal in your team\n")
                 displayTeamMembers(for: attackingPlayer)
-                let healCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
+                var healCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
                 
                 if healCharacter.lifePoints == healCharacter.maxLife {
-                    print("The character cannot be healed, because he has the maximum ❤️\n")
-                    fighter(attackingPlayer: attackingPlayer, defendingPlayer: defendingPlayer, round: round)
+                    print("""
+                        The character cannot be healed, because he has the maximum ❤️: \(healCharacter.maxLife)
+                        You can select someone else to heal.
+                        
+                        \(attackingPlayer.name) choose a team member to heal in your team
+                        
+                        """)
+                    displayTeamMembers(for: attackingPlayer)
+                    healCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
 
                 } else if healCharacter.lifePoints + chooseCharacter.damage > healCharacter.maxLife {
                     healCharacter.lifePoints = healCharacter.maxLife
@@ -111,7 +125,7 @@ class Game {
             removeMember(character: opponentCharacter, player: defendingPlayer)
         }
     }
-    
+    ///
     private func removeMember(character: Character, player: Player) {
         var index = 0
         if character.lifePoints == 0 {
@@ -136,17 +150,17 @@ class Game {
             }
         }
     }
-    
+    ///
     private func teamsLifeIsFull(in player: Player) -> Bool {
         if getMaxLifePoints(in: player.teamMembers) == player.totalLifePoints {
-            fullLifeError()
             
+            print("All characters are full life, you can't choose the Mage.\n")
             return true
         } else {
             return false
         }
     }
-    
+    ///
     private func getMaxLifePoints(in team: [Character]) -> Int {
         var total = Int()
         
@@ -155,11 +169,7 @@ class Game {
         }
         return total
     }
-    
-    private func fullLifeError() {
-        print("All characters are full life, you can't choose the Mage.\n")
-    }
-    
+    /// show all the team members before the selection
     private func displayTeamMembers(for player: Player) {
         // enumerates the characters of the team members and prints each character along with its place in the team members
         for (i, character) in player.teamMembers.enumerated() {

@@ -45,7 +45,7 @@ class Game {
             congratsWinner(for: 1)
             return true
         } else if player[1].totalLifePoints == 0 {
-           congratsWinner(for: 0)
+            congratsWinner(for: 0)
             return true
         }
         return false
@@ -53,26 +53,30 @@ class Game {
     /// Method to show the winner with his team member alive
     private func congratsWinner(for index: Int) {
         print("""
+                        ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
+            
                         ⭐️⭐️⭐️⭐️ \(player[index].name) has won the game in \(round) rounds ⭐️⭐️⭐️⭐️
             
-                                    These are his members alive:
+                                            Special thanks to :
             
             """)
         displayTeamMembersAlive(for: index)
         print("""
-
-                                ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
-                
+            
+                                         for this incredible fight
+            
+                                ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
+            
                                   THANKS FOR PLAYING, PLEASE RATE THIS APP 🤣
-                
-                """)
+            
+            """)
     }
     /// show the members alive of the winner
     private func displayTeamMembersAlive(for index: Int) {
         // enumerates the characters of the team members and prints each character along with its place in the team members
         for (_, character) in player[index].teamMembers.enumerated() {
             print("""
-                                    \(character.characterName) the \(character.type): \(character.lifePoints) ♡ / \(character.weapon.weaponName) / \(character.ability.abilityName)
+                                        \(character.characterName) the \(character.type): \(character.lifePoints) ♡ / \(character.weapon.weaponName) / \(character.ability.abilityName),
                 """)
         }
     }
@@ -145,8 +149,8 @@ class Game {
                     // removing the character at the index
                     player.teamMembers.remove(at: index)
                     print("""
-                                                            \(player.name)
-                                        💀💀💀 \(character.characterName) the \(character.type) has been buried ! 💀💀💀
+                                                        Sorry for your loss, \(player.name)
+                                            💀💀💀 \(character.characterName) the \(character.type) has been buried ! 💀💀💀
                         
                         """)
                 }

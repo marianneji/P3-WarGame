@@ -229,8 +229,8 @@ class Game {
                             
                             The abilities are :
                             Agility : Increase ⚔️ the damage of 10 points on the opponent ♡, and reduce 🛡 the damage received of 20 points
-                            Endurance : Increase ⚔️ the damage of 20 points on the opponent ♡, and reduce 🛡 the damage received of 10 points
-                            Strength : Increase ⚔️ the damage of 15 points on the opponent ♡, and reduce 🛡 the damage received of 15 points
+                            Endurance : Increase ⚔️ the damage of 15 points on the opponent ♡, and reduce 🛡 the damage received of 15 points
+                            Strength : Increase ⚔️ the damage of 20 points on the opponent ♡, and reduce 🛡 the damage received of 10 points
 
                             The damage of the ability for the Mage will increase his capacity to heal
 

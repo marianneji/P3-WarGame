@@ -10,6 +10,6 @@ import Foundation
 // class Endurance inherit from Ability
 class Endurance: Ability {
     init() {
-        super.init(abilityName: "\"Endurance\"", damage: 20, damageReceived: 10)
+        super.init(abilityName: "\"Endurance\"", damage: 15, damageReceived: 15)
     }
 }

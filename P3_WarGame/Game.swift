@@ -8,14 +8,14 @@
 
 import Foundation
 /* The class game contains all the methods to introduce, initiate the players,
- and the fight. It is called in the main
+ and the fight.
  */
 class Game {
     // array of players create by the func starGame()
     var player = [Player]()
     var round = 1
     
-    /// function fight called in the main.swift
+    /// function fight called in the main
     public func fight() {
         // while there is still at least one member in the team
         while !player[0].teamMembers.isEmpty && !player[1].teamMembers.isEmpty {
@@ -33,51 +33,6 @@ class Game {
             }
             //increment a round for every loop
             round += 1
-        }
-    }
-    /// func to check winners returns a bool: true the game stop/ false the game continue
-    private func checkWinner() -> Bool {
-        // check in each team if the mage is only
-        checkIfMageIsOnly(for: 0)
-        checkIfMageIsOnly(for: 1)
-        // condition to stop the game if the total life points of the team is egual to 0
-        if player[0].totalLifePoints == 0 {
-            congratsWinner(for: 1)
-            return true
-        } else if player[1].totalLifePoints == 0 {
-            congratsWinner(for: 0)
-            return true
-        }
-        return false
-    }
-    /// Method to show the winner with his team member alive
-    private func congratsWinner(for index: Int) {
-        print("""
-                        ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
-            
-                        ⭐️⭐️⭐️⭐️ \(player[index].name) has won the game in \(round) rounds ⭐️⭐️⭐️⭐️
-            
-                                            Special thanks to :
-            
-            """)
-        displayTeamMembersAlive(for: index)
-        print("""
-            
-                                         for this incredible fight
-            
-                                ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
-            
-                                  THANKS FOR PLAYING, PLEASE RATE THIS APP 🤣
-            
-            """)
-    }
-    /// show the members alive of the winner
-    private func displayTeamMembersAlive(for index: Int) {
-        // enumerates the characters of the team members and prints each character along with its place in the team members
-        for (_, character) in player[index].teamMembers.enumerated() {
-            print("""
-                                        \(character.characterName) the \(character.type): \(character.lifePoints) ♡ / \(character.weapon.weaponName) / \(character.ability.abilityName),
-                """)
         }
     }
     /// func to choose character betweew the 2 teams to fight and select characters (attacking/defending)
@@ -121,7 +76,7 @@ class Game {
                     healCharacter.lifePoints = healCharacter.maxLife
                     print("\(healCharacter.characterName) the \(healCharacter.type) has reached the max life: \(healCharacter.lifePoints) ❤️\n")
                 }
-                // calling the function heal 
+                // calling the function heal
                 chooseCharacter.heal(healCharacter)
             }
         } else {
@@ -149,8 +104,8 @@ class Game {
                     // removing the character at the index
                     player.teamMembers.remove(at: index)
                     print("""
-                                                        Sorry for your loss, \(player.name)
-                                            💀💀💀 \(character.characterName) the \(character.type) has been buried ! 💀💀💀
+                        Sorry for your loss, \(player.name)
+                        💀💀💀 \(character.characterName) the \(character.type) has been buried ! 💀💀💀
                         
                         """)
                 }
@@ -158,6 +113,21 @@ class Game {
                 index += 1
             }
         }
+    }
+    /// func to check winners returns a bool: true the game stop/ false the game continue
+    private func checkWinner() -> Bool {
+        // check in each team if the mage is only
+        checkIfMageIsOnly(for: 0)
+        checkIfMageIsOnly(for: 1)
+        // condition to stop the game if the total life points of the team is egual to 0
+        if player[0].totalLifePoints == 0 {
+            congratsWinner(for: 1)
+            return true
+        } else if player[1].totalLifePoints == 0 {
+            congratsWinner(for: 0)
+            return true
+        }
+        return false
     }
     /// function with the condition if the mage is the only member of the team and remove him if true (== 1)
     private func checkIfMageIsOnly(for index: Int) {
@@ -170,6 +140,45 @@ class Game {
             }
         }
     }
+    /// Method to show the winner with his team member alive
+    private func congratsWinner(for index: Int) {
+        print("""
+                        ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
+            
+                        ⭐️⭐️⭐️⭐️ \(player[index].name) has won the game in \(round) rounds ⭐️⭐️⭐️⭐️
+            
+                                            Special thanks to :
+            
+            """)
+        displayTeamMembersAlive(for: index)
+        print("""
+            
+                                         for this incredible fight
+            
+                                ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
+            
+                                  THANKS FOR PLAYING, PLEASE RATE THIS APP 🤣
+            
+            """)
+    }
+
+    /// show all the team members before the selection
+    private func displayTeamMembers(for player: Player) {
+        // enumerates the characters of the team members and prints each character along with its place in the team members
+        for (i, character) in player.teamMembers.enumerated() {
+            print("\(i). \(character.characterName) the \(character.type): \(character.lifePoints) ♡ / \(character.weapon.weaponName): ⚔️ \(character.weapon.damage) / \(character.ability.abilityName): ⚔️ \(character.ability.damage), 🛡 \(character.ability.damageReceived).")
+        }
+    }
+    /// show the members alive of the winner
+    private func displayTeamMembersAlive(for index: Int) {
+        // enumerates the characters of the team members and prints each character along with its place in the team members
+        for (_, character) in player[index].teamMembers.enumerated() {
+            print("""
+                \(character.characterName) the \(character.type): \(character.lifePoints) ♡ / \(character.weapon.weaponName) / \(character.ability.abilityName),
+                """)
+        }
+    }
+
     /// checking if the team have a full life so the player can't choose the mage
     private func teamsLifeIsFull(in player: Player) -> Bool {
         // condition maxLife == totalLifePoints return true
@@ -188,13 +197,6 @@ class Game {
             total += character.maxLife
         }
         return total
-    }
-    /// show all the team members before the selection
-    private func displayTeamMembers(for player: Player) {
-        // enumerates the characters of the team members and prints each character along with its place in the team members
-        for (i, character) in player.teamMembers.enumerated() {
-            print("\(i). \(character.characterName) the \(character.type): \(character.lifePoints) ♡ / \(character.weapon.weaponName): ⚔️ \(character.weapon.damage) / \(character.ability.abilityName): ⚔️ \(character.ability.damage), 🛡 \(character.ability.damageReceived).")
-        }
     }
     /// initiate players
     public func startGame() {
@@ -225,7 +227,8 @@ class Game {
                             The mage : 100 ♡ life points, he has a scepter to heal one of your team member, and gives back 20 ♡
 
                             You can attack the Mage, but he can't attack... he can only heal one of your member
-                            If the Mage is the only member in your team, you will loose the game.
+
+                            If the Mage is the ONLY member in your team, you will loose the game.
                             
                             The abilities are :
                             Agility : Increase ⚔️ the damage of 10 points on the opponent ♡, and reduce 🛡 the damage received of 20 points

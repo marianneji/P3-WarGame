@@ -7,9 +7,10 @@
 //
 
 import Foundation
+// class BonusChest called in the function fighter()
 
 class BonusChest {
-    // array of new weapons of each different type
+    // array of new weapons of each different weapon type
     let bonusWeapons = [
         Weapon(weaponName: "Fire Crossbow", damage: Int.random(in: 20...35), type: .Crossbow),
         Weapon(weaponName: "Red Crossbow", damage: Int.random(in: 20...35), type: .Crossbow),

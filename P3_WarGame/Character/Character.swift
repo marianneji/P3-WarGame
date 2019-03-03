@@ -7,11 +7,11 @@
 //
 
 import Foundation
-
+// enumerate the type of the character, useful for the prints
 enum CharacterType: String { 
     case Warrior, Giant, Dwarf, Mage
 }
-
+// mother class of characters, contains the functions attack() and heal()
 class Character {
     // instance of character class
     var lifePoints: Int 
@@ -25,10 +25,7 @@ class Character {
         let totalDamage = weapon.damage + ability.damage
         return totalDamage
     }
-   
-    convenience init() {
-        self.init(lifePoints: 0, maxLife: 0, characterName: "", weapon: Weapon(weaponName: "", damage: 0, type: .Sword), type: .Warrior, ability: Endurance())
-    }
+
     init(lifePoints: Int,maxLife: Int, characterName: String, weapon: Weapon, type: CharacterType, ability: Ability) {
         self.lifePoints = lifePoints
         self.maxLife = maxLife
@@ -36,6 +33,12 @@ class Character {
         self.weapon = weapon
         self.type = type
         self.ability = ability
+    }
+    /* convenient to avoid iniate the character when we have to call it,
+     the type has been carefully chosen to match the convenient init of the weapon class,
+     otherwise there was a conflict with the function switchWeapon of the class BonusChest */
+    convenience init() {
+        self.init(lifePoints: 0, maxLife: 0, characterName: "", weapon: Weapon(), type: .Warrior, ability: Endurance())
     }
     /// function for the character to attack the opponent team
     func attack(_ target: Character) {
@@ -47,7 +50,7 @@ class Character {
             print("""
                 
                 \(target.characterName) the \(target.type) has the ability \(target.ability.abilityName), he absorbs the \(damage) damages caused :"
-                The attack has no effect, but he will not gain more life.
+                The attack has no effect.
                 \(target.characterName) still has \(target.lifePoints) ❤️.
                 
                 """)

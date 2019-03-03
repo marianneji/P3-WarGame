@@ -7,6 +7,7 @@
 //
 
 import Foundation
+// class Scepter inherit from weapon
 class Scepter: Weapon {
     init() {
         super.init(weaponName: "Scepter", damage: 20, type: .Scepter)

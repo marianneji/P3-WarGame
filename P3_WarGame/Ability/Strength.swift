@@ -7,6 +7,7 @@
 //
 
 import Foundation
+// class Strength inherit from Ability
 class Strength: Ability {
     init() {
         super.init(abilityName: "\"Strength\"", damage: 15, damageReceived: 15)

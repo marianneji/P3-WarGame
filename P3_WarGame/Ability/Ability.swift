@@ -7,10 +7,7 @@
 //
 
 import Foundation
-
-
-
-
+// Mother Class Ability
 class Ability {
     
     var abilityName: String
@@ -23,6 +20,7 @@ class Ability {
         self.damage = damage
         self.damageReceived = damageReceived
     }
+    // convenient to avoid initiate the ability when we need to call it 
     convenience init() {
         self.init(abilityName: "", damage: 0, damageReceived: 0)
     }

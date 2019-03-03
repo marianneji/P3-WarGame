@@ -56,47 +56,51 @@ class Game {
                         ⭐️⭐️⭐️⭐️ \(player[index].name) has won the game in \(round) rounds ⭐️⭐️⭐️⭐️
             
                                     These are his members alive:
+            
             """)
         displayTeamMembersAlive(for: index)
         print("""
-                                ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
+
+                                ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
                 
-                                    THANKS FOR PLAYING, PLEASE RATE THIS APP 🤣
+                                  THANKS FOR PLAYING, PLEASE RATE THIS APP 🤣
+                
                 """)
     }
-    /// show the members alive of the winner player
+    /// show the members alive of the winner
     private func displayTeamMembersAlive(for index: Int) {
         // enumerates the characters of the team members and prints each character along with its place in the team members
         for (_, character) in player[index].teamMembers.enumerated() {
             print("""
-                
-                                \(character.characterName) the \(character.type): \(character.lifePoints) ♡ / \(character.weapon.weaponName) / \(character.ability.abilityName)
-                
-                
+                                    \(character.characterName) the \(character.type): \(character.lifePoints) ♡ / \(character.weapon.weaponName) / \(character.ability.abilityName)
                 """)
         }
     }
-    /// func to choose character betweew the 2 teams to fight
+    /// func to choose character betweew the 2 teams to fight and select characters (attacking/defending)
     private func fighter(attackingPlayer: Player, defendingPlayer: Player, round: Int) {
         // constante to call the func bonusChest
         let chest = BonusChest()
         
         print("Round : \(round)")
         print("\(attackingPlayer.name) choose your team member who will fight or heal (if you choose the Mage):\n")
+        // calling the function to show member of the attacking player
         displayTeamMembers(for: attackingPlayer)
-        
+        // constant for attacking player to select character/ calling the function selectCharacter
         let chooseCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
-        
+        // calling the bonus chest for the attacking player
         chest.bonusChest(character: chooseCharacter, round: round)
-        
+        // condition if the selected character is the mage
         if chooseCharacter is Mage {
+            //calling the function for the condition if the mage is selected and the team is full life
             if teamsLifeIsFull(in: attackingPlayer) {
+                // return to the beginning of the method in the actual round
                 fighter(attackingPlayer: attackingPlayer, defendingPlayer: defendingPlayer, round: round)
             } else {
                 print("\(attackingPlayer.name) choose a team member to heal in your team\n")
                 displayTeamMembers(for: attackingPlayer)
+                // variable for attacking player to choose someone to heal
                 var healCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
-                
+                // condition if the selected character to heal is full life
                 if healCharacter.lifePoints == healCharacter.maxLife {
                     print("""
                         The character cannot be healed, because he has the maximum ❤️: \(healCharacter.maxLife)
@@ -106,31 +110,39 @@ class Game {
                         
                         """)
                     displayTeamMembers(for: attackingPlayer)
+                    // return to the selection of the character to heal
                     healCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
-
+                    // condition if the healing exceed the max life
                 } else if healCharacter.lifePoints + chooseCharacter.damage > healCharacter.maxLife {
                     healCharacter.lifePoints = healCharacter.maxLife
                     print("\(healCharacter.characterName) the \(healCharacter.type) has reached the max life: \(healCharacter.lifePoints) ❤️\n")
                 }
+                // calling the function heal 
                 chooseCharacter.heal(healCharacter)
             }
         } else {
             print("\(attackingPlayer.name) choose a team member of the opponent team to attack :\n")
+            // calling the function to show member of the defending player
             displayTeamMembers(for: defendingPlayer)
-            
+            // constante to let the attacking player choose a member of the opponent team to fight/ calling the function selectCharacter
             let opponentCharacter = defendingPlayer.selectCharacter(player: defendingPlayer)
-            
+            // calling the function to attack
             chooseCharacter.attack(opponentCharacter)
-            
+            // calling the function to remove a member if the life reachs 0
             removeMember(character: opponentCharacter, player: defendingPlayer)
         }
     }
-    ///
+    /// remove a member if his life reachs 0
     private func removeMember(character: Character, player: Player) {
+        //variable index to be able to remove the member at the index of the array
         var index = 0
+        // condition if the member is dead
         if character.lifePoints == 0 {
+            // loop in the teamMember
             for characterInTeam in player.teamMembers {
+                // checking with the name of the character (because the name is unique) to remove the actual dead member
                 if characterInTeam.characterName == character.characterName {
+                    // removing the character at the index
                     player.teamMembers.remove(at: index)
                     print("""
                                                             \(player.name)
@@ -138,29 +150,33 @@ class Game {
                         
                         """)
                 }
+                // increment 1 at the index to change the position in the array after removing the member
                 index += 1
             }
         }
     }
-    
+    /// function with the condition if the mage is the only member of the team and remove him if true (== 1)
     private func checkIfMageIsOnly(for index: Int) {
+        // if there is only 1 member in the team
         if player[index].teamMembers.count == 1 {
+            // and if this member is the mage
             if player[index].teamMembers[0] is Mage {
+                // remove the mage at the index 0 because we are sure of the index if there is only one member
                 player[index].teamMembers.remove(at: 0)
             }
         }
     }
-    ///
+    /// checking if the team have a full life so the player can't choose the mage
     private func teamsLifeIsFull(in player: Player) -> Bool {
+        // condition maxLife == totalLifePoints return true
         if getMaxLifePoints(in: player.teamMembers) == player.totalLifePoints {
-            
             print("All characters are full life, you can't choose the Mage.\n")
             return true
         } else {
             return false
         }
     }
-    ///
+    /// function with a get only property to return the maxLifePoints in the array of a team
     private func getMaxLifePoints(in team: [Character]) -> Int {
         var total = Int()
         
@@ -176,15 +192,16 @@ class Game {
             print("\(i). \(character.characterName) the \(character.type): \(character.lifePoints) ♡ / \(character.weapon.weaponName): ⚔️ \(character.weapon.damage) / \(character.ability.abilityName): ⚔️ \(character.ability.damage), 🛡 \(character.ability.damageReceived).")
         }
     }
-    
     /// initiate players
     public func startGame() {
         //  range loop to create 2 players only
         for x in 0...1 {
             print("Player \(x + 1)")
-            
+            // constant players to call the function createPlayerName
             let players = Player(name: Player.createPlayerName())
+            // the players will be append in the array of player
             player.append(players)
+            // the players will create their teams
             players.chooseTeamCharacter()
         }
     }

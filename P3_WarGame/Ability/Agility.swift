@@ -7,6 +7,7 @@
 //
 
 import Foundation
+// class Agility inherit from Ability
 class Agility: Ability {
     init() {
         super.init(abilityName: "\"Agility\"", damage: 10, damageReceived: 20)

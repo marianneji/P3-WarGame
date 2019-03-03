@@ -7,6 +7,7 @@
 //
 
 import Foundation
+// class Crossbow inherit from weapon
 class Crossbow: Weapon {
     init() {
         super.init(weaponName: "Crossbow", damage: 5, type: .Crossbow)

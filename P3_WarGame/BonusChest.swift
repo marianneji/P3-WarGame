@@ -7,7 +7,7 @@
 //
 
 import Foundation
-// class BonusChest called in the function fighter()
+// class BonusChest contains called in the function fighter()
 
 class BonusChest {
     // array of new weapons of each different weapon type
@@ -25,10 +25,11 @@ class BonusChest {
         Weapon(weaponName: "Black Wand", damage: Int.random(in: 20...35), type: .Scepter),
         Weapon(weaponName: "Demon Scepter", damage: Int.random(in: 20...35), type: .Scepter),
         ]
+    
     /// func to get a new weapon for the selected character
     public func bonusChest(character: Character, round: Int) {
-        // be sure that it's a random round
-        guard round == Int.random(in: 1...40) else {
+        //with the modulo we have 1 chance / 10 to get the bonus
+        guard round % 10 == Int.random(in: 0...9) else {
             return
         }
         // call the func switch weapon with a constant
@@ -38,16 +39,20 @@ class BonusChest {
         print("""
             
             🎁🎁🎁🎁A chest has appeared in front of you with a new weapon much stronger inside🎁🎁🎁🎁
-                            Now \(character.characterName) the \(character.type) is equipped with the new weapon \(newWeapon.weaponName): ⚔️ \(newWeapon.damage)
+                            Now \(character.characterName) the \(character.type) is equipped with the \(newWeapon.weaponName): ⚔️ \(newWeapon.damage)
+            
                                             ⚔️⚔️⚔️⚔️⚔️⚔️⚔️⚔️⚔️⚔️⚔️⚔️⚔️⚔️⚔️⚔️⚔️
             
             """)
     }
+    
     /// func to switch weapon of the chosen character
     private func switchWeapon(character: Character) -> Weapon {
+        
         // create a variable to shuffle the array of bonus weapons
         var randomWeapon = bonusWeapons.randomElement()
-        // condition to be sure that the character will be equipped with a weapon of his type
+        
+        // condition to be sure that the character will be equipped with a weapon of his type and a different weapon of the same type
         while randomWeapon?.type != character.weapon.type || character.weapon.weaponName == randomWeapon?.weaponName {
             randomWeapon = bonusWeapons.randomElement()
             

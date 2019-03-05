@@ -28,10 +28,12 @@ class Player {
         }
         set {}
     }
+    
     // init of the player name
     init(name: String) {
         self.name = name
     }
+    
     // function to let player enter a name (string)
     static func input() -> String {
         let nameData = readLine()
@@ -44,31 +46,29 @@ class Player {
         if !unique || nameIsInt || nameData == "" {
             print("Please enter a valid name !")
             return input()
-        } // we can force unwrapping nameData cause we are sure that it is not an Int and it is unique
+        } // we can force unwrapping nameData cause we are sure that it is not an Int, it is unique or not empty
         return nameData!.capitalized
     }
+    
     // static function to create a player name
     static func createPlayerName() -> String {
         print("What is the name of your team ?")
         let name = Player.input()
         return name
     }
+    
     // function to let player enter an Integer
-    static func answerNumber() -> Int {
-        // readLine() returns an optional string
-        let answerInt = readLine()
-        // if let to unwrapped safely answerInt
-        if let unwrapAnswer = answerInt {
-            // second if let to transform the unwrap answer in Int
-            if let answerNumb = Int(unwrapAnswer) {
-                return answerNumb
-            } else {
-                // if the unwrap answer can't be transform in Int
-                print("Please enter a number in the list")
-            }
+    static func answerNumber() -> Int? {
+        /* readLine() returns an optional string by default, so we ask the func to return an optional Int
+         we create in the guard 2 constants, answerInt convert answerNumb in Int
+         if it's not possible it will return nil otherwise return an optional Int */
+        guard let answerNumb = readLine(), let answerInt = Int(answerNumb) else {
+           print("Please enter a number in the list")
+            return nil
         }
-        return answerNumber()
+        return answerInt
     }
+    
     // player has to choose 3 characters in the list
     public func chooseTeamCharacter() {
         // this menu will repeat till team members count is equal to 3
@@ -81,7 +81,7 @@ class Player {
                 3. Dwarf: 80 ♡/ Axe: 20 ⚔️
                 4. Mage: 100 ♡/ Scepter: 20 ⚔️
                 """)
-            // calling the static function answerNumber to let player enter a choice
+            // calling the static function answerNumber to let player enter a choice, no need to unwrap because we are in a switch statement
             let choice = Player.answerNumber()
             // variable character of type Character
             var character: Character
@@ -124,6 +124,7 @@ class Player {
         // showing to the player his team members
         showTeamMembers()
     }
+    
     //  func to show at the player his team members
     private func showTeamMembers() {
         print("""
@@ -137,6 +138,7 @@ class Player {
             """)
         
     }
+    
     // static function to create a name for his team members...it will be called in the Characters subclass
     static func createCharacterName() -> String {
         print("Choose a name for your team member :")
@@ -144,6 +146,7 @@ class Player {
         let characterName = input()
         return characterName
     }
+    
     // static function to check unique names return a bool
     static func checkName(names: String) -> Bool {
         for characterNameArray in Player.uniqueName {
@@ -155,14 +158,15 @@ class Player {
         Player.uniqueName.append(names)
         return true
     }
-    /// function to add ability to character, called in chooseTeamCharacter, just after the character is append in the array of teamMembers
+    
+    /// function to add ability to character, called in chooseTeamCharacter just after the character is append in the array of teamMembers
     private func chooseAbility(character: Character) {
         print("""
             
-            \(name) choose an ability, it will apply on your member \(character.characterName) the \(character.type)
+            \(name) choose an ability wisely, it will apply on your member \(character.characterName) the \(character.type)
             1. Agility, ⚔️: 10 ♡ / 🛡: 20 ♡
-            2. Endurance, ⚔️: 20 ♡ / 🛡: 10 ♡
-            3. Strength, ⚔️: 15 ♡ / 🛡: 15 ♡
+            2. Endurance, ⚔️: 15 ♡ / 🛡: 15 ♡
+            3. Strength, ⚔️: 20 ♡ / 🛡: 10 ♡
             """)
         
         let choice = Player.answerNumber()
@@ -181,57 +185,30 @@ class Player {
             chooseAbility(character: character)
         }
     }
+    
     /// function to select a character as attacking as defending in the function fighter()
     public func selectCharacter(player: Player) -> Character {
         // var choosecharacter has a value character
         var chooseCharacter = Character()
+        
         // call the static func answerNumber() to let player enter a choice
         let choice = Player.answerNumber()
-        
-        switch choice {
-        case 0:
-            chooseCharacter = teamMembers[0]
-            infosSelectCharacter(for: 0)
-        case 1:
-            // condition if there is only 1 member in the team to avoid fatal error
-            if player.teamMembers.count == 1 {
-                switch choice {
-                case 0:
-                    chooseCharacter = teamMembers[0]
-                    infosSelectCharacter(for: 0)
-
-                default:
-                    print("You have only one member in your team.")
-                    return selectCharacter(player: player)
-                }
-            }
-            chooseCharacter = teamMembers[1]
-            infosSelectCharacter(for: 1)
-        case 2:
-            // condition if there is 1 or 2 members in the team to avois fatal error
-            if player.teamMembers.count == 2 || player.teamMembers.count == 1 {
-                switch choice {
-                case 0:
-                    chooseCharacter = teamMembers[0]
-                    infosSelectCharacter(for: 0)
-                case 1:
-                    chooseCharacter = teamMembers[1]
-                    infosSelectCharacter(for: 1)
-                default:
-                    print("Choose a character in the list above.")
-                    return selectCharacter(player: player)
-                }
-            }
-            chooseCharacter = teamMembers[2]
-            infosSelectCharacter(for: 2)
-        default:
-            print("Choose a character in the list above.")
-            return selectCharacter(player: player)
+        // we unwrap safely the choice, if unwrapChoice is contained in the team members
+        if let unwrapChoice = choice, unwrapChoice < player.teamMembers.count {
+            // chooseCharacter will be the team member unwrapped choice
+            chooseCharacter = teamMembers[unwrapChoice]
+            // we get the infos of the selected team member unwrap
+            infosSelectCharacter(for: unwrapChoice)
+            return chooseCharacter
         }
-        return chooseCharacter
+        // otherwise if unwrapChoice is not contained in the team member
+        print("Choose a character in the list above.")
+        // it will return to the func selectCharacter()
+        return selectCharacter(player: player)
     }
+    
     /// display the selected character and his quality
-    func infosSelectCharacter(for index: Int) {
+    private func infosSelectCharacter(for index: Int) {
         print("""
             You have selected \(teamMembers[index].characterName) the \(teamMembers[index].type) - \(teamMembers[index].lifePoints) ♡/\(teamMembers[index].maxLife) max ♡ - \(teamMembers[index].weapon.weaponName): ⚔️ \(teamMembers[index].weapon.damage)
             \(teamMembers[index].ability.abilityName) ability: ⚔️ \(teamMembers[index].ability.damage)/ 🛡 \(teamMembers[index].ability.damageReceived)!\n

@@ -40,8 +40,9 @@ class Character {
     convenience init() {
         self.init(lifePoints: 0, maxLife: 0, characterName: "", weapon: Weapon(), type: .Warrior, ability: Endurance())
     }
+    
     /// function for the character to attack the opponent team
-    func attack(_ target: Character) {
+    public func attack(_ target: Character) {
         /* cond to check that the ability does not give more life points
          if the damages are not strong enough */
         if target.ability.damageReceived >= damage  {
@@ -93,8 +94,9 @@ class Character {
             }
         }
     }
+    
     /// function to heal character of the same team
-    func heal(_ member: Character) {
+    public func heal(_ member: Character) {
         // condition not to exceed the character maxLife
         if (member.lifePoints + damage) > member.maxLife {
             member.lifePoints = member.maxLife

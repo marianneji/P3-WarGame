@@ -63,7 +63,6 @@ class Player {
          we create in the guard 2 constants, answerInt convert answerNumb in Int
          if it's not possible it will return nil otherwise return an optional Int */
         guard let answerNumb = readLine(), let answerInt = Int(answerNumb) else {
-           print("Please enter a number in the list")
             return nil
         }
         return answerInt

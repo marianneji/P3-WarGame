@@ -124,7 +124,7 @@ class Player {
         showTeamMembers()
     }
     
-    //  func to show at the player his team members
+    //  func to show to the player his team members
     private func showTeamMembers() {
         print("""
             

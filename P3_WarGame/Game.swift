@@ -84,11 +84,6 @@ class Game {
                     
                     // return to the selection of the character to heal
                     healCharacter = attackingPlayer.selectCharacter(player: attackingPlayer)
-                    
-                    // condition if the healing exceed the max life
-                } else if healCharacter.lifePoints + chooseCharacter.damage > healCharacter.maxLife {
-                    healCharacter.lifePoints = healCharacter.maxLife
-                    print("\(healCharacter.characterName) the \(healCharacter.type) has reached the max life: \(healCharacter.lifePoints) ❤️\n")
                 }
                 // calling the function heal
                 chooseCharacter.heal(healCharacter)
@@ -190,6 +185,7 @@ class Game {
             print("\(i). \(character.characterName) the \(character.type): \(character.lifePoints) ♡ / \(character.weapon.weaponName): ⚔️ \(character.weapon.damage) / \(character.ability.abilityName): ⚔️ \(character.ability.damage), 🛡 \(character.ability.damageReceived).")
         }
     }
+    
     /// show the members alive of the winner
     private func displayTeamMembersAlive(for index: Int) {
         // enumerates the characters of the team members and prints each character along with its place in the team members
